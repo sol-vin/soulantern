@@ -22,10 +22,11 @@ module Soulantern
       candidates.each do |path|
         if ResourceLoader.exists(path)
           res = ResourceLoader.load(path)
-          if stream = res.as?(AudioStream)
+          if stream = res.as_a?(AudioStream)
             @@cached_sounds[clean] = stream
             return stream
           end
+
         end
       end
 

@@ -68,7 +68,11 @@ const FALLBACK_TEMPLATE_PATH: String = "res://addons/advanced_palette_swap/shade
 			setup_screenspace_mesh()
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		visible = false
+		return
 	setup_screenspace_mesh()
+
 
 ## Configures the QuadMesh and ShaderMaterial
 func setup_screenspace_mesh() -> void:

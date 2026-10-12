@@ -34,7 +34,7 @@ module Soulantern
 
     def _notification(what : Int32) : Void
       return if Engine.is_editor_hint
-      if what == 1004 || what == 1007 # NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_WM_WINDOW_FOCUS_OUT
+      if what == Node::NOTIFICATION_APPLICATION_FOCUS_OUT || what == Node::NOTIFICATION_WM_WINDOW_FOCUS_OUT
         handle_focus_loss
       end
     end
@@ -51,13 +51,14 @@ module Soulantern
       return if Engine.is_editor_hint
 
       is_esc = false
-      if key_event = event.as?(InputEventKey)
+      if key_event = event.as_a?(InputEventKey)
         if key_event.pressed && !key_event.echo
-          is_esc = (key_event.keycode == 4194305 || key_event.physical_keycode == 4194305) # KEY_ESCAPE
+          is_esc = (key_event.keycode == Godot::Key::Escape || key_event.physical_keycode == Godot::Key::Escape)
         end
       elsif event.is_action_pressed("ui_cancel")
         is_esc = true
       end
+
 
       if is_esc
         if menu = @active_pause_menu
@@ -87,10 +88,11 @@ module Soulantern
 
       if ResourceLoader.exists("res://sounds/death.mp3")
         res = ResourceLoader.load("res://sounds/death.mp3")
-        if stream = res.as?(AudioStream)
-          if mp3 = stream.as?(AudioStreamMP3)
+        if stream = res.as_a?(AudioStream)
+          if mp3 = stream.as_a?(AudioStreamMP3)
             mp3.loop = false
           end
+
 
           asp = AudioStreamPlayer.new
           asp.name = "DeathAudioPlayer"

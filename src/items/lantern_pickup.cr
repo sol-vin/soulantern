@@ -42,8 +42,7 @@ module Soulantern
 
     def on_body_entered(body : Godot::Node) : Void
       return if @collected
-      player = find_player_ancestor(body)
-      if player
+      if player = body.self_or_ancestor?(PlayerController) || (body.in_group_or_ancestor?("player") ? body : nil)
         collect(player)
       end
     end
@@ -68,17 +67,6 @@ module Soulantern
 
       queue_free
     end
-
-    def find_player_ancestor(node : Godot::Node) : Godot::Node?
-      if player = node.as?(PlayerController) || (node << PlayerController?)
-        return player
-      end
-      curr : Godot::Node? = node
-      while curr
-        return curr if curr.is_in_group("player") || curr.name == "Player"
-        curr = curr.get_parent?
-      end
-      nil
-    end
   end
 end
+

@@ -75,10 +75,14 @@ const FALLBACK_TEMPLATE_PATH: String = "res://addons/advanced_palette_swap/shade
 var _color_rect: ColorRect = null
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		visible = false
+		return
 	if layer == 1:
 		# Elevate to layer 128 so it defaults to rendering over standard HUD canvas items
 		layer = 128
 	setup_screenspace_canvas()
+
 
 ## Returns the ColorRect responsible for screen-space canvas post-processing
 func get_color_rect() -> ColorRect:

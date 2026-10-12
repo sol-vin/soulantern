@@ -13,9 +13,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9145, 0)
 shape = SubResource("BoxShape3D_player")
 
 [node name="CameraYaw" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6255, 0)
 
 [node name="CameraPitch" type="Node3D" parent="CameraYaw"]
+unique_name_in_owner = true
+
 
 [node name="Camera" type="Camera3D" parent="CameraYaw/CameraPitch"]
 unique_name_in_owner = true

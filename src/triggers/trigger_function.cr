@@ -40,7 +40,7 @@ module Soulantern
 
     def on_body_entered(body : Godot::Node) : Void
       return if @once && @has_triggered
-      return unless is_player(body)
+      return unless body.in_group_or_ancestor?("player") || body.self_or_ancestor?(PlayerController)
 
       @has_triggered = true
 
@@ -56,15 +56,6 @@ module Soulantern
         queue_free
       end
     end
-
-    def is_player(node : Godot::Node) : Bool
-      return true if node.as?(PlayerController) || (node << PlayerController?)
-      curr : Godot::Node? = node
-      while curr
-        return true if curr.is_in_group("player") || curr.name == "Player"
-        curr = curr.get_parent?
-      end
-      false
-    end
   end
 end
+

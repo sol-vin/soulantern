@@ -4173,12 +4173,12 @@
 					"HSV Cylindrical",
 					"HSV Hue Only"
 				],
-				"PaletteGenerator": "(res://addons/advanced_palette_swap/core/palette_generator.gd):<GDScript#-9223371994743962034>",
-				"PaletteImporter": "(res://addons/advanced_palette_swap/core/palette_importer.gd):<GDScript#-9223371994173536686>",
-				"PalettePresets": "(res://addons/advanced_palette_swap/core/palette_presets.gd):<GDScript#-9223371995029174723>",
-				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994458749360>",
-				"ScreenSpaceCanvas": "(res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd):<GDScript#-9223371993888324012>",
-				"SpectrumSwatchControl": "():<GDScript#-9223371995213724123>"
+				"PaletteGenerator": "(res://addons/advanced_palette_swap/core/palette_generator.gd):<GDScript#-9223371994274199987>",
+				"PaletteImporter": "(res://addons/advanced_palette_swap/core/palette_importer.gd):<GDScript#-9223371993703774631>",
+				"PalettePresets": "(res://addons/advanced_palette_swap/core/palette_presets.gd):<GDScript#-9223371994559412679>",
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371993988987312>",
+				"ScreenSpaceCanvas": "(res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd):<GDScript#-9223371993418561941>",
+				"SpectrumSwatchControl": "():<GDScript#-9223371994743962075>"
 			},
 			"inherits": "Control",
 			"language": "GDScript",
@@ -5604,7 +5604,7 @@
 		},
 		{
 			"constants": {
-				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994458749360>"
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371993988987312>"
 			},
 			"inherits": "RefCounted",
 			"language": "GDScript",

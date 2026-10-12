@@ -28,6 +28,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/crystal_integration/plugin.cfg", "res://addons/advanced_palette_swap/plugin.cfg", "res://addons/at-icons/plugin.cfg", "res://addons/func_godot/plugin.cfg")
 
+[func_godot]
+
+default_map_settings="res://fgd/soulantern_map_settings.tres"
+
 [global_group]
 
 player="Player unit"
@@ -293,17 +297,10 @@ lantern_secondary={
 
 joypads/ignore_joypad_on_unfocused_application=true
 
-[physics]
-
-3d/physics_engine="Jolt Physics"
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/multi_bounce_occlusion/enabled=true
-[func_godot]
 
-default_map_settings="res://fgd/soulantern_map_settings.tres"

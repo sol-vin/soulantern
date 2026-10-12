@@ -12,12 +12,12 @@ var scale_factor: float = 0.03125
 ## Ratio between map editor units and Godot units. FuncGodot will divide brush coordinates by this number and save the results to [member scale_factor].
 ## This does not affect entity properties unless scripted to do so.
 @export var inverse_scale_factor: float = 32.0 :
-	set(value):
-		if value == 0.0:
-			printerr("Error: Cannot set Inverse Scale Factor to Zero")
-			return
-		inverse_scale_factor = value
-		scale_factor = 1.0 / value
+  set(value):
+    if value == 0.0:
+      printerr("Error: Cannot set Inverse Scale Factor to Zero")
+      return
+    inverse_scale_factor = value
+    scale_factor = 1.0 / value
 
 ## [FuncGodotFGDFile] that translates map file classnames into Godot nodes and packed scenes.
 @export var entity_fgd: FuncGodotFGDFile = preload("res://fgd/soulantern_fgd.tres")
@@ -78,22 +78,22 @@ var scale_factor: float = 0.03125
 ## Optional path for the clip texture, relative to [member base_texture_dir]. 
 ## Brush faces textured with the clip texture will have those faces removed from the generated [Mesh] but not the generated [Shape3D].
 @export var clip_texture: String = "clip":
-	set(tex):
-		clip_texture = tex.to_lower()
+  set(tex):
+    clip_texture = tex.to_lower()
 
 ## Optional path for the skip texture, relative to [member base_texture_dir]. 
 ## Brush faces textured with the skip texture will have those faces removed from the generated [Mesh]. 
 ## If [member FuncGodotFGDSolidClass.collision_shape_type] is set to concave then it will also remove collision from those faces in the generated [Shape3D].
 @export var skip_texture: String = "skip":
-	set(tex):
-		skip_texture = tex.to_lower()
+  set(tex):
+    skip_texture = tex.to_lower()
 
 ## Optional path for the origin texture, relative to [member base_texture_dir]. 
 ## Brush faces textured with the origin texture will have those faces removed from the generated [Mesh] and [Shape3D]. 
 ## The bounds of these faces will be used to calculate the origin point of the entity.
 @export var origin_texture: String = "origin":
-	set(tex):
-		origin_texture = tex.to_lower()
+  set(tex):
+    origin_texture = tex.to_lower()
 @export_subgroup("")
 
 ## Optional [QuakeWadFile] resources to apply textures from. See the [Quake Wiki](https://quakewiki.org/wiki/Texture_Wad) for more information on Quake Texture WADs.

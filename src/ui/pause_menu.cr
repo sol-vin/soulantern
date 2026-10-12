@@ -3,31 +3,27 @@ require "lapis"
 module Soulantern
   # In-game Pause Menu overlay controller.
   node PauseMenu < Control do
-    node_ref? resume_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/ResumeButton"
-    node_ref? quit_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/QuitButton"
-    node_ref? volume_slider, HSlider, "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/VolumeSlider"
-    node_ref? volume_label, Label, "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/PercentLabel"
-
-    unique_node? u_resume_btn, Button, "ResumeButton"
-    unique_node? u_quit_btn, Button, "QuitButton"
-    unique_node? u_volume_slider, HSlider, "VolumeSlider"
-    unique_node? u_volume_label, Label, "PercentLabel"
+    onready? resume_btn : Button = ["%ResumeButton", "CenterContainer/PanelContainer/VBoxContainer/ResumeButton"]
+    onready? quit_btn : Button = ["%QuitButton", "CenterContainer/PanelContainer/VBoxContainer/QuitButton"]
+    onready? volume_slider : HSlider = ["%VolumeSlider", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/VolumeSlider"]
+    onready? volume_label : Label = ["%PercentLabel", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/PercentLabel"]
 
     def find_resume_button : Button?
-      resume_btn || u_resume_btn
+      resume_btn
     end
 
     def find_quit_button : Button?
-      quit_btn || u_quit_btn
+      quit_btn
     end
 
     def find_volume_slider : HSlider?
-      volume_slider || u_volume_slider
+      volume_slider
     end
 
     def find_volume_label : Label?
-      volume_label || u_volume_label
+      volume_label
     end
+
 
     def _ready : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways

@@ -18,7 +18,7 @@ module Soulantern
     @[Export]
     property rotate_speed : Float32 = 1.5_f32
 
-    node_ref? model, Node3D, "Model"
+    onready? model : Node3D = "Model"
 
     @is_available : Bool = true
     @initial_y : Float32 = 0.0_f32
@@ -47,11 +47,11 @@ module Soulantern
 
     def on_body_entered(body : Godot::Node) : Void
       return unless @is_available
-      player = find_player_ancestor(body)
-      if player
+      if player = body.self_or_ancestor?(PlayerController) || (body.in_group_or_ancestor?("player") ? body : nil)
         try_collect(player)
       end
     end
+
 
     def try_collect(player : Godot::Node) : Bool
       return false unless @is_available
@@ -125,17 +125,6 @@ module Soulantern
       self.monitoring = true
       emit(respawned)
     end
-
-    def find_player_ancestor(node : Godot::Node) : Godot::Node?
-      if player = node.as?(CharacterBody3D) || (node << CharacterBody3D?)
-        return player
-      end
-      curr : Godot::Node? = node
-      while curr
-        return curr if curr.is_in_group("player") || curr.name == "Player"
-        curr = curr.get_parent?
-      end
-      nil
-    end
   end
 end
+

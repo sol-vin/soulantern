@@ -64,10 +64,10 @@ module Soulantern
     group "player"
 
     # Child node references
-    @camera_yaw : Node3D? = nil
-    @camera_pitch : Node3D? = nil
-    @camera : Camera3D? = nil
-    @flash_rect : ColorRect? = nil
+    onready camera_yaw : Node3D = "%CameraYaw"
+    onready camera_pitch : Node3D = "%CameraPitch"
+    onready camera : Camera3D = "%Camera"
+    onready flash_rect : ColorRect = "%Flash"
 
     def _ready : Void
       self.collision_layer = 2_u32
@@ -83,75 +83,18 @@ module Soulantern
     end
 
     def setup_camera_hierarchy : Void
-      # Discover or construct Yaw gimbal
-      if has_node("CameraYaw")
-        @camera_yaw = get_node("CameraYaw").as?(Node3D)
-      elsif has_node("View")
-        @camera_yaw = get_node("View").as?(Node3D)
-      else
-        yaw = Node3D.new
-        yaw.name = "CameraYaw"
-        self << yaw
-        @camera_yaw = yaw
-      end
-
-      # Discover or construct Pitch gimbal under Yaw
-      if cy = @camera_yaw
-        cy.position = Vector3.new(0, 0.711_f32, 0)
-        if cy.has_node("CameraPitch")
-          @camera_pitch = cy.get_node("CameraPitch").as?(Node3D)
-        elsif cy.has_node("Yaw/Pitch")
-          @camera_pitch = cy.get_node("Yaw/Pitch").as?(Node3D)
-        else
-          pitch = Node3D.new
-          pitch.name = "CameraPitch"
-          cy << pitch
-          @camera_pitch = pitch
-        end
-      end
-
-      # Discover or construct Camera3D under Pitch
-      if cp = @camera_pitch
-        if cp.has_node("Camera")
-          @camera = cp.get_node("Camera").as?(Camera3D)
-        elsif cp.has_node("%Camera")
-          @camera = cp.get_node("%Camera").as?(Camera3D)
-        elsif has_node("%Camera")
-          @camera = get_node("%Camera").as?(Camera3D)
-        else
-          cam = Camera3D.new
-          cam.name = "Camera"
-          cam.fov = 90.0_f32
-          cam.near = 0.001_f32
-          cam.current = true
-          cp << cam
-          @camera = cam
-        end
-      end
-
-      # Screen flash overlay
-      if cam = @camera
-        if cam.has_node("Flash")
-          @flash_rect = cam.get_node("Flash").as?(ColorRect)
-        else
-          flash = ColorRect.new
-          flash.name = "Flash"
-          flash.mouse_filter = Control::MouseFilter::MouseFilterIgnore
-          flash.color = Color.new(1, 1, 1, 0)
-          flash.anchors_preset = 15 # PRESET_FULL_RECT
-          flash.z_index = 2
-          cam << flash
-          @flash_rect = flash
-        end
-      end
+      cam = camera
+      cam.current = true
+      fr = flash_rect
+      fr.mouse_filter = Control::MouseFilter::MouseFilterIgnore
     end
 
     def _unhandled_input(event : InputEvent) : Void
-      if mouse_motion = event.as?(InputEventMouseMotion)
+      if mouse_motion = event.as_a?(InputEventMouseMotion)
         if Input.mouse_mode == Input::MouseMode::MouseModeCaptured
           gather_mouse_input(mouse_motion)
         end
-      elsif mouse_button = event.as?(InputEventMouseButton)
+      elsif mouse_button = event.as_a?(InputEventMouseButton)
         if mouse_button.button_index == 1 && Input.mouse_mode != Input::MouseMode::MouseModeCaptured
           Input.mouse_mode = Input::MouseMode::MouseModeCaptured
         end
@@ -168,13 +111,10 @@ module Soulantern
       deg89 = 89.0_f32 * (Math::PI.to_f32 / 180.0_f32)
       @pitch_angle = Math.max(-deg89, Math.min(deg89, @pitch_angle))
 
-      if cy = @camera_yaw
-        cy.rotation = Vector3.new(0, @yaw_angle, 0)
-      end
-      if cp = @camera_pitch
-        cp.rotation = Vector3.new(@pitch_angle, 0, 0)
-      end
+      camera_yaw.rotation = Vector3.new(0, @yaw_angle, 0)
+      camera_pitch.rotation = Vector3.new(@pitch_angle, 0, 0)
     end
+
 
     def _physics_process(delta : Float64) : Void
       d = delta.to_f32
@@ -345,27 +285,26 @@ module Soulantern
       horiz_speed = Math.sqrt(vel.x * vel.x + vel.z * vel.z).to_f32
 
       # Camera Bobbing
-      if cp = @camera_pitch
-        if is_on_floor && horiz_speed > 0.1_f32
-          ticks = Godot::Time.get_ticks_msec.to_f32
-          bob = Math.sin(ticks * @bob_frequency).to_f32 / @bob_fraction
-          bob *= (horiz_speed / (2.0_f32 * @forward_speed))
-          cp.position = Vector3.new(0, bob, 0)
-        else
-          cp.position = Vector3.new(0, 0, 0)
-        end
+      cp = camera_pitch
+      if is_on_floor && horiz_speed > 0.1_f32
+
+        ticks = Godot::Time.get_ticks_msec.to_f32
+        bob = Math.sin(ticks * @bob_frequency).to_f32 / @bob_fraction
+        bob *= (horiz_speed / (2.0_f32 * @forward_speed))
+        cp.position = Vector3.new(0, bob, 0)
+      else
+        cp.position = Vector3.new(0, 0, 0)
       end
 
       # Strafe Roll Tilt
-      if cam = @camera
-        if cy = @camera_yaw
-          side = vel.dot(cy.transform.basis.x)
-          roll_sign = side < 0.0_f32 ? 1.0_f32 : -1.0_f32
-          side = side.abs
-          roll_val = side < @roll_speed ? (side * @roll_angle / @roll_speed) : @roll_angle
-          cam.rotation = Vector3.new(0, 0, (roll_val * roll_sign * (Math::PI.to_f32 / 180.0_f32)))
-        end
-      end
+      cam = camera
+      cy = camera_yaw
+      side = vel.dot(cy.transform.basis.x)
+      roll_sign = side < 0.0_f32 ? 1.0_f32 : -1.0_f32
+      side = side.abs
+      roll_val = side < @roll_speed ? (side * @roll_angle / @roll_speed) : @roll_angle
+      cam.rotation = Vector3.new(0, 0, (roll_val * roll_sign * (Math::PI.to_f32 / 180.0_f32)))
+
     end
 
     def update_fall_tracking(prev_on_floor : Bool) : Void
@@ -423,12 +362,12 @@ module Soulantern
     end
 
     def get_spring_arm_camera : Camera3D?
-      @camera
+      camera
     end
 
     def equip_weapon(weapon_node : Godot::Node) : Void
       @current_weapon = weapon_node
-      target_parent : Godot::Node = @camera || self
+      target_parent : Godot::Node = camera
 
       if weapon_node.get_parent? != target_parent
         if old_p = weapon_node.get_parent?
@@ -460,8 +399,9 @@ module Soulantern
 
     def turn_on : Void
       self.process_mode = Node::ProcessMode::ProcessModePausable
-      @camera.try(&.make_current)
+      camera.make_current
     end
+
 
     def turn_off : Void
       self.process_mode = Node::ProcessMode::ProcessModeDisabled
