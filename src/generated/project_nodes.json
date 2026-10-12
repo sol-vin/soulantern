@@ -1,0 +1,7951 @@
+{
+	"gdscript_classes": [
+		{
+			"constants": {
+				"BrushData": "():<GDScript#-9223372008048294364>",
+				"EntityData": "():<GDScript#-9223372007997962713>",
+				"FaceData": "():<GDScript#-9223372008065071581>",
+				"GroupData": "():<GDScript#-9223372008014739930>",
+				"ParseData": "():<GDScript#-9223372007964408279>",
+				"PatchData": "():<GDScript#-9223372008031517147>",
+				"VertexGroupData": "():<GDScript#-9223372007981185496>"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [],
+			"name": "FuncGodotData",
+			"path": "res://addons/func_godot/src/core/data.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {
+				"_EntityData": "():<GDScript#-9223372007997962713>",
+				"_GroupData": "():<GDScript#-9223372008014739930>",
+				"_SIGNATURE": "[ENT]"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "name_of_class",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "get_script_by_class_name",
+					"return_class_name": "Script",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "group_data",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "generate_group_node",
+					"return_class_name": "Node3D",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "node_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "RefCounted",
+							"name": "data",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "FuncGodotFGDSolidClass",
+							"name": "definition",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "generate_solid_entity_node",
+					"return_class_name": "Node",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "node_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						},
+						{
+							"class_name": "FuncGodotFGDPointClass",
+							"name": "definition",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "generate_point_entity_node",
+					"return_class_name": "Node",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "RefCounted",
+							"name": "data",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "apply_entity_properties",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "entity_data",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "generate_entity_node",
+					"return_class_name": "Node",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotMap",
+							"name": "map_node",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "entities",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "groups",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "build",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "FuncGodotEntityAssembler",
+			"path": "res://addons/func_godot/src/core/entity_assembler.gd",
+			"properties": [
+				{
+					"class_name": "FuncGodotMapSettings",
+					"hint": 0,
+					"hint_string": "",
+					"name": "map_settings",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "build_flags",
+					"type": 2,
+					"type_name": "int"
+				}
+			],
+			"signals": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "step",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"name": "declare_step"
+				}
+			]
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_properties",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "descriptions",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_property_descriptions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				}
+			],
+			"name": "FuncGodotFGDBaseClass",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "prefix",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Definition",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "classname",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "description",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "func_godot_internal",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_classes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_property_descriptions",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "auto_apply_to_matching_node_properties",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "meta_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Node Generation",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "node_class",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "node_groups",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_properties",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "descriptions",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_property_descriptions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				}
+			],
+			"name": "FuncGodotFGDEntityClass",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_entity_class.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "prefix",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Definition",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "classname",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "description",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "func_godot_internal",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_classes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_property_descriptions",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "auto_apply_to_matching_node_properties",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "meta_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Node Generation",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "node_class",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "node_groups",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"FuncGodotTargetMapEditors": {
+					"JACK": 2,
+					"NET_RADIANT_CUSTOM": 3,
+					"OTHER": 0,
+					"TRENCHBROOM": 1
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "export_button",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "fgd_output_folder",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "do_export_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_class_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "get_fgd_classes",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "get_entity_definitions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Resource",
+							"name": "entity_def",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "visited_base_classes",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_generate_base_class_list",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				}
+			],
+			"name": "FuncGodotFGDFile",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_file.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Export FGD",
+					"name": "export_file",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Map Editor",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+					"hint": 2,
+					"hint_string": "Other:0,Trenchbroom:1,Jack:2,Net Radiant Custom:3",
+					"name": "target_map_editor",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "FGD",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "fgd_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_fgd_files",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "entity_definitions",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "generate_model_point_class_models",
+					"type": 1,
+					"type_name": "bool"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"TargetMapEditor": {
+					"GENERIC": 0,
+					"TRENCHBROOM": 1
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_generate_gd_ignore_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_generate_model",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_node",
+					"return_class_name": "Node3D",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_export_dir",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_local_path",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_model_folder",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_game_path",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "GLTFState",
+							"name": "gltf_state",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "Node3D",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_create_gltf_file",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "GLTFDocument",
+							"name": "gltf_document",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "GLTFState",
+							"name": "gltf_state",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_save_to_file_system",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "meshes",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "nodes",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "_generate_size_from_aabb",
+					"return_class_name": "",
+					"return_type": 16,
+					"return_type_name": "AABB"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDPointClassDisplayDescriptor",
+							"name": "descriptor",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_build_model_branch_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_model_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_studio_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_properties",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "descriptions",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_property_descriptions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				}
+			],
+			"name": "FuncGodotFGDModelPointClass",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd",
+			"properties": [
+				{
+					"class_name": "FuncGodotFGDModelPointClass.TargetMapEditor",
+					"hint": 2,
+					"hint_string": "Generic:0,Trenchbroom:1",
+					"name": "target_map_editor",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "models_sub_folder",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "scale_expression",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "generate_size_property",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "rotation_offset",
+					"type": 9,
+					"type_name": "Vector3"
+				},
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Generate GD Ignore File,FileAccess",
+					"name": "generate_gd_ignore_file",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_model_generation_enabled",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "PackedScene",
+					"hint": 17,
+					"hint_string": "PackedScene",
+					"name": "scene_file",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Script",
+					"hint": 17,
+					"hint_string": "Script",
+					"name": "script_class",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "apply_rotation_on_map_build",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "apply_scale_on_map_build",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:FuncGodotFGDPointClassDisplayDescriptor",
+					"name": "display_descriptors",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "prefix",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Definition",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "classname",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "description",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "func_godot_internal",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_classes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_property_descriptions",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "auto_apply_to_matching_node_properties",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "meta_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Node Generation",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "node_class",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "node_groups",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDPointClassDisplayDescriptor",
+							"name": "descriptor",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_build_model_branch_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_model_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_studio_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_properties",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "descriptions",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_property_descriptions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				}
+			],
+			"name": "FuncGodotFGDPointClass",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd",
+			"properties": [
+				{
+					"class_name": "PackedScene",
+					"hint": 17,
+					"hint_string": "PackedScene",
+					"name": "scene_file",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Script",
+					"hint": 17,
+					"hint_string": "Script",
+					"name": "script_class",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "apply_rotation_on_map_build",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "apply_scale_on_map_build",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:FuncGodotFGDPointClassDisplayDescriptor",
+					"name": "display_descriptors",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "prefix",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Definition",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "classname",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "description",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "func_godot_internal",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_classes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_property_descriptions",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "auto_apply_to_matching_node_properties",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "meta_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Node Generation",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "node_class",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "node_groups",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [],
+			"name": "FuncGodotFGDPointClassDisplayDescriptor",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "display_asset_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "TrenchBroom Options",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "scale",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "skin",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "frame",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "conditional",
+					"type": 4,
+					"type_name": "String"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"CollisionShapeType": {
+					"CONCAVE": 2,
+					"CONVEX": 1,
+					"NONE": 0
+				},
+				"OriginType": {
+					"ABSOLUTE": 1,
+					"AVERAGED": 0,
+					"BOUNDS_CENTER": 4,
+					"BOUNDS_MAXS": 6,
+					"BOUNDS_MINS": 5,
+					"BRUSH": 3,
+					"RELATIVE": 2
+				},
+				"SpawnType": {
+					"ENTITY": 2,
+					"MERGE_WORLDSPAWN": 1,
+					"WORLDSPAWN": 0
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotFGDFile.FuncGodotTargetMapEditors",
+							"name": "target_editor",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "build_def_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "properties",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_properties",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "descriptions",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "retrieve_all_class_property_descriptions",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				}
+			],
+			"name": "FuncGodotFGDSolidClass",
+			"path": "res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd",
+			"properties": [
+				{
+					"class_name": "FuncGodotFGDSolidClass.SpawnType",
+					"hint": 2,
+					"hint_string": "Worldspawn:0,Merge Worldspawn:1,Entity:2",
+					"name": "spawn_type",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "FuncGodotFGDSolidClass.OriginType",
+					"hint": 2,
+					"hint_string": "Averaged:0,Absolute:1,Relative:2,Brush:3,Bounds Center:4,Bounds Mins:5,Bounds Maxs:6",
+					"name": "origin_type",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Visual Build",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "build_visuals",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "GeometryInstance3D.GIMode",
+					"hint": 2,
+					"hint_string": "Gi Mode Disabled:0,Gi Mode Static:1,Gi Mode Dynamic:2",
+					"name": "global_illumination_mode",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "use_in_baked_light",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "GeometryInstance3D.ShadowCastingSetting",
+					"hint": 2,
+					"hint_string": "Shadow Casting Setting Off:0,Shadow Casting Setting On:1,Shadow Casting Setting Double Sided:2,Shadow Casting Setting Shadows Only:3",
+					"name": "shadow_casting_setting",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "build_occlusion",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 10,
+					"hint_string": "",
+					"name": "render_layers",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Collision Build",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "FuncGodotFGDSolidClass.CollisionShapeType",
+					"hint": 2,
+					"hint_string": "None:0,Convex:1,Concave:2",
+					"name": "collision_shape_type",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 11,
+					"hint_string": "",
+					"name": "collision_layer",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 11,
+					"hint_string": "",
+					"name": "collision_mask",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "collision_priority",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "collision_shape_margin",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Mesh Metadata",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_textures_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_vertex_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_face_position_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_face_normal_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_collision_shape_to_face_indices_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "add_collision_shape_face_range_metadata",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Scripting",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "Script",
+					"hint": 17,
+					"hint_string": "Script",
+					"name": "script_class",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "prefix",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Definition",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "classname",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "description",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "func_godot_internal",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "base_classes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "class_property_descriptions",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "auto_apply_to_matching_node_properties",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;0:",
+					"name": "meta_properties",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Node Generation",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "node_class",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "node_groups",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"_BrushData": "():<GDScript#-9223372008048294364>",
+				"_EntityData": "():<GDScript#-9223372007997962713>",
+				"_FaceData": "():<GDScript#-9223372008065071581>",
+				"_GroupData": "():<GDScript#-9223372008014739930>",
+				"_OriginType": {
+					"ABSOLUTE": 1,
+					"AVERAGED": 0,
+					"BOUNDS_CENTER": 4,
+					"BOUNDS_MAXS": 6,
+					"BOUNDS_MINS": 5,
+					"BRUSH": 3,
+					"RELATIVE": 2
+				},
+				"_PatchData": "():<GDScript#-9223372008031517147>",
+				"_SIGNATURE": "[GEO]",
+				"_VERTEX_EPSILON": 0.008,
+				"_VERTEX_EPSILON2": 0.000064,
+				"_VertexGroupData": "():<GDScript#-9223372007981185496>"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "settings",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "hplane_size",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "face",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "is_skip",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "face",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "is_clip",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "face",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "is_origin",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "controls",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "t",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "sample_bezier_curve",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "controls",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "width",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "height",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "u",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "v",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "sample_bezier_surface",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "width",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "height",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "get_triangle_indices",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "data",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "Mesh",
+							"name": "mesh",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "create_patch_mesh",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "plane",
+							"type": 14,
+							"type_name": "Plane"
+						}
+					],
+					"flags": 1,
+					"name": "generate_base_winding",
+					"return_class_name": "",
+					"return_type": 36,
+					"return_type_name": "PackedVector3Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "brush",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "face_index",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "vertex_merge_distance",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "generate_face_vertices",
+					"return_class_name": "",
+					"return_type": 36,
+					"return_type_name": "PackedVector3Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "brush_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "generate_brush_vertices",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "generate_entity_vertices",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "determine_entity_origins",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "wind_entity_faces",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "smooth_entity_vertices",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "generate_entity_surfaces",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_index",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "texel_size",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "unwrap_uv2s",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "build_flags",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "entities",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "build",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				}
+			],
+			"name": "FuncGodotGeometryGenerator",
+			"path": "res://addons/func_godot/src/core/geometry_generator.gd",
+			"properties": [
+				{
+					"class_name": "FuncGodotMapSettings",
+					"hint": 0,
+					"hint_string": "",
+					"name": "map_settings",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "hyperplane_size",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 31,
+					"hint_string": "RefCounted",
+					"name": "entity_data",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 38,
+					"hint_string": "String;Material",
+					"name": "texture_materials",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 38,
+					"hint_string": "String;Vector2",
+					"name": "texture_sizes",
+					"type": 27,
+					"type_name": "Dictionary"
+				}
+			],
+			"signals": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "step",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"name": "declare_step"
+				}
+			]
+		},
+		{
+			"constants": {
+				"PROPERTY": {
+					"FGD_OUTPUT_FOLDER": 0,
+					"MAP_EDITOR_GAME_PATH": 3,
+					"NETRADIANT_CUSTOM_GAMEPACKS_FOLDER": 2,
+					"TRENCHBROOM_GAME_CONFIG_FOLDER": 1
+				},
+				"_CONFIG_PROPERTIES": [
+					{
+						"func_godot_type": 0,
+						"hint": 16,
+						"name": "fgd_output_folder",
+						"type": 4,
+						"usage": 4
+					},
+					{
+						"func_godot_type": 1,
+						"hint": 16,
+						"name": "trenchbroom_game_config_folder",
+						"type": 4,
+						"usage": 4
+					},
+					{
+						"func_godot_type": 2,
+						"hint": 16,
+						"name": "netradiant_custom_gamepacks_folder",
+						"type": 4,
+						"usage": 4
+					},
+					{
+						"func_godot_type": 3,
+						"hint": 16,
+						"name": "map_editor_game_path",
+						"type": 4,
+						"usage": 4
+					}
+				]
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotLocalConfig.PROPERTY",
+							"name": "name",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 33,
+					"name": "get_setting",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_property_list",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "property",
+							"type": 21,
+							"type_name": "StringName"
+						}
+					],
+					"flags": 1,
+					"name": "_get",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "property",
+							"type": 21,
+							"type_name": "StringName"
+						},
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_set",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "type",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_get_default_value",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "name",
+							"type": 21,
+							"type_name": "StringName"
+						}
+					],
+					"flags": 1,
+					"name": "_get_config_property",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "reload_func_godot_settings",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_apply_defaults",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_try_loading",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "export_func_godot_settings",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "FuncGodotLocalConfig",
+			"path": "res://addons/func_godot/src/util/func_godot_local_config.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Export func_godot settings,Save",
+					"name": "_save_settings",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Reload func_godot settings,Reload",
+					"name": "_load_settings",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_settings_dict",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_loaded",
+					"type": 1,
+					"type_name": "bool"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"BuildFlags": {
+					"DISABLE_SMOOTHING": 4,
+					"SHOW_PROFILE_INFO": 2,
+					"UNWRAP_UV2": 1
+				},
+				"_SIGNATURE": "[MAP]"
+			},
+			"inherits": "Node3D",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "reason",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "notify",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "fail_build",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "clear_children",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "verify",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "build",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "FuncGodotMap",
+			"path": "res://addons/func_godot/src/map/func_godot_map.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Build Map,CollisionShape3D",
+					"name": "_build_func",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Clear Map,Skeleton3D",
+					"name": "_clear_func",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Map",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 13,
+					"hint_string": "*.map,*.vmf",
+					"name": "local_map_file",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 15,
+					"hint_string": "*.map,*.vmf",
+					"name": "global_map_file",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_map_file_internal",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "FuncGodotMapSettings",
+					"hint": 17,
+					"hint_string": "FuncGodotMapSettings",
+					"name": "map_settings",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Build",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 6,
+					"hint_string": "Unwrap UV2:1,Show Profiling Info:2,Disable Smooth Shading:4",
+					"name": "build_flags",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "256.0,2048.0,128.0",
+					"name": "hyperplane_size",
+					"type": 3,
+					"type_name": "float"
+				}
+			],
+			"signals": [
+				{
+					"args": [],
+					"name": "build_failed"
+				},
+				{
+					"args": [],
+					"name": "build_complete"
+				}
+			]
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@inverse_scale_factor_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "tex",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@clip_texture_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "tex",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@skip_texture_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "tex",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@origin_texture_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "FuncGodotMapSettings",
+			"path": "res://addons/func_godot/src/map/func_godot_map_settings.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Build Settings",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "scale_factor",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "inverse_scale_factor",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "FuncGodotFGDFile",
+					"hint": 17,
+					"hint_string": "FuncGodotFGDFile",
+					"name": "entity_fgd",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "use_groups_hierarchy",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "uv_unwrap_texel_size",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Settings",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "entity_node_groups",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entity Property Names",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "entity_name_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "entity_smoothing_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "entity_smoothing_angle_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "vertex_merge_distance_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "cull_interior_faces_property",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Textures",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 14,
+					"hint_string": "",
+					"name": "base_texture_dir",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "texture_file_extensions",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Hint Textures",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "clip_texture",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "skip_texture",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "origin_texture",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:QuakeWadFile",
+					"name": "texture_wads",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Materials",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 14,
+					"hint_string": "",
+					"name": "base_material_dir",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "material_file_extension",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "Material",
+					"hint": 17,
+					"hint_string": "Material",
+					"name": "default_material",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "default_material_albedo_uniform",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;4:",
+					"name": "shader_material_uniform_map_patterns",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "BaseMaterial3D Map Patterns",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "albedo_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "normal_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "metallic_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "roughness_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "emission_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "ao_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "height_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "orm_map_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "save_generated_materials",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"_BrushData": "():<GDScript#-9223372008048294364>",
+				"_EntityData": "():<GDScript#-9223372007997962713>",
+				"_FaceData": "():<GDScript#-9223372008065071581>",
+				"_GroupData": "():<GDScript#-9223372008014739930>",
+				"_ParseData": "():<GDScript#-9223372007964408279>",
+				"_PatchData": "():<GDScript#-9223372008031517147>",
+				"_SIGNATURE": "[PRS]"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "map_file",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "parse_map_data",
+					"return_class_name": "RefCounted",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "map_data",
+							"type": 34,
+							"type_name": "PackedStringArray"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "RefCounted",
+							"name": "parse_data",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_parse_quake_map",
+					"return_class_name": "RefCounted",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "map_data",
+							"type": 34,
+							"type_name": "PackedStringArray"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "RefCounted",
+							"name": "parse_data",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_parse_vmf",
+					"return_class_name": "RefCounted",
+					"return_type": 24,
+					"return_type_name": "Object"
+				}
+			],
+			"name": "FuncGodotParser",
+			"path": "res://addons/func_godot/src/core/parser.gd",
+			"properties": [],
+			"signals": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "step",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"name": "declare_step"
+				}
+			]
+		},
+		{
+			"constants": {},
+			"inherits": "EditorPlugin",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_plugin_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Object",
+							"name": "object",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_handles",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Object",
+							"name": "object",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_edit",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_enter_tree",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_exit_tree",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotMap",
+							"name": "func_godot_map",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "func_godot_map_build_complete",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "FuncGodotPlugin",
+			"path": "res://addons/func_godot/src/func_godot_plugin.gd",
+			"properties": [
+				{
+					"class_name": "QuakeMapImportPlugin",
+					"hint": 0,
+					"hint_string": "",
+					"name": "map_import_plugin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "QuakePaletteImportPlugin",
+					"hint": 0,
+					"hint_string": "",
+					"name": "palette_import_plugin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "QuakeWadImportPlugin",
+					"hint": 0,
+					"hint_string": "",
+					"name": "wad_import_plugin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "WeakRef",
+					"hint": 0,
+					"hint_string": "",
+					"name": "edited_object_ref",
+					"type": 24,
+					"type_name": "Object"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"_VEC3_FORWARD_ID": "(1.0, 0.0, 0.0)",
+				"_VEC3_RIGHT_ID": "(0.0, 1.0, 0.0)",
+				"_VEC3_UP_ID": "(0.0, 0.0, 1.0)",
+				"_VERTEX_EPSILON": 0.008,
+				"_pbr_features": [
+					-1,
+					1,
+					-1,
+					-1,
+					0,
+					5,
+					6,
+					-1
+				],
+				"_pbr_textures": [
+					0,
+					4,
+					1,
+					2,
+					3,
+					8,
+					9,
+					17
+				],
+				"default_texture_path": "res://addons/func_godot/textures/default_texture.png"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "message",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "signature",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "print_profile_info",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 33,
+					"name": "newline",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "lhs",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "rhs",
+							"type": 9,
+							"type_name": "Vector3"
+						}
+					],
+					"flags": 33,
+					"name": "op_vec3_sum",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "array",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 33,
+					"name": "op_vec3_avg",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "vec",
+							"type": 9,
+							"type_name": "Vector3"
+						}
+					],
+					"flags": 33,
+					"name": "id_to_opengl",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "planes",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "vertex",
+							"type": 9,
+							"type_name": "Vector3"
+						}
+					],
+					"flags": 33,
+					"name": "is_point_in_convex_hull",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "p0",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "p1",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "p2",
+							"type": 9,
+							"type_name": "Vector3"
+						}
+					],
+					"flags": 33,
+					"name": "elevate_quadratic",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "start",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "control",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "end",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "bake_interval",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 33,
+					"name": "create_curve",
+					"return_class_name": "Curve3D",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Curve3D",
+							"name": "curve",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "p0",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "p1",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "p2",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "bake_interval",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 33,
+					"name": "update_ref_curve",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "wad_resources",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "load_texture",
+					"return_class_name": "Texture2D",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "is_skip",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "is_clip",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "is_origin",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "filter_face",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "BaseMaterial3D",
+							"name": "material",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "texture",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "build_base_material",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "entity_data",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "FuncGodotMapSettings",
+							"name": "map_settings",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "build_texture_map",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "vertex",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "u_axis",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "v_axis",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "uv_basis",
+							"type": 11,
+							"type_name": "Transform2D"
+						},
+						{
+							"class_name": "",
+							"name": "texture_size",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 33,
+					"name": "get_valve_uv",
+					"return_class_name": "",
+					"return_type": 5,
+					"return_type_name": "Vector2"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "vertex",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "normal",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "uv_in",
+							"type": 11,
+							"type_name": "Transform2D"
+						},
+						{
+							"class_name": "",
+							"name": "texture_size",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 33,
+					"name": "get_quake_uv",
+					"return_class_name": "",
+					"return_type": 5,
+					"return_type_name": "Vector2"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "vertex",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "RefCounted",
+							"name": "face",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "texture_size",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 33,
+					"name": "get_face_vertex_uv",
+					"return_class_name": "",
+					"return_type": 5,
+					"return_type_name": "Vector2"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "u",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "v",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "normal",
+							"type": 9,
+							"type_name": "Vector3"
+						}
+					],
+					"flags": 33,
+					"name": "get_valve_tangent",
+					"return_class_name": "",
+					"return_type": 32,
+					"return_type_name": "PackedFloat32Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "normal",
+							"type": 9,
+							"type_name": "Vector3"
+						},
+						{
+							"class_name": "",
+							"name": "uv_y_scale",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "uv_rotation",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 33,
+					"name": "get_quake_tangent",
+					"return_class_name": "",
+					"return_type": 32,
+					"return_type_name": "PackedFloat32Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "RefCounted",
+							"name": "face",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 33,
+					"name": "get_face_tangent",
+					"return_class_name": "",
+					"return_type": 32,
+					"return_type_name": "PackedFloat32Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "ArrayMesh",
+							"name": "mesh",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "angle_deg",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 33,
+					"name": "smooth_mesh_by_angle",
+					"return_class_name": "ArrayMesh",
+					"return_type": 24,
+					"return_type_name": "Object"
+				}
+			],
+			"name": "FuncGodotUtil",
+			"path": "res://addons/func_godot/src/util/func_godot_util.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {
+				"NetRadiantCustomMapType": {
+					"QUAKE_1": 0,
+					"QUAKE_3": 1
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "new_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@gamepack_name_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_shader_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_gamepack_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "export_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "NetRadiantCustomGamePackConfig",
+			"path": "res://addons/func_godot/src/netradiant_custom/netradiant_custom_gamepack_config.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Export Gamepack",
+					"name": "_export_file",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "gamepack_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "game_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "base_game_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "FuncGodotFGDFile",
+					"hint": 17,
+					"hint_string": "FuncGodotFGDFile",
+					"name": "fgd_file",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "generate_model_point_class_models",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "netradiant_custom_shaders",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "model_types",
+					"type": 34,
+					"type_name": "PackedStringArray"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "sound_types",
+					"type": 34,
+					"type_name": "PackedStringArray"
+				},
+				{
+					"class_name": "NetRadiantCustomGamePackConfig.NetRadiantCustomMapType",
+					"hint": 2,
+					"hint_string": "Quake 1:0,Quake 3:1",
+					"name": "map_type",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Textures",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "texture_types",
+					"type": 34,
+					"type_name": "PackedStringArray"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "default_scale",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "clip_texture",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "skip_texture",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Build Menu",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "default_build_menu_variables",
+					"type": 27,
+					"type_name": "Dictionary"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "default_build_menu_commands",
+					"type": 27,
+					"type_name": "Dictionary"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [],
+			"name": "NetRadiantCustomShader",
+			"path": "res://addons/func_godot/src/netradiant_custom/netradiant_custom_shader.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "texture_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "shader_attributes",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"DISTANCE_MODE_NAMES": [
+					"Perceptual OKLab",
+					"Perceptual Redmean",
+					"Euclidean sRGB",
+					"Chromaticity (Ignore Lightness)",
+					"Hue Angle Only",
+					"Hue Priority (Chroma-Weighted)",
+					"Luminance Only (Value Ramp)",
+					"Chroma Only",
+					"Color Warmth (Cool vs Warm)",
+					"HSV Cylindrical",
+					"HSV Hue Only"
+				],
+				"PaletteGenerator": "(res://addons/advanced_palette_swap/core/palette_generator.gd):<GDScript#-9223371994777516460>",
+				"PaletteImporter": "(res://addons/advanced_palette_swap/core/palette_importer.gd):<GDScript#-9223371994207091112>",
+				"PalettePresets": "(res://addons/advanced_palette_swap/core/palette_presets.gd):<GDScript#-9223371995062729149>",
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994492303786>",
+				"ScreenSpaceCanvas": "(res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd):<GDScript#-9223371993921878438>",
+				"SpectrumSwatchControl": "():<GDScript#-9223371995247278549>"
+			},
+			"inherits": "Control",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "@color_distance_mode_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_ready",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "EditorPlugin",
+							"name": "plugin",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "set_editor_plugin",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_ui",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_setup_popups",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_setup_importer_dialog",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_refresh_palette_view",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "idx",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "col",
+							"type": 20,
+							"type_name": "Color"
+						}
+					],
+					"flags": 1,
+					"name": "_update_single_swatch",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "from_idx",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "to_idx",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "insert_after",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "move_color",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "index",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "pos",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 1,
+					"name": "open_context_menu",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "id",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "_on_context_menu_item_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "index",
+							"type": 2,
+							"type_name": "int"
+						},
+						{
+							"class_name": "",
+							"name": "pos",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 1,
+					"name": "open_color_picker_popup",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "new_color",
+							"type": 20,
+							"type_name": "Color"
+						}
+					],
+					"flags": 1,
+					"name": "_on_picker_color_changed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_refresh_preset_list",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_update_color_filter_dropdown",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "_on_color_filter_selected",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_update_preset_dropdown",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_load_current_selected_preset",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "index",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "_on_preset_selected",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "item",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "_load_palette_item",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "preset_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_load_preset",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_load_tres_palette",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_add_color_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_sort_luminance_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_reverse_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_clear_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_generate_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "shader_file_path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "material_file_path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "canvas_shader_path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "canvas_material_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_refresh_screenspace_meshes",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_add_mesh_to_scene_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_add_canvas_to_scene_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_save_tres_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_on_save_dialog_selected",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_import_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_export_pressed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_on_file_dialog_selected",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_open_importer_dialog",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_preview_single_import",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_load_single_to_editor",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_save_single_as_tres",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_run_batch_import",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "mat_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_sync_from_material_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "msg",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "is_error",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "_show_status",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_input_adjustments_panel",
+					"return_class_name": "Control",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "label_text",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "min_val",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "max_val",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "step_val",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "default_val",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "tooltip",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_create_adjustment_control",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_toggle_adjustments_panel",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_update_adjustment_summary_label",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_on_adjustment_changed",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "lightness",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "saturation",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "contrast",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "r",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "g",
+							"type": 3,
+							"type_name": "float"
+						},
+						{
+							"class_name": "",
+							"name": "b",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "set_input_adjustments",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "reset_adjustments",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_apply_input_adjustments_to_scene",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_update_mesh_adjustments_in_tree",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_sync_adjustments_from_scene",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_find_first_palette_node",
+					"return_class_name": "Node",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Node",
+							"name": "node",
+							"type": 24,
+							"type_name": "Object"
+						}
+					],
+					"flags": 1,
+					"name": "_find_first_mesh",
+					"return_class_name": "PalletteSwapScreenSpaceMesh",
+					"return_type": 24,
+					"return_type_name": "Object"
+				}
+			],
+			"name": "PaletteEditorTab",
+			"path": "res://addons/advanced_palette_swap/ui/palette_editor_tab.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 31,
+					"hint_string": "Color",
+					"name": "current_colors",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "EditorPlugin",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_plugin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "ScrollContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_main_scroll",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "OptionButton",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_color_filter_option",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_selected_color_count_filter",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 31,
+					"hint_string": "Dictionary",
+					"name": "_all_palettes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "OptionButton",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_preset_option",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 31,
+					"hint_string": "Dictionary",
+					"name": "_preset_items",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "LineEdit",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_output_dir_edit",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Label",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_status_label",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Label",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_count_label",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HBoxContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_spectrum_container",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "ScrollContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_spectrum_scroll",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_lightness",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_saturation",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_contrast",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_red",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_green",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "input_blue",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "color_distance_mode",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "OptionButton",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_distance_mode_option",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "PanelContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_adjustments_panel",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "VBoxContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_adjustments_content",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Button",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_adjustments_toggle_btn",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Label",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_adjustments_summary_lbl",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_lightness_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_lightness_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_saturation_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_saturation_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_contrast_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_contrast_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_red_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_red_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_green_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_green_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HSlider",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_blue_slider",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "SpinBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_blue_spin",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "PopupMenu",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_context_menu",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_context_menu_index",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_last_click_pos",
+					"type": 5,
+					"type_name": "Vector2"
+				},
+				{
+					"class_name": "PopupPanel",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_picker_popup",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "ColorPicker",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_popup_color_picker",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Label",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_picker_title_lbl",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_active_color_index",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "FileDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_file_dialog",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "FileDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_save_dialog",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_is_exporting",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "AcceptDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_importer_dialog",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "LineEdit",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_import_path_edit",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "FileDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_file_picker",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "CheckBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_skip_trans_cb",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "Label",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_preview_lbl",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "HBoxContainer",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_preview_container",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "PaletteResource",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_single_loaded_palette",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "LineEdit",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_src_edit",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "LineEdit",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_dest_edit",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "FileDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_dir_picker",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "FileDialog",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_dest_picker",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "CheckBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_recursive_cb",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "CheckBox",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_skip_trans_cb",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "TextEdit",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_batch_log_edit",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 31,
+					"hint_string": "PanelContainer",
+					"name": "_swatch_nodes",
+					"type": 28,
+					"type_name": "Array"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"TEMPLATE_CANVAS_SHADER_PATH": "res://addons/advanced_palette_swap/shaders/palette_swap_canvas.gdshader",
+				"TEMPLATE_INC_PATH": "res://addons/advanced_palette_swap/shaders/palette.gdshaderinc",
+				"TEMPLATE_SHADER_PATH": "res://addons/advanced_palette_swap/shaders/palette_swap.gdshader"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "c",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 33,
+					"name": "srgb_to_linear",
+					"return_class_name": "",
+					"return_type": 3,
+					"return_type_name": "float"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "color",
+							"type": 20,
+							"type_name": "Color"
+						}
+					],
+					"flags": 33,
+					"name": "color_to_oklab",
+					"return_class_name": "",
+					"return_type": 9,
+					"return_type_name": "Vector3"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "colors",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 33,
+					"name": "generate_shaderinc_code",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "output_dir",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "colors",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "overwrite_main_shader",
+							"type": 1,
+							"type_name": "bool"
+						},
+						{
+							"class_name": "",
+							"name": "params",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 33,
+					"name": "write_palette_files",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "material_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "read_material_parameters",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "paths",
+							"type": 34,
+							"type_name": "PackedStringArray"
+						}
+					],
+					"flags": 33,
+					"name": "rescan_filesystem",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "filepath",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "colors",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 33,
+					"name": "export_to_json",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "filepath",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_json",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "filepath",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "colors",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 33,
+					"name": "export_to_hex",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "filepath",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_hex",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				}
+			],
+			"name": "PaletteGenerator",
+			"path": "res://addons/advanced_palette_swap/core/palette_generator.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994492303786>"
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "skip_transparent",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 33,
+					"name": "import_file",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_gpl",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "content",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "default_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "parse_gpl_string",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_pal",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "FileAccess",
+							"name": "file",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "default_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "_parse_riff_pal",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "content",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "default_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "parse_pal_string",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "skip_transparent",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_png",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "Image",
+							"name": "image",
+							"type": 24,
+							"type_name": "Object"
+						},
+						{
+							"class_name": "",
+							"name": "palette_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "skip_transparent",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 33,
+					"name": "extract_colors_from_image",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_hex",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "import_from_json",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "file_paths",
+							"type": 34,
+							"type_name": "PackedStringArray"
+						},
+						{
+							"class_name": "",
+							"name": "destination_dir",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "skip_transparent",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 33,
+					"name": "batch_import_files",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "source_dir",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "destination_dir",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "recursive",
+							"type": 1,
+							"type_name": "bool"
+						},
+						{
+							"class_name": "",
+							"name": "skip_transparent",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 33,
+					"name": "batch_import_directory",
+					"return_class_name": "",
+					"return_type": 27,
+					"return_type_name": "Dictionary"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "text",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "_tokenize_whitespace",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "s",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "_is_hex_string",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "_sanitize_filename",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "paths",
+							"type": 34,
+							"type_name": "PackedStringArray"
+						}
+					],
+					"flags": 33,
+					"name": "_rescan_filesystem",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "PaletteImporter",
+			"path": "res://addons/advanced_palette_swap/core/palette_importer.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {
+				"DEFAULT_PALETTES_DIR": "res://addons/advanced_palette_swap/default_palettes",
+				"PRESETS": {
+					"1-Bit Monochrome": [
+						"#000000",
+						"#ffffff"
+					],
+					"Amber CRT": [
+						"#120900",
+						"#3d2000",
+						"#995200",
+						"#ffaa00"
+					],
+					"CGA Palette 0 (High)": [
+						"#000000",
+						"#55ff55",
+						"#ff5555",
+						"#ffff55"
+					],
+					"CGA Palette 1 (High)": [
+						"#000000",
+						"#55ffff",
+						"#ff55ff",
+						"#ffffff"
+					],
+					"Commodore 64": [
+						"#000000",
+						"#FFFFFF",
+						"#880000",
+						"#AAFFEE",
+						"#CC44CC",
+						"#00CC55",
+						"#0000AA",
+						"#EEEE77",
+						"#DD8855",
+						"#664400",
+						"#FF7777",
+						"#333333",
+						"#777777",
+						"#AAFF66",
+						"#0088FF",
+						"#BBBBBB"
+					],
+					"Cyberpunk Neon": [
+						"#0d0221",
+						"#0f084b",
+						"#26408b",
+						"#a6cfd5",
+						"#c2e7d9",
+						"#f2545b",
+						"#ff007f",
+						"#00f0ff"
+					],
+					"Endesga 32": [
+						"#be4a2f",
+						"#d77643",
+						"#ead4aa",
+						"#e4a672",
+						"#b86f50",
+						"#733e39",
+						"#3e2731",
+						"#a22633",
+						"#e43b44",
+						"#f77622",
+						"#feae34",
+						"#fee761",
+						"#63c74d",
+						"#3e8948",
+						"#265c42",
+						"#193c3e",
+						"#124e89",
+						"#0099db",
+						"#2ce8f5",
+						"#ffffff",
+						"#c0cbdc",
+						"#8b9bb4",
+						"#5a6988",
+						"#3a4466",
+						"#262b44",
+						"#181425",
+						"#ff0044",
+						"#68386c",
+						"#b55088",
+						"#f6757a",
+						"#e8b796",
+						"#c28569"
+					],
+					"Game Boy (DMG)": [
+						"#0f380f",
+						"#306230",
+						"#8bac0f",
+						"#9bbc0f"
+					],
+					"Game Boy Pocket": [
+						"#2b2b26",
+						"#706b66",
+						"#a89f91",
+						"#c7c4b8"
+					],
+					"NES Curated": [
+						"#000000",
+						"#fcfcfc",
+						"#f83800",
+						"#e40058",
+						"#980088",
+						"#400098",
+						"#0000a8",
+						"#002888",
+						"#0058f8",
+						"#0078f8",
+						"#008888",
+						"#00a800",
+						"#4cb000",
+						"#8c9c00",
+						"#ac7c00",
+						"#e45c10"
+					],
+					"Paper & Ink": [
+						"#211e1f",
+						"#554d48",
+						"#b8a892",
+						"#efe7d3"
+					],
+					"Pico-8": [
+						"#000000",
+						"#1D2B53",
+						"#7E2553",
+						"#008751",
+						"#AB5236",
+						"#5F574F",
+						"#C2C3C7",
+						"#FFF1E8",
+						"#FF004D",
+						"#FFA300",
+						"#FFEC27",
+						"#00E436",
+						"#29ADFF",
+						"#83769C",
+						"#FF77A8",
+						"#FFCCAA"
+					],
+					"Solarized": [
+						"#002b36",
+						"#073642",
+						"#586e75",
+						"#657b83",
+						"#839496",
+						"#93a1a1",
+						"#eee8d5",
+						"#fdf6e3",
+						"#b58900",
+						"#cb4b16",
+						"#dc322f",
+						"#d33682",
+						"#6c71c4",
+						"#268bd2",
+						"#2aa198",
+						"#859900"
+					],
+					"Sweetie 16": [
+						"#1a1c2c",
+						"#5d275d",
+						"#b13e53",
+						"#ef7d57",
+						"#ffcd75",
+						"#a7f070",
+						"#38b764",
+						"#257179",
+						"#29366f",
+						"#3b5dc9",
+						"#41a6f6",
+						"#73eff7",
+						"#f4f4f4",
+						"#94b0c2",
+						"#566c86",
+						"#333c57"
+					]
+				}
+			},
+			"inherits": "RefCounted",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 33,
+					"name": "get_preset_names",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "preset_name",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "get_preset_colors",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [],
+					"flags": 33,
+					"name": "get_default_palette_files",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				}
+			],
+			"name": "PalettePresets",
+			"path": "res://addons/advanced_palette_swap/core/palette_presets.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "p_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "p_colors",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "p_author",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "p_comment",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "get_colors",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "new_colors",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "set_colors",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "size",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "is_empty",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "to_hex_array",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "save_to_file",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "load_from_file",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "p_name",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "p_colors",
+							"type": 28,
+							"type_name": "Array"
+						},
+						{
+							"class_name": "",
+							"name": "p_author",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "p_comment",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 33,
+					"name": "create",
+					"return_class_name": "PaletteResource",
+					"return_type": 24,
+					"return_type_name": "Object"
+				}
+			],
+			"name": "PaletteResource",
+			"path": "res://addons/advanced_palette_swap/core/color_palette.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "palette_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "20:",
+					"name": "colors",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "author",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "comment",
+					"type": 4,
+					"type_name": "String"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"DEFAULT_MATERIAL_PATH": "res://shaders/palette_swap/palette_swap_canvas.material",
+				"DEFAULT_SHADER_PATH": "res://shaders/palette_swap/palette_swap_canvas.gdshader",
+				"FALLBACK_TEMPLATE_PATH": "res://addons/advanced_palette_swap/shaders/palette_swap_canvas.gdshader"
+			},
+			"inherits": "CanvasLayer",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@material_path_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@shader_path_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "@use_screen_texture_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@dither_strength_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "@color_distance_mode_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_lightness_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_saturation_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_contrast_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_red_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_green_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_blue_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "@reapply_setup_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_ready",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "get_color_rect",
+					"return_class_name": "ColorRect",
+					"return_type": 24,
+					"return_type_name": "Object"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "setup_screenspace_canvas",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "sync_from_material_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "force_reload",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "_update_material_shader",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "param_name",
+							"type": 21,
+							"type_name": "StringName"
+						},
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_update_param",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "PalletteSwapScreenSpaceCanvas",
+			"path": "res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 13,
+					"hint_string": "*.material,*.tres",
+					"name": "material_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 13,
+					"hint_string": "*.gdshader",
+					"name": "shader_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "use_screen_texture",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,1.0,0.01",
+					"name": "dither_strength",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 2,
+					"hint_string": "Perceptual OKLab:0,Perceptual Redmean:1,Euclidean sRGB:2,Chromaticity (Ignore Lightness):3,Hue Angle Only:4,Hue Priority (Chroma-Weighted):5,Luminance Only (Value Ramp):6,Chroma Only:7,Color Warmth (Cool vs Warm):8,HSV Cylindrical:9,HSV Hue Only:10",
+					"name": "color_distance_mode",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Input Adjustments",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "-1.0,1.0,0.01",
+					"name": "input_lightness",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,3.0,0.01",
+					"name": "input_saturation",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,3.0,0.01",
+					"name": "input_contrast",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Color Channels",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_red",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_green",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_blue",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "reapply_setup",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "ColorRect",
+					"hint": 0,
+					"hint_string": "",
+					"name": "_color_rect",
+					"type": 24,
+					"type_name": "Object"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"DEFAULT_MATERIAL_PATH": "res://shaders/palette_swap/palette_swap.material",
+				"DEFAULT_SHADER_PATH": "res://shaders/palette_swap/palette_swap.gdshader",
+				"FALLBACK_TEMPLATE_PATH": "res://addons/advanced_palette_swap/shaders/palette_swap.gdshader"
+			},
+			"inherits": "MeshInstance3D",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@material_path_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 4,
+							"type_name": "String"
+						}
+					],
+					"flags": 1,
+					"name": "@shader_path_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@dither_strength_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 1,
+					"name": "@color_distance_mode_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_lightness_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_saturation_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_contrast_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_red_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_green_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 3,
+							"type_name": "float"
+						}
+					],
+					"flags": 1,
+					"name": "@input_blue_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "@reapply_setup_setter",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_ready",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "setup_screenspace_mesh",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "sync_from_material_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "force_reload",
+							"type": 1,
+							"type_name": "bool"
+						}
+					],
+					"flags": 1,
+					"name": "_update_material_shader",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "param_name",
+							"type": 21,
+							"type_name": "StringName"
+						},
+						{
+							"class_name": "",
+							"name": "value",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_update_param",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "PalletteSwapScreenSpaceMesh",
+			"path": "res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_mesh.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 13,
+					"hint_string": "*.material,*.tres",
+					"name": "material_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 13,
+					"hint_string": "*.gdshader",
+					"name": "shader_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,1.0,0.01",
+					"name": "dither_strength",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 2,
+					"hint_string": "Perceptual OKLab:0,Perceptual Redmean:1,Euclidean sRGB:2,Chromaticity (Ignore Lightness):3,Hue Angle Only:4,Hue Priority (Chroma-Weighted):5,Luminance Only (Value Ramp):6,Chroma Only:7,Color Warmth (Cool vs Warm):8,HSV Cylindrical:9,HSV Hue Only:10",
+					"name": "color_distance_mode",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Input Adjustments",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "-1.0,1.0,0.01",
+					"name": "input_lightness",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,3.0,0.01",
+					"name": "input_saturation",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,3.0,0.01",
+					"name": "input_contrast",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Color Channels",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_red",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_green",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 1,
+					"hint_string": "0.0,2.0,0.01",
+					"name": "input_blue",
+					"type": 3,
+					"type_name": "float"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "reapply_setup",
+					"type": 1,
+					"type_name": "bool"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [],
+			"name": "QuakeMapFile",
+			"path": "res://addons/func_godot/src/import/quake_map_file.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "revision",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 18,
+					"hint_string": "",
+					"name": "map_data",
+					"type": 4,
+					"type_name": "String"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "EditorImportPlugin",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_importer_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_visible_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_resource_type",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_recognized_extensions",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_priority",
+					"return_class_name": "",
+					"return_type": 3,
+					"return_type_name": "float"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_save_extension",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "preset",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_get_import_options",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_preset_count",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_import_order",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "source_file",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "save_path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "options",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_platform_variants",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_gen_files",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_import",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				}
+			],
+			"name": "QuakeMapImportPlugin",
+			"path": "res://addons/func_godot/src/import/quake_map_import_plugin.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "colors",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "QuakePaletteFile",
+			"path": "res://addons/func_godot/src/import/quake_palette_file.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "20:",
+					"name": "colors",
+					"type": 37,
+					"type_name": "PackedColorArray"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "EditorImportPlugin",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_importer_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_visible_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_resource_type",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_recognized_extensions",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_save_extension",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "preset",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_get_import_options",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_preset_count",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_priority",
+					"return_class_name": "",
+					"return_type": 3,
+					"return_type_name": "float"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_import_order",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "source_file",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "save_path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "options",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_platform_variants",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_gen_files",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_import",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				}
+			],
+			"name": "QuakePaletteImportPlugin",
+			"path": "res://addons/func_godot/src/import/quake_palette_import_plugin.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "textures",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "_init",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				}
+			],
+			"name": "QuakeWadFile",
+			"path": "res://addons/func_godot/src/import/quake_wad_file.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:;24/17:ImageTexture",
+					"name": "textures",
+					"type": 27,
+					"type_name": "Dictionary"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"HalfLifeWadEntryType": {
+					"FixedFont": 69,
+					"MipsTexture": 67,
+					"QPic": 66
+				},
+				"MAX_MIP_LEVELS": 4,
+				"QuakeWadEntryType": {
+					"ConsolePic": 69,
+					"MipsTexture": 68,
+					"Palette": 64,
+					"SBarPic": 66
+				},
+				"TEXTURE_NAME_LENGTH": 16,
+				"WadFormat": {
+					"HalfLife": 1,
+					"Quake": 0
+				}
+			},
+			"inherits": "EditorImportPlugin",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_importer_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_visible_name",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_resource_type",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_recognized_extensions",
+					"return_class_name": "",
+					"return_type": 34,
+					"return_type_name": "PackedStringArray"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_save_extension",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 4,
+							"type_name": "String"
+						},
+						{
+							"class_name": "",
+							"name": "option_name",
+							"type": 21,
+							"type_name": "StringName"
+						},
+						{
+							"class_name": "",
+							"name": "options",
+							"type": 27,
+							"type_name": "Dictionary"
+						}
+					],
+					"flags": 1,
+					"name": "_get_option_visibility",
+					"return_class_name": "",
+					"return_type": 1,
+					"return_type_name": "bool"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "preset",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_get_import_options",
+					"return_class_name": "",
+					"return_type": 28,
+					"return_type_name": "Array"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_preset_count",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_import_order",
+					"return_class_name": "",
+					"return_type": 2,
+					"return_type_name": "int"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_priority",
+					"return_class_name": "",
+					"return_type": 3,
+					"return_type_name": "float"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "source_file",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "save_path",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "options",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_platform_variants",
+							"type": 0,
+							"type_name": "Nil"
+						},
+						{
+							"class_name": "",
+							"name": "r_gen_files",
+							"type": 0,
+							"type_name": "Nil"
+						}
+					],
+					"flags": 1,
+					"name": "_import",
+					"return_class_name": "Error",
+					"return_type": 2,
+					"return_type_name": "int"
+				}
+			],
+			"name": "QuakeWadImportPlugin",
+			"path": "res://addons/func_godot/src/import/quake_wad_import_plugin.gd",
+			"properties": [],
+			"signals": []
+		},
+		{
+			"constants": {
+				"GameConfigVersion": {
+					"Latest": 0,
+					"Version4": 1,
+					"Version8": 2,
+					"Version9": 3
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "tag_match_type",
+							"type": 2,
+							"type_name": "int"
+						}
+					],
+					"flags": 33,
+					"name": "_get_match_key",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_build_class_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "tags",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "_parse_tags",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "flags",
+							"type": 28,
+							"type_name": "Array"
+						}
+					],
+					"flags": 1,
+					"name": "_parse_flags",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [
+						{
+							"class_name": "",
+							"name": "texture_scale",
+							"type": 5,
+							"type_name": "Vector2"
+						}
+					],
+					"flags": 1,
+					"name": "_parse_default_uv_scale",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "export_file",
+					"return_class_name": "",
+					"return_type": 0,
+					"return_type_name": "Nil"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_game_config_v4_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				},
+				{
+					"args": [],
+					"flags": 1,
+					"name": "_get_game_config_v9v8_text",
+					"return_class_name": "",
+					"return_type": 4,
+					"return_type_name": "String"
+				}
+			],
+			"name": "TrenchBroomGameConfig",
+			"path": "res://addons/func_godot/src/trenchbroom/trenchbroom_game_config.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 39,
+					"hint_string": "Export GameConfig",
+					"name": "_export_file",
+					"type": 25,
+					"type_name": "Callable"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "game_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "Texture2D",
+					"hint": 17,
+					"hint_string": "Texture2D",
+					"name": "icon",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "27:",
+					"name": "map_formats",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Textures",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "textures_root_folder",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "texture_exclusion_patterns",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "palette_path",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Entities",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "FuncGodotFGDFile",
+					"hint": 17,
+					"hint_string": "FuncGodotFGDFile",
+					"name": "fgd_file",
+					"type": 24,
+					"type_name": "Object"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "entity_scale",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "generate_model_point_class_models",
+					"type": 1,
+					"type_name": "bool"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Tags",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "brush_tags",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "24/17:Resource",
+					"name": "brushface_tags",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Face Attributes",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "default_uv_scale",
+					"type": 5,
+					"type_name": "Vector2"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "Compatibility",
+					"type": 0,
+					"type_name": "Nil"
+				},
+				{
+					"class_name": "TrenchBroomGameConfig.GameConfigVersion",
+					"hint": 2,
+					"hint_string": "Latest:0,Version 4:1,Version 8:2,Version 9:3",
+					"name": "game_config_version",
+					"type": 2,
+					"type_name": "int"
+				}
+			],
+			"signals": []
+		},
+		{
+			"constants": {
+				"TagMatchType": {
+					"CLASSNAME": 1,
+					"TEXTURE": 0
+				}
+			},
+			"inherits": "Resource",
+			"language": "GDScript",
+			"methods": [],
+			"name": "TrenchBroomTag",
+			"path": "res://addons/func_godot/src/trenchbroom/trenchbroom_tag.gd",
+			"properties": [
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "tag_name",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 23,
+					"hint_string": "4:",
+					"name": "tag_attributes",
+					"type": 28,
+					"type_name": "Array"
+				},
+				{
+					"class_name": "TrenchBroomTag.TagMatchType",
+					"hint": 2,
+					"hint_string": "Texture:0,Classname:1",
+					"name": "tag_match_type",
+					"type": 2,
+					"type_name": "int"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "tag_pattern",
+					"type": 4,
+					"type_name": "String"
+				},
+				{
+					"class_name": "",
+					"hint": 0,
+					"hint_string": "",
+					"name": "texture_name",
+					"type": 4,
+					"type_name": "String"
+				}
+			],
+			"signals": []
+		}
+	],
+	"plugin_classes": [],
+	"project_name": "Soulantern"
+}

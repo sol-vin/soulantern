@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "rgr-blueprint4"
+colors = Array[Color]([Color(0.854902, 0.92549, 0.94902, 1), Color(0.45098, 0.705882, 0.901961, 1), Color(0.321569, 0.513725, 0.8, 1), Color(0.188235, 0.317647, 0.74902, 1)])
+author = "Rugi-Pixels"
+comment = "Pallete made inspired by the blueprints and the Commodore 64 terminal."

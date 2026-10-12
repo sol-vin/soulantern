@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PaletteResource" format=3 uid="uid://ctypqook5iyf3"]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_5ahvf"]
+
+[resource]
+script = ExtResource("1_5ahvf")
+palette_name = "palette"
+colors = Array[Color]([Color(0, 0, 0, 1), Color(0.34216362, 0.34216362, 0.34216362, 1), Color(0.7696371, 0.7696371, 0.7696371, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0.61837727, 0, 0, 1), Color(0.38819927, 0, 0, 1), Color(0.11856222, 0, 0, 1), Color(0, 0.7090132, 1, 1), Color(0.269822, 0.42805302, 1, 1), Color(0, 0.18672997, 0.6972954, 1), Color(0.00070065, 0, 0.3158576, 1)])

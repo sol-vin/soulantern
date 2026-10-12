@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://1itm7c7lt4fe"]
+
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_6ml4l"]
+[ext_resource type="PackedScene" uid="uid://dp21ql2feaowl" path="res://scenes/items/dash_pickup.tscn" id="1_scene"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_point"]
+
+[resource]
+script = ExtResource("2_point")
+scene_file = ExtResource("1_scene")
+classname = "dash_pickup"
+description = "World pickup item that replenishes dash charges for the Player's Lantern."
+class_properties = Dictionary[String, Variant]({
+"dashes_to_replenish": 1,
+"name": "",
+"only_if_needed": true,
+"replenish_time": 3.0
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"dashes_to_replenish": "Number of dash charges granted.",
+"name": "Unique node name identifier for this entity.",
+"only_if_needed": "If true, only picked up when player has fewer dashes than maximum.",
+"replenish_time": "Seconds until the pickup respawns after being collected."
+})
+auto_apply_to_matching_node_properties = true
+name_property = "name"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.08, 0.55, 1, 1),
+"size": AABB(-4, -4, -4, 8, 8, 8)
+})
+node_groups = Array[String](["dash_pickup", "pickups"])

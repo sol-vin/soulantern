@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cx4qm6d8v1f7e"]
+
+[ext_resource type="Theme" path="res://resources/ui_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd" id="3_palette"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 28
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_story"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Opening" type="Opening" unique_id=2130037692]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+
+[node name="Background" type="ColorRect" parent="." unique_id=485956791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1923898431]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2038173034]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1161378445]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1558215671]
+layout_mode = 2
+text = "THE DESCENT"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="StoryLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=80237778]
+layout_mode = 2
+text = "You are dead
+The soul remains
+Your will lingers
+Salvation is upwards"
+label_settings = SubResource("LabelSettings_story")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=514665187]
+layout_mode = 2
+text = "ENTER"
+
+[node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="." unique_id=1075209399]
+layer = 128
+script = ExtResource("3_palette")
+color_distance_mode = 4

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://d20lyno6p8vcg"]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_solid"]
+
+[resource]
+script = ExtResource("1_solid")
+origin_type = 4
+collision_shape_type = 0
+add_textures_metadata = true
+add_vertex_metadata = true
+add_face_position_metadata = true
+add_face_normal_metadata = true
+classname = "func_data"
+description = "Non-visual informational solid brush entity used for communicating mesh data and info from map to project."
+class_properties = Dictionary[String, Variant]({
+"key": "",
+"name": "",
+"targetname": "",
+"value": ""
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"key": "Data category or identifier key.",
+"name": "Unique node name identifier for this entity.",
+"targetname": "Target name identifier for this data entity.",
+"value": "Data payload or value string."
+})
+auto_apply_to_matching_node_properties = true
+name_property = "name"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.7733334, 0.19999999, 1, 1)
+})
+node_class = "FuncData"
+node_groups = Array[String](["data", "map_data", "func_data"])

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dfiret01trail"]
+
+[ext_resource type="Shader" uid="uid://bx8cxdnadxcve" path="res://shaders/fire.gdshader" id="1_fire"]
+[ext_resource type="AudioStream" uid="uid://b7eoum62utkaq" path="res://sounds/burn.mp3" id="3_burn"]
+
+[sub_resource type="Gradient" id="Gradient_emissive"]
+offsets = PackedFloat32Array(0, 0.65, 1)
+colors = PackedColorArray(1, 0.95, 0.7, 1, 0.9, 0.3, 0.05, 0.8, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_emissive"]
+gradient = SubResource("Gradient_emissive")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trail"]
+render_priority = 0
+shader = ExtResource("1_fire")
+shader_parameter/detail_strength = 14.94
+shader_parameter/scroll_speed = 0.75
+shader_parameter/fire_height = 0.485
+shader_parameter/fire_shape = 9.6
+shader_parameter/fire_thickness = 0.87
+shader_parameter/fire_sharpness = 1.0
+shader_parameter/intensity = 1.96
+shader_parameter/color_core = Color(1, 1, 1, 1)
+shader_parameter/color_mid = Color(1, 0, 0, 1)
+shader_parameter/color_edge = Color(0.2, 0.01, 0, 1)
+shader_parameter/color_intensity = 4.0
+shader_parameter/color_mid_point = 0.5
+shader_parameter/use_color_ramp = false
+shader_parameter/use_emissive_texture = false
+shader_parameter/emissive_texture = SubResource("GradientTexture2D_emissive")
+shader_parameter/emission_energy = -1.425
+shader_parameter/noise_octaves = 6
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = 0.5
+shader_parameter/noise_amplitude = 1.0
+shader_parameter/noise_frequency = 1.5
+shader_parameter/use_node_position = true
+shader_parameter/node_position_scale = 0.5
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/use_dither_alpha = false
+shader_parameter/billboard = false
+shader_parameter/billboard_y = false
+shader_parameter/billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_trail"]
+material = SubResource("ShaderMaterial_trail")
+size = Vector2(3.345, 5.02)
+
+[node name="FireTrail" type="FireTrail" unique_id=1301075990]
+
+[node name="FireMesh" type="MeshInstance3D" parent="." unique_id=1668368480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9060748, 0)
+mesh = SubResource("QuadMesh_trail")
+
+[node name="FireMesh2" type="MeshInstance3D" parent="." unique_id=1594311570]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.9060748, 0)
+mesh = SubResource("QuadMesh_trail")
+
+[node name="BurnAudio" type="AudioStreamPlayer3D" parent="." unique_id=1498112345]
+stream = ExtResource("3_burn")
+unit_size = 6.0
+max_distance = 30.0

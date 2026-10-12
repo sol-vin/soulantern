@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "vignette"
+colors = Array[Color]([Color(0, 0, 0, 1), Color(0.164706, 0.164706, 0.164706, 1), Color(0.576471, 0.576471, 0.576471, 1), Color(1, 1, 1, 1), Color(1, 0.658824, 0, 1), Color(0, 0.886275, 0.670588, 1), Color(1, 0.133333, 0.682353, 1)])
+author = "NODE"
+comment = "The colors in frums album cover, vignette."

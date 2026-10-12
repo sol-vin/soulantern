@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "cloud-9"
+colors = Array[Color]([Color(0.866667, 0.905882, 0.929412, 1), Color(0.627451, 0.72549, 0.858824, 1), Color(0.513725, 0.572549, 0.8, 1), Color(0.407843, 0.466667, 0.741176, 1), Color(0.317647, 0.392157, 0.760784, 1), Color(0.298039, 0.298039, 0.760784, 1), Color(0.172549, 0.133333, 0.54902, 1), Color(0.090196, 0.047059, 0.380392, 1), Color(0.054902, 0, 0.270588, 1)])
+author = "Chicknhawk"
+comment = "This was one of the palettes inspired by Pens. Surprised no one made this pun of a palette yet (none I found), was just a blue palette but I saw 9 colors and the white looked like clouds and called it the name it has now."

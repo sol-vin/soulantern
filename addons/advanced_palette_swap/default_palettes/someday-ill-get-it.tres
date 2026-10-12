@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "someday-ill-get-it"
+colors = Array[Color]([Color(0.333333, 0.341176, 0.509804, 1), Color(0.615686, 0.509804, 0.662745, 1), Color(0.423529, 0.368627, 0.305882, 1), Color(0.145098, 0.133333, 0.192157, 1), Color(0.356863, 0.4, 0.458824, 1)])
+author = "AcronLeGoblin"
+comment = "inspired by the song \"someday i'll get it\" by Alek Olsen"

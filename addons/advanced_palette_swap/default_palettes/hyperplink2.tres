@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "hyperplink2"
+colors = Array[Color]([Color(0.066667, 0.066667, 0.062745, 1), Color(0.333333, 0.333333, 0.266667, 1), Color(0.8, 0.8, 0.6, 1), Color(0.933333, 0.933333, 0.733333, 1), Color(1, 0, 0.333333, 1), Color(0.933333, 0.4, 0.133333, 1), Color(1, 0.756863, 0, 1), Color(0.8, 1, 0, 1), Color(0.466667, 0.533333, 0, 1), Color(0, 0.533333, 0.666667, 1), Color(0, 0.866667, 0.866667, 1), Color(0.533333, 0, 1, 1), Color(1, 0.266667, 0.8, 1), Color(0.533333, 0.133333, 0.533333, 1)])
+author = "PLINK__DINK"
+comment = "a heavy improvement from hyperplink1 including a more yellow set of whites and blacks with some enhanced shades of color"

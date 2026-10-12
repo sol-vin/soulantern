@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_solid"]
+
+[resource]
+script = ExtResource("1_solid")
+spawn_type = 2
+origin_type = 4
+build_visuals = false
+collision_shape_type = 1
+collision_layer = 0
+collision_mask = 2
+classname = "trigger_function"
+description = "Trigger brush entity that executes a zero-argument function, bound hook, or signal on the Functions autoload."
+class_properties = Dictionary[String, Variant]({
+"function": "",
+"name": "",
+"one_shot": true
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"function": "Name of function, bound hook, or signal in Functions autoload to execute.",
+"name": "Unique node name identifier for this entity.",
+"one_shot": "If true, this trigger will only execute once."
+})
+auto_apply_to_matching_node_properties = true
+name_property = "name"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(1, 0.8, 0.2, 1)
+})
+node_class = "TriggerFunction"
+node_groups = Array[String](["trigger", "trigger_function"])

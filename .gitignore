@@ -1,0 +1,27 @@
+# Godot engine artifacts
+.godot/
+godot.exe
+godot
+*.exe
+bin/*
+!bin/.gitkeep
+log/*
+!log/.gdignore
+!log/.gitkeep
+*.log
+*.tmp
+
+# Release & Staging
+dist/
+staging/
+export/
+
+# Crystal dependencies
+lib/
+shard.lock
+shard.override.yml
+/docs/
+benchmarks/bin/
+benchmarks/reports/
+benchmarks/results/
+test_report.*

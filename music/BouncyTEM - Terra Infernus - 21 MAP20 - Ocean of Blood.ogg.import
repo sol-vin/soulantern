@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tsjukdj7pid0"
+path="res://.godot/imported/BouncyTEM - Terra Infernus - 21 MAP20 - Ocean of Blood.ogg-367bbf902c91119422b33b0f91bf6db4.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/BouncyTEM - Terra Infernus - 21 MAP20 - Ocean of Blood.ogg"
+dest_files=["res://.godot/imported/BouncyTEM - Terra Infernus - 21 MAP20 - Ocean of Blood.ogg-367bbf902c91119422b33b0f91bf6db4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

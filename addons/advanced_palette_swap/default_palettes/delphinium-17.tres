@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "delphinium-17"
+colors = Array[Color]([Color(0.392157, 0.317647, 0.568627, 1), Color(0.513725, 0.470588, 0.678431, 1), Color(0.764706, 0.698039, 0.815686, 1), Color(0.901961, 0.898039, 1, 1), Color(0.447059, 0.223529, 0.423529, 1), Color(0.705882, 0.329412, 0.560784, 1), Color(0.878431, 0.666667, 0.803922, 1), Color(0.788235, 0.211765, 0.368627, 1), Color(0.909804, 0.333333, 0.435294, 1), Color(0.976471, 0.670588, 0.705882, 1), Color(0.917647, 0.556863, 0.396078, 1), Color(0.960784, 0.811765, 0.654902, 1), Color(0.392157, 0.345098, 0.290196, 1), Color(0.466667, 0.462745, 0.243137, 1), Color(0.792157, 0.756863, 0.419608, 1), Color(0.898039, 0.866667, 0.611765, 1), Color(0.960784, 0.941176, 0.917647, 1)])
+author = "StellarBee"
+comment = "Inspired by an OC also named Delphinium, this palette is made up of 17 colors taken from a picture of Delphinium flowers. It works well for drawing natural things, and has both warm and cool shading/highlighting options."

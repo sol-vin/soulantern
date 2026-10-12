@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" format=3 uid="uid://4enygrbayk7o"]
+
+[ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_fgd_script"]
+[ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="2_base_fgd"]
+[ext_resource type="Resource" path="res://fgd/func_data.tres" id="3_func_data"]
+[ext_resource type="Resource" path="res://fgd/dash_pickup.tres" id="4_dash"]
+[ext_resource type="Resource" uid="uid://1xwbbgq4tg1x" path="res://fgd/air_boost_pickup.tres" id="5_air_boost"]
+[ext_resource type="Resource" path="res://fgd/lantern_pickup.tres" id="6_lantern"]
+[ext_resource type="Resource" path="res://fgd/trigger_sound.tres" id="7_trigger_sound"]
+[ext_resource type="Resource" path="res://fgd/trigger_text.tres" id="8_trigger_text"]
+[ext_resource type="Resource" path="res://fgd/trigger_function.tres" id="9_trigger_function"]
+
+[resource]
+script = ExtResource("1_fgd_script")
+fgd_name = "soulantern"
+base_fgd_files = Array[Resource]([ExtResource("2_base_fgd")])
+entity_definitions = Array[Resource]([ExtResource("3_func_data"), ExtResource("4_dash"), ExtResource("5_air_boost"), ExtResource("6_lantern"), ExtResource("7_trigger_sound"), ExtResource("8_trigger_text"), ExtResource("9_trigger_function")])

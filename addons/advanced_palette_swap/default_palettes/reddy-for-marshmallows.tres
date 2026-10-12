@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "reddy-for-marshmallows"
+colors = Array[Color]([Color(0.294118, 0.109804, 0.219608, 1), Color(0.12549, 0.003922, 0, 1), Color(0.254902, 0.031373, 0.031373, 1), Color(0.482353, 0.082353, 0.003922, 1), Color(0.901961, 0.035294, 0, 1), Color(1, 0.254902, 0.32549, 1), Color(1, 0.701961, 0.643137, 1), Color(1, 0.94902, 0.290196, 1), Color(0.968627, 0.596078, 0, 1), Color(0.32549, 0.188235, 0, 1)])
+author = "StellarBee"
+comment = "The rejected palette Reddy by Abbas looks like a roaring bonfire, beautiful, loud, and blisteringly intense. I hoped to make a version that was a little easier to use, a little less overwhelming, more like a small campfire, perfect for roasting marshmallows and making s'mores."

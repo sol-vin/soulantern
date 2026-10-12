@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "vinculum"
+colors = Array[Color]([Color(0.019608, 0, 0, 1), Color(0.290196, 0.05098, 0.05098, 1), Color(0.662745, 0.313726, 0.313726, 1), Color(0.980392, 0.905882, 0.905882, 1)])
+author = "Wildebur"
+comment = "My very first palette. Themed around horror and inspired by a certain vampiric TTRPG."

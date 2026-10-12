@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.palette"
+type="Resource"
+uid="uid://dibal4vxagtgi"
+path="res://.godot/imported/palette.lmp-922bad987e59c07af34d317cc8705f72.tres"
+
+[deps]
+
+source_file="res://editor/games/soulantern/palette.lmp"
+dest_files=["res://.godot/imported/palette.lmp-922bad987e59c07af34d317cc8705f72.tres"]
+
+[params]
+

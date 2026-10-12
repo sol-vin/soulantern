@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "soggy-sepia-crt-20"
+colors = Array[Color]([Color(0.039216, 0.027451, 0.027451, 1), Color(0.078431, 0.058824, 0.058824, 1), Color(0.188235, 0.137255, 0.101961, 1), Color(0.286275, 0.243137, 0.176471, 1), Color(0.627451, 0.556863, 0.462745, 1), Color(0.768627, 0.721569, 0.65098, 1), Color(0.823529, 0.792157, 0.741176, 1), Color(0.886275, 0.870588, 0.835294, 1), Color(0.05098, 0.019608, 0.019608, 1), Color(0.098039, 0.043137, 0.043137, 1), Color(0.235294, 0.101961, 0.07451, 1), Color(0.356863, 0.180392, 0.133333, 1), Color(0.721569, 0.447059, 0.345098, 1), Color(0.827451, 0.65098, 0.564706, 1), Color(0.866667, 0.741176, 0.67451, 1), Color(0.913725, 0.839216, 0.792157, 1), Color(0.027451, 0.035294, 0.019608, 1), Color(0.058824, 0.07451, 0.043137, 1), Color(0.141176, 0.172549, 0.07451, 1), Color(0.215686, 0.305882, 0.133333, 1), Color(0.533333, 0.666667, 0.345098, 1), Color(0.709804, 0.792157, 0.564706, 1), Color(0.780392, 0.843137, 0.67451, 1), Color(0.858824, 0.901961, 0.792157, 1), Color(0.027451, 0.019608, 0.035294, 1), Color(0.058824, 0.043137, 0.07451, 1), Color(0.141176, 0.101961, 0.129412, 1), Color(0.215686, 0.180392, 0.219608, 1), Color(0.533333, 0.447059, 0.580392, 1), Color(0.709804, 0.65098, 0.737255, 1), Color(0.780392, 0.741176, 0.807843, 1), Color(0.858824, 0.839216, 0.878431, 1)])
+author = "Digi"
+comment = "This palette was painstakingly designed with hand picked colors intended to recreate the chromatic aberration and other visual effects of a CRT monitor. 32 Colors, 12 Ramps which can each be used individually for monochromatic pieces or together for subtle variations and extra depth. Eight base colors with a sepia tone each have three additional variations in hue leaning to red, green, and blue, which gives the impression of the eight base colors being more neutral (although in reality they're each quite warm)."

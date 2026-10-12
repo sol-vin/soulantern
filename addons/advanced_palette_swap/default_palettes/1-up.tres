@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "1-up"
+colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.85098, 0.05098, 1)])
+author = "Slyveon"
+comment = "inspired by Daniel Moacir Bigardi's Only mushroom's palette"

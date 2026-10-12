@@ -1,0 +1,109 @@
+@BaseClass size(-8.0 -8.0 -8.0, 8.0 8.0 8.0) color(204 204 204) = Phong
+[
+	_phong(choices) : "Phong shading" : 0 = 
+	[
+		0 : "Disabled"
+		1 : "Smooth shading"
+	]
+	_phong_angle(float) : "Phong smoothing angle" : "89.0"
+]
+
+@BaseClass size(-8.0 -8.0 -8.0, 8.0 8.0 8.0) color(204 204 204) = VertexMergeDistance
+[
+	_vertex_merge_distance(float) : "Adjustable value to snap vertices to on map build. This can reduce instances of seams between polygons." : "0.03125"
+]
+
+@BaseClass size(-8.0 -8.0 -8.0, 8.0 8.0 8.0) color(204 204 204) = CullInteriorFaces
+[
+	_cull_interior_faces(choices) : "If true, cull interior faces with matching vertices or faces that are flush within a larger face. Note: This has a performance impact that scales with how many brushes are in the brush entity." : 0 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+]
+
+@SolidClass color(204 204 204) base(VertexMergeDistance, CullInteriorFaces) = worldspawn : "Default static world geometry. Builds a StaticBody3D with a single MeshInstance3D and a single convex CollisionShape3D shape." []
+
+@SolidClass color(204 204 204) base(Phong, VertexMergeDistance, CullInteriorFaces) = func_geo : "Static collidable geometry. Builds a StaticBody3D with a MeshInstance3D, a single concave CollisionShape3D, and an OccluderInstance3D." []
+
+@SolidClass color(204 204 204) base(Phong, VertexMergeDistance, CullInteriorFaces) = func_detail : "Static collidable geometry. Builds a StaticBody3D with a MeshInstance3D and a single concave CollisionShape3D. Does not occlude other VisualInstance3D nodes." []
+
+@SolidClass color(204 204 204) base(Phong, VertexMergeDistance, CullInteriorFaces) = func_detail_illusionary : "Static geometry with no collision. Builds a Node3D with a MeshInstance3D. Does not occlude other VisualInstance3D nodes." []
+
+@SolidClass color(204 204 204) base(Phong, VertexMergeDistance, CullInteriorFaces) = func_illusionary : "Static geometry with no collision. Builds a Node3D with a MeshInstance3D and an Occluder3D to aid in render culling of other VisualInstance3D nodes." []
+@SolidClass color(197 51 255) = func_data : "Non-visual informational solid brush entity used for communicating mesh data and info from map to project." 
+[
+	key(string) : "Data category or identifier key." : ""
+	name(string) : "Unique node name identifier for this entity." : ""
+	targetname(string) : "Target name identifier for this data entity." : ""
+	value(string) : "Data payload or value string." : ""
+]
+
+@PointClass color(20 140 255) size(-4.0 -4.0 -4.0, 8.0 8.0 8.0) = dash_pickup : "World pickup item that replenishes dash charges for the Player's Lantern." 
+[
+	dashes_to_replenish(integer) : "Number of dash charges granted." : 1
+	name(string) : "Unique node name identifier for this entity." : ""
+	only_if_needed(choices) : "If true, only picked up when player has fewer dashes than maximum." : 1 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	replenish_time(float) : "Seconds until the pickup respawns after being collected." : "3.0"
+]
+
+@PointClass color(255 51 26) size(-4.0 -4.0 -4.0, 8.0 8.0 8.0) = air_boost_pickup : "World pickup item that resets downward momentum and launches player upward." 
+[
+	boost_force(float) : "Upward impulse velocity added to the player's body." : "14.0"
+	name(string) : "Unique node name identifier for this entity." : ""
+	replenish_time(float) : "Seconds until the pickup respawns after being collected." : "3.0"
+	reset_downward_momentum(choices) : "If true, clamps negative vertical velocity to 0 before applying boost." : 1 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+]
+
+@PointClass color(255 166 26) size(-4.0 -4.0 -4.0, 8.0 8.0 8.0) = lantern_pickup : "World pickup item that grants the Lantern weapon to the Player." 
+[
+	bob_height(float) : "Vertical floating amplitude in meters." : "0.08"
+	bob_speed(float) : "Speed multiplier for idle bobbing animation." : "2.5"
+	name(string) : "Unique node name identifier for this entity." : ""
+	rotate_speed(float) : "Radians per second for idle rotation." : "1.2"
+]
+
+@SolidClass color(51 204 102) = trigger_sound : "Trigger brush entity that plays a sound from the global Sounds registry when entered." 
+[
+	name(string) : "Unique node name identifier for this entity." : ""
+	one_shot(choices) : "If true, this sound only plays once." : 1 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	pitch_scale(float) : "Audio pitch scale multiplier." : "1.0"
+	sound(string) : "Key name of the sound in the Sounds registry to play." : ""
+	volume_db(float) : "Audio volume offset in decibels." : "0.0"
+]
+
+@SolidClass color(51 153 255) = trigger_text : "Trigger brush entity that displays text at the bottom of the screen while player is inside the zone, fading out upon exit." 
+[
+	fade_duration(float) : "Transition time in seconds for fade-in and fade-out animations." : "0.35"
+	message(string) : "Text message to display at the bottom of the screen (Quake trigger standard)." : ""
+	name(string) : "Unique node name identifier for this entity." : ""
+	one_shot(choices) : "If true, this message will only display the first time the player enters." : 0 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	text(string) : "Text message to display at the bottom of the screen." : ""
+]
+
+@SolidClass color(255 204 51) = trigger_function : "Trigger brush entity that executes a zero-argument function, bound hook, or signal on the Functions autoload." 
+[
+	function(string) : "Name of function, bound hook, or signal in Functions autoload to execute." : ""
+	name(string) : "Unique node name identifier for this entity." : ""
+	one_shot(choices) : "If true, this trigger will only execute once." : 1 = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+]

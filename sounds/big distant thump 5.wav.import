@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7mw7ofdshet2"
+path="res://.godot/imported/big distant thump 5.wav-a9e93c128353b05d0474f19a27101967.sample"
+
+[deps]
+
+source_file="res://sounds/big distant thump 5.wav"
+dest_files=["res://.godot/imported/big distant thump 5.wav-a9e93c128353b05d0474f19a27101967.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

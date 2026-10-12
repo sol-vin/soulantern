@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://1xwbbgq4tg1x"]
+
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_mfkcw"]
+[ext_resource type="PackedScene" uid="uid://dmfy0vs0yrdxn" path="res://scenes/items/air_boost_pickup.tscn" id="1_scene"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_point"]
+
+[resource]
+script = ExtResource("2_point")
+scene_file = ExtResource("1_scene")
+classname = "air_boost_pickup"
+description = "World pickup item that resets downward momentum and launches player upward."
+class_properties = Dictionary[String, Variant]({
+"boost_force": 14.0,
+"name": "",
+"replenish_time": 3.0,
+"reset_downward_momentum": true
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"boost_force": "Upward impulse velocity added to the player's body.",
+"name": "Unique node name identifier for this entity.",
+"replenish_time": "Seconds until the pickup respawns after being collected.",
+"reset_downward_momentum": "If true, clamps negative vertical velocity to 0 before applying boost."
+})
+auto_apply_to_matching_node_properties = true
+name_property = "name"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(1, 0.2, 0.1, 1),
+"size": AABB(-4, -4, -4, 8, 8, 8)
+})
+node_groups = Array[String](["air_boost_pickup", "pickups"])

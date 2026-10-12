@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bvv3e0c0j2n3a"]
+
+[ext_resource type="Shader" uid="uid://bx8cxdnadxcve" path="res://shaders/fire.gdshader" id="2_xcag0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+radius = 0.85
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2o55r"]
+render_priority = 0
+shader = ExtResource("2_xcag0")
+shader_parameter/detail_strength = 4.895
+shader_parameter/scroll_speed = 0.74
+shader_parameter/fire_height = 0.845
+shader_parameter/fire_shape = 1.5
+shader_parameter/fire_thickness = 0.785
+shader_parameter/fire_sharpness = 1.0
+shader_parameter/intensity = 1.31
+shader_parameter/color_core = Color(1, 1, 1, 1)
+shader_parameter/color_mid = Color(0.446777, 0.44677705, 0.44677705, 1)
+shader_parameter/color_edge = Color(0, 0, 0, 1)
+shader_parameter/color_intensity = 4.745
+shader_parameter/color_mid_point = 0.5
+shader_parameter/use_color_ramp = false
+shader_parameter/use_emissive_texture = false
+shader_parameter/emission_energy = 1.0
+shader_parameter/noise_octaves = 6
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = 0.575
+shader_parameter/noise_amplitude = 1.0
+shader_parameter/noise_frequency = -0.065
+shader_parameter/use_node_position = false
+shader_parameter/node_position_scale = 0.5
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/use_dither_alpha = false
+shader_parameter/billboard = true
+shader_parameter/billboard_y = true
+shader_parameter/billboard_keep_scale = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ga40x"]
+material = SubResource("ShaderMaterial_2o55r")
+
+[node name="LanternPickup" type="LanternPickup" unique_id=1345349058]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=501917884]
+shape = SubResource("SphereShape3D_pickup")
+
+[node name="Model" type="Node3D" parent="." unique_id=1904725445]
+
+[node name="LanternLight" type="OmniLight3D" parent="Model" unique_id=1960042337]
+light_energy = 13.369
+omni_range = 5.17
+omni_attenuation = 0.135
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model" unique_id=1874793353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03179872, 0.55095625, -0.0011889935)
+mesh = SubResource("QuadMesh_ga40x")

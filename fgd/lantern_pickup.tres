@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3]
+
+[ext_resource type="PackedScene" uid="uid://bvv3e0c0j2n3a" path="res://scenes/items/lantern_pickup.tscn" id="1_scene"]
+[ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_point"]
+
+[resource]
+script = ExtResource("2_point")
+scene_file = ExtResource("1_scene")
+classname = "lantern_pickup"
+description = "World pickup item that grants the Lantern weapon to the Player."
+class_properties = Dictionary[String, Variant]({
+"bob_height": 0.08,
+"bob_speed": 2.5,
+"name": "",
+"rotate_speed": 1.2
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"bob_height": "Vertical floating amplitude in meters.",
+"bob_speed": "Speed multiplier for idle bobbing animation.",
+"name": "Unique node name identifier for this entity.",
+"rotate_speed": "Radians per second for idle rotation."
+})
+auto_apply_to_matching_node_properties = true
+name_property = "name"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(1, 0.65, 0.1, 1),
+"size": AABB(-4, -4, -4, 8, 8, 8)
+})
+node_groups = Array[String](["lantern_pickup", "pickups"])

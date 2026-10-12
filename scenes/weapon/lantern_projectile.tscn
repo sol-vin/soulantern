@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cl4amuaysk0ul"]
+
+[ext_resource type="Shader" uid="uid://bx8cxdnadxcve" path="res://shaders/fire.gdshader" id="1_fire"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_proj"]
+radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_emissive"]
+offsets = PackedFloat32Array(0, 0.7, 1)
+colors = PackedColorArray(1, 1, 0.8, 1, 1, 0.4, 0.1, 0.9, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_emissive"]
+gradient = SubResource("Gradient_emissive")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_proj"]
+render_priority = 0
+shader = ExtResource("1_fire")
+shader_parameter/detail_strength = 5.0
+shader_parameter/scroll_speed = 1.5
+shader_parameter/fire_height = 0.8
+shader_parameter/fire_shape = 1.4
+shader_parameter/fire_thickness = 0.75
+shader_parameter/fire_sharpness = 1.0
+shader_parameter/intensity = 1.4
+shader_parameter/color_core = Color(1, 0.9, 0.75, 1)
+shader_parameter/color_mid = Color(1, 0.35, 0.1, 1)
+shader_parameter/color_edge = Color(0.3, 0.02, 0, 1)
+shader_parameter/color_intensity = 4.8
+shader_parameter/color_mid_point = 0.5
+shader_parameter/use_color_ramp = false
+shader_parameter/use_emissive_texture = true
+shader_parameter/emissive_texture = SubResource("GradientTexture2D_emissive")
+shader_parameter/emission_energy = 2.2
+shader_parameter/noise_octaves = 5
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = 0.55
+shader_parameter/noise_amplitude = 1.0
+shader_parameter/noise_frequency = 0.5
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/use_dither_alpha = false
+shader_parameter/billboard = true
+shader_parameter/billboard_y = false
+shader_parameter/billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_proj"]
+material = SubResource("ShaderMaterial_proj")
+size = Vector2(0.7, 0.7)
+
+[node name="LanternProjectile" type="LanternProjectile"]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_proj")
+
+[node name="FireMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_proj")
+
+[node name="ProjectileLight" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.58, 0.22, 1)
+light_energy = 4.0
+omni_range = 7.0
+omni_attenuation = 1.0

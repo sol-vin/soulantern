@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5dyj144g8u68"
+path="res://.godot/imported/BouncyTEM - Terra Infernus - 31 MAP30 - Effigy of Evil.ogg-205648969d0e7b554128c973ca7159f4.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/BouncyTEM - Terra Infernus - 31 MAP30 - Effigy of Evil.ogg"
+dest_files=["res://.godot/imported/BouncyTEM - Terra Infernus - 31 MAP30 - Effigy of Evil.ogg-205648969d0e7b554128c973ca7159f4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://6phl8ybyca0x" path="res://addons/advanced_palette_swap/core/color_palette.gd" id="1_palette"]
+
+[resource]
+script = ExtResource("1_palette")
+palette_name = "gd-15"
+colors = Array[Color]([Color(0, 0, 0, 1), Color(0.333333, 0, 0.333333, 1), Color(0.666667, 0.333333, 0.666667, 1), Color(1, 0.666667, 1, 1), Color(0.666667, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0.666667, 0.333333, 1), Color(1, 1, 0, 1), Color(0, 0, 0.333333, 1), Color(0, 0.333333, 0.666667, 1), Color(0, 0.666667, 0.666667, 1), Color(0, 0.333333, 0.333333, 1), Color(0, 0.666667, 0.333333, 1), Color(0.333333, 1, 0, 1), Color(1, 1, 1, 1)])
+author = "Hazel Stagner"
+comment = "A colorful general purpose palette using 6-bit RGB (2 bits per color channel) and 15 colors (suitable for use with a Sega Master System!)"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yt4y3q0ns2i"
+path="res://.godot/imported/sting 1.wav-dac82376ab36a71ba68050344bdda0ef.sample"
+
+[deps]
+
+source_file="res://sounds/sting 1.wav"
+dest_files=["res://.godot/imported/sting 1.wav-dac82376ab36a71ba68050344bdda0ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
