@@ -281,6 +281,8 @@ jobs:
         shell: bash
         run: |
           shards install || true
+          mkdir -p lib && touch lib/.gdignore
+          mkdir -p bin && touch bin/.gdignore
           GAME_NAME="${{ needs.init-release.outputs.game_name }}"
           if [ -z "$GAME_NAME" ]; then GAME_NAME="soulantern"; fi
           echo "Building and packaging standalone playable game $GAME_NAME for Linux with embedded PCK..."
@@ -336,6 +338,8 @@ jobs:
         shell: bash
         run: |
           shards install || true
+          mkdir -p lib && touch lib/.gdignore
+          mkdir -p bin && touch bin/.gdignore
           GAME_NAME="${{ needs.init-release.outputs.game_name }}"
           if [ -z "$GAME_NAME" ]; then GAME_NAME="soulantern"; fi
           echo "Building and packaging standalone playable game $GAME_NAME for macOS with embedded PCK..."
@@ -420,6 +424,10 @@ jobs:
         shell: pwsh
         run: |
           shards install
+          if (-not (Test-Path "lib")) { New-Item -ItemType Directory -Path "lib" -Force }
+          Set-Content -Path "lib/.gdignore" -Value "" -Force
+          if (-not (Test-Path "bin")) { New-Item -ItemType Directory -Path "bin" -Force }
+          Set-Content -Path "bin/.gdignore" -Value "" -Force
           $gameName = "${{ needs.init-release.outputs.game_name }}"
           if (-not $gameName) { $gameName = "soulantern" }
           Write-Host "Building and packaging standalone playable game $gameName for Windows with embedded PCK..."
