@@ -25,7 +25,7 @@ enum NetRadiantCustomMapType {
 
 ## [FuncGodotFGDFile] to include with this gamepack. If using multiple FGD file resources, 
 ## this should be the master FGD that contains them in [member FuncGodotFGDFile.base_fgd_files].
-@export var fgd_file : FuncGodotFGDFile = preload("res://addons/func_godot/fgd/func_godot_fgd.tres")
+@export var fgd_file : FuncGodotFGDFile = preload("res://fgd/soulantern_fgd.tres")
 
 ## Toggles whether [FuncGodotFGDModelPointClass] resources will generate models from their [PackedScene] files.
 @export var generate_model_point_class_models: bool = true

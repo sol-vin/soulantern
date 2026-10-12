@@ -1,17 +1,24 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDFile" format=3 uid="uid://4enygrbayk7o"]
 
 [ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_fgd_script"]
-[ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="2_base_fgd"]
-[ext_resource type="Resource" path="res://fgd/func_data.tres" id="3_func_data"]
-[ext_resource type="Resource" path="res://fgd/dash_pickup.tres" id="4_dash"]
-[ext_resource type="Resource" uid="uid://1xwbbgq4tg1x" path="res://fgd/air_boost_pickup.tres" id="5_air_boost"]
-[ext_resource type="Resource" path="res://fgd/lantern_pickup.tres" id="6_lantern"]
-[ext_resource type="Resource" path="res://fgd/trigger_sound.tres" id="7_trigger_sound"]
-[ext_resource type="Resource" path="res://fgd/trigger_text.tres" id="8_trigger_text"]
-[ext_resource type="Resource" path="res://fgd/trigger_function.tres" id="9_trigger_function"]
+[ext_resource type="Resource" uid="uid://nayxb8n7see2" path="res://addons/func_godot/fgd/phong_base.tres" id="2_phong"]
+[ext_resource type="Resource" uid="uid://doo4ly322b4jc" path="res://addons/func_godot/fgd/vertex_merge_distance_base.tres" id="3_vmerge"]
+[ext_resource type="Resource" uid="uid://bcdsueg5pysfq" path="res://addons/func_godot/fgd/cull_interior_faces.tres" id="4_cull"]
+[ext_resource type="Resource" uid="uid://bdji3873bg32h" path="res://addons/func_godot/fgd/worldspawn.tres" id="5_worldspawn"]
+[ext_resource type="Resource" uid="uid://b70vf4t5dc70t" path="res://addons/func_godot/fgd/func_geo.tres" id="6_geo"]
+[ext_resource type="Resource" uid="uid://cxy7jnh6d7msn" path="res://addons/func_godot/fgd/func_detail.tres" id="7_detail"]
+[ext_resource type="Resource" uid="uid://ch3e0dix85uhb" path="res://addons/func_godot/fgd/func_detail_illusionary.tres" id="8_detail_ill"]
+[ext_resource type="Resource" uid="uid://dg5x44cc7flew" path="res://addons/func_godot/fgd/func_illusionary.tres" id="9_ill"]
+[ext_resource type="Resource" path="res://fgd/func_data.tres" id="10_func_data"]
+[ext_resource type="Resource" path="res://fgd/dash_pickup.tres" id="11_dash"]
+[ext_resource type="Resource" uid="uid://1xwbbgq4tg1x" path="res://fgd/air_boost_pickup.tres" id="12_air_boost"]
+[ext_resource type="Resource" path="res://fgd/lantern_pickup.tres" id="13_lantern"]
+[ext_resource type="Resource" path="res://fgd/trigger_sound.tres" id="14_trigger_sound"]
+[ext_resource type="Resource" path="res://fgd/trigger_text.tres" id="15_trigger_text"]
+[ext_resource type="Resource" path="res://fgd/trigger_function.tres" id="16_trigger_function"]
 
 [resource]
 script = ExtResource("1_fgd_script")
 fgd_name = "soulantern"
-base_fgd_files = Array[Resource]([ExtResource("2_base_fgd")])
-entity_definitions = Array[Resource]([ExtResource("3_func_data"), ExtResource("4_dash"), ExtResource("5_air_boost"), ExtResource("6_lantern"), ExtResource("7_trigger_sound"), ExtResource("8_trigger_text"), ExtResource("9_trigger_function")])
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("2_phong"), ExtResource("3_vmerge"), ExtResource("4_cull"), ExtResource("5_worldspawn"), ExtResource("6_geo"), ExtResource("7_detail"), ExtResource("8_detail_ill"), ExtResource("9_ill"), ExtResource("10_func_data"), ExtResource("11_dash"), ExtResource("12_air_boost"), ExtResource("13_lantern"), ExtResource("14_trigger_sound"), ExtResource("15_trigger_text"), ExtResource("16_trigger_function")])
