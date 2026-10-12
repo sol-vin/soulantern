@@ -3,20 +3,17 @@ require "lapis"
 module Soulantern
   # Game Over screen UI controller.
   node GameOver < Control do
-    node_ref? restart_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox/RestartButton"
-    node_ref? menu_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox/MainMenuButton"
-    unique_node? u_restart_btn, Button, "RestartButton"
-    unique_node? u_retry_btn, Button, "RetryButton"
-    unique_node? u_menu_btn, Button, "MainMenuButton"
+    onready? restart_btn : Button? = ["%RestartButton", "%RetryButton", "RestartButton", "RetryButton"]
+    onready? menu_btn : Button? = ["%MainMenuButton", "MainMenuButton"]
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
-      if btn = restart_btn || u_restart_btn || u_retry_btn
+      if btn = restart_btn
         btn.pressed >> ->on_retry_pressed
       end
 
-      if btn = menu_btn || u_menu_btn
+      if btn = menu_btn
         btn.pressed >> ->on_main_menu_pressed
       end
     end

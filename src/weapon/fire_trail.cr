@@ -19,11 +19,10 @@ module Soulantern
     @[Export]
     property transition_to_red : Bool = false
 
-    node_ref? light_node, OmniLight3D, "Light"
-    node_ref? omni_light_node, OmniLight3D, "OmniLight3D"
+    onready? light_node : OmniLight3D? = ["Light", "OmniLight3D"]
 
     def get_light : OmniLight3D?
-      light_node || omni_light_node
+      light_node
     end
 
     @timer : Float32 = 0.0_f32

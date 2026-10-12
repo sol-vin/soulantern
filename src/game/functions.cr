@@ -43,7 +43,7 @@ module Soulantern
       tree = Godot.get_tree?
       return unless tree
       if can_pause && !tree.paused && !@is_opening_pause_menu && @active_pause_menu.nil?
-        call_deferred("open_pause_menu")
+        open_pause_menu
       end
     end
 

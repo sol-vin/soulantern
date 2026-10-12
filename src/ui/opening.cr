@@ -3,15 +3,14 @@ require "lapis"
 module Soulantern
   # Opening splash / title sequence controller.
   node Opening < Control do
-    node_ref? start_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/StartButton"
-    unique_node? u_start_btn, Button, "StartButton"
+    onready? start_btn : Button? = ["%StartButton", "StartButton"]
 
     @transitioning : Bool = false
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
-      if btn = start_btn || u_start_btn
+      if btn = start_btn
         btn.pressed >> ->start_game
       end
     end

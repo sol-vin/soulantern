@@ -44,16 +44,19 @@ module Soulantern
     @last_trail_pos : Vector3 = Vector3.new(0, 0, 0)
     group "lantern"
 
-    node_ref? node_anim_player, AnimationPlayer, "Control/Player"
-    unique_node? u_anim_player, AnimationPlayer, "Player"
-    node_ref? direct_anim_player, AnimationPlayer, "AnimationPlayer"
+    onready? anim_player : AnimationPlayer? = "%Player"
 
     def find_animation_player : AnimationPlayer?
-      node_anim_player || u_anim_player || direct_anim_player
+      anim_player
     end
 
     def _ready : Void
       @current_dashes = @max_dashes
+
+      # Ensure any UI overlay / animation player controls don't capture mouse events
+      find_children(/.*/, Control, recursive: true).each do |c|
+        c.mouse_filter = Control::MouseFilter::MouseFilterIgnore
+      end
 
       rocket_jump_attempted >> ->{
         play_fire_animation

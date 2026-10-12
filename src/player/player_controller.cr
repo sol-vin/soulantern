@@ -366,8 +366,10 @@ module Soulantern
     end
 
     def equip_weapon(weapon_node : Godot::Node) : Void
+      return if weapon_node.pointer.null?
       @current_weapon = weapon_node
       target_parent : Godot::Node = camera
+      return if target_parent.pointer.null?
 
       if weapon_node.get_parent? != target_parent
         if old_p = weapon_node.get_parent?
@@ -381,7 +383,11 @@ module Soulantern
         node3d.transform = Transform3D.new
       end
 
-      weapon_node.call("equip", self) rescue nil
+      if l = weapon_node.as?(Lantern)
+        l.equip(self)
+      else
+        weapon_node.call("equip", self) rescue nil
+      end
     end
 
     def replenish_dash(amount : Int32 = 1) : Bool

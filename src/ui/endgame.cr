@@ -4,15 +4,14 @@ module Soulantern
   # Victory screen controller displayed upon completing the game.
   # Shows "THANK YOU FOR PLAYING" and auto-transitions to Credits after 5 seconds.
   node EndGame < Control do
-    node_ref? skip_btn, Button, "SkipButton"
-    unique_node? u_skip_btn, Button, "SkipButton"
+    onready? skip_btn : Button? = "%SkipButton"
 
     @transitioned : Bool = false
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
-      if btn = skip_btn || u_skip_btn
+      if btn = skip_btn
         btn.pressed >> ->go_to_credits
       end
 

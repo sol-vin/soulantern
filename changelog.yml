@@ -1,0 +1,109 @@
+---
+settings:
+  title: CARBON CHANGELOG
+  output_file: CHANGELOG.md
+  auto_link_github: true
+  categories:
+    breaking:
+      title: "\U0001F4A5 Breaking Changes"
+      bullet: ▲
+    features:
+      title: ✨ Features & Improvements
+      bullet: ✦
+    fixes:
+      title: "\U0001F41B Bug Fixes"
+      bullet: ✓
+    perf:
+      title: ⚡ Performance Optimizations
+      bullet: "\U0001F680"
+    docs:
+      title: "\U0001F4DA Documentation"
+      bullet: "\U0001F4D6"
+    maintenance:
+      title: "\U0001F6E0️ Chores & Tooling"
+      bullet: •
+releases:
+- version: 0.1.6
+  date: "2026-10-12"
+  status: active
+  entries:
+  - type: refactor
+    description: modernize game code with Lapis extras, signal piping, and node macros
+    bullet: ✦
+    hash: 676b553
+    author: Ian Rash
+  - type: other
+    description: Fix duplicate UID collision, remove unused goldsrc addon, and streamline
+      TriggerTextLabel
+    bullet: •
+    hash: 7d8c36a
+    author: Ian Rash
+  - type: fix
+    description: dereference default func_godot_fgd and reference soulantern_fgd everywhere
+    bullet: ✓
+    badge: '[FGD]'
+    hash: 43da097
+    author: Ian Rash
+  - type: feat
+    description: modernize gameplay nodes, eliminate godot_helpers, and fix mouse
+      look
+    bullet: ✦
+    badge: '[SOULANTERN]'
+    hash: 518316a
+    author: Ian Rash
+- version: 0.1.5
+  date: "2026-10-12"
+  status: released
+  entries:
+  - type: refactor
+    description: modernize game code with Lapis extras, signal piping, and node macros
+    bullet: ✦
+    hash: 676b553
+    author: Ian Rash
+  - type: other
+    description: Fix duplicate UID collision, remove unused goldsrc addon, and streamline
+      TriggerTextLabel
+    bullet: •
+    hash: 7d8c36a
+    author: Ian Rash
+  - type: fix
+    description: dereference default func_godot_fgd and reference soulantern_fgd everywhere
+    bullet: ✓
+    badge: '[FGD]'
+    hash: 43da097
+    author: Ian Rash
+  - type: feat
+    description: modernize gameplay nodes, eliminate godot_helpers, and fix mouse
+      look
+    bullet: ✦
+    badge: '[SOULANTERN]'
+    hash: 518316a
+    author: Ian Rash
+- version: 0.1.0
+  date: "2026-10-12"
+  status: released
+  entries:
+  - type: refactor
+    description: modernize game code with Lapis extras, signal piping, and node macros
+    bullet: ✦
+    hash: 676b553
+    author: Ian Rash
+  - type: other
+    description: Fix duplicate UID collision, remove unused goldsrc addon, and streamline
+      TriggerTextLabel
+    bullet: •
+    hash: 7d8c36a
+    author: Ian Rash
+  - type: fix
+    description: dereference default func_godot_fgd and reference soulantern_fgd everywhere
+    bullet: ✓
+    badge: '[FGD]'
+    hash: 43da097
+    author: Ian Rash
+  - type: feat
+    description: modernize gameplay nodes, eliminate godot_helpers, and fix mouse
+      look
+    bullet: ✦
+    badge: '[SOULANTERN]'
+    hash: 518316a
+    author: Ian Rash

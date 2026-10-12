@@ -6,10 +6,9 @@ module Soulantern
     SOLVIN_URL = "https://sol.vin"
     BOUNCYTEM_URL = "https://bouncytem.bandcamp.com/album/terra-infernus"
 
-    node_ref? solvin_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/CreatorVBox/SolvinButton"
-    node_ref? music_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/MusicVBox/BouncyTemButton"
-    node_ref? back_btn, Button, "CenterContainer/PanelContainer/VBoxContainer/BackButton"
-    unique_node? u_back_btn, Button, "BackButton"
+    onready? solvin_btn : Button? = ["%SolvinButton", "SolvinButton"]
+    onready? music_btn : Button? = ["%BouncyTemButton", "BouncyTemButton"]
+    onready? back_btn : Button? = ["%BackButton", "BackButton"]
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
@@ -22,7 +21,7 @@ module Soulantern
         btn.pressed >> ->{ OS.shell_open(BOUNCYTEM_URL) }
       end
 
-      if btn = back_btn || u_back_btn
+      if btn = back_btn
         btn.pressed >> ->return_to_menu
       end
     end

@@ -8,38 +8,21 @@ module Soulantern
     onready? volume_slider : HSlider = ["%VolumeSlider", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/VolumeSlider"]
     onready? volume_label : Label = ["%PercentLabel", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/PercentLabel"]
 
-    def find_resume_button : Button?
-      resume_btn
-    end
-
-    def find_quit_button : Button?
-      quit_btn
-    end
-
-    def find_volume_slider : HSlider?
-      volume_slider
-    end
-
-    def find_volume_label : Label?
-      volume_label
-    end
-
-
     def _ready : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
-      if btn = find_resume_button
+      if btn = resume_btn
         btn.pressed >> ->on_resume_pressed
       end
 
-      if btn = find_quit_button
+      if btn = quit_btn
         btn.pressed >> ->on_quit_pressed
       end
 
       vol = AudioServer.get_master_volume
 
-      if vs = find_volume_slider
+      if vs = volume_slider
         vs.value = vol.to_f64
         vs.value_changed >> ->(new_val : Float64) { on_volume_changed(new_val.to_f32) }
       end
@@ -87,7 +70,7 @@ module Soulantern
     end
 
     def update_volume_label(val : Float32) : Void
-      if vl = find_volume_label
+      if vl = volume_label
         pct = (val * 100.0_f32).round.to_i32
         vl.text = "#{pct}%"
       end

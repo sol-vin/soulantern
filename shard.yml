@@ -1,5 +1,5 @@
 name: soulantern
-version: 0.1.0
+version: 0.1.6
 authors:
   - Ian Rash <redcodefinal@gmail.com>
 license: MIT
@@ -12,3 +12,5 @@ dependencies:
 targets:
   game:
     main: src/main.cr
+  carbon:
+    main: lib/carbon/src/carbon/cli.cr
