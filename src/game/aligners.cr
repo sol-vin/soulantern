@@ -17,21 +17,10 @@ module Soulantern
       ref_node = get_node_or_null(references)
       return unless ref_node
 
-      # Duplicate template child light to all target positions if templates exist
-      children = get_children
-      template_light : OmniLight3D? = nil
-      (0...children.size).each do |i|
-        if l = children[i].as?(OmniLight3D)
-          template_light = l
-          break
-        end
-      end
-
+      template_light = get_children.find { |c| c.as?(OmniLight3D) }.try(&.as?(OmniLight3D))
       return unless template_light
 
-      # Find matching targets in references
-      all_descendants = Array(Godot::Node).new
-      collect_descendants(ref_node, all_descendants)
+      all_descendants = ref_node.get_nodes("**")
 
       all_descendants.each do |node|
         targets.each do |pat|
@@ -45,21 +34,12 @@ module Soulantern
                   clone.name = "Light"
                   clone.visible = true
                   clone.process_mode = Node::ProcessMode::ProcessModeAlways
-                  node3d.add_child(clone)
+                  node3d << clone
                 end
               end
             end
           end
         end
-      end
-    end
-
-    def collect_descendants(node : Godot::Node, result : Array(Godot::Node)) : Void
-      children = node.get_children
-      (0...children.size).each do |i|
-        c = children[i].as(Godot::Node)
-        result << c
-        collect_descendants(c, result)
       end
     end
   end

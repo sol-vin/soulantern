@@ -25,9 +25,7 @@ module Soulantern
       self.collision_layer = 8_u32
       self.collision_mask = 2_u32
 
-      body_entered.connect do |body|
-        on_body_entered(body)
-      end
+      body_entered >> ->(body : Godot::Node) { on_body_entered(body) }
     end
 
     def _process(delta : Float64) : Void
@@ -53,22 +51,14 @@ module Soulantern
     def collect(player : Godot::Node) : Void
       @collected = true
 
-      scene = @lantern_scene
-      unless scene
-        if ResourceLoader.exists("res://scenes/weapon/lantern.tscn")
-          scene = ResourceLoader.load("res://scenes/weapon/lantern.tscn").as?(PackedScene)
-        end
-      end
+      lantern_inst = @lantern_scene.try(&.instantiate) || ("res://scenes/weapon/lantern.tscn" > Godot::Node?)
 
-      if scene
-        lantern_inst = scene.instantiate
-        if lantern_inst
-          if player.has_method("equip_weapon")
-            player.call("equip_weapon", lantern_inst)
-          else
-            player.add_child(lantern_inst)
-            lantern_inst.call("equip", player) rescue nil
-          end
+      if lantern_inst
+        if player.has_method("equip_weapon")
+          player.call("equip_weapon", lantern_inst)
+        else
+          player << lantern_inst
+          lantern_inst.call("equip", player) rescue nil
         end
       end
 
@@ -80,6 +70,9 @@ module Soulantern
     end
 
     def find_player_ancestor(node : Godot::Node) : Godot::Node?
+      if player = node.as?(PlayerController) || (node << PlayerController?)
+        return player
+      end
       curr : Godot::Node? = node
       while curr
         return curr if curr.is_in_group("player") || curr.name == "Player"

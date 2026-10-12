@@ -2,13 +2,13 @@
 	"gdscript_classes": [
 		{
 			"constants": {
-				"BrushData": "():<GDScript#-9223372008048294364>",
-				"EntityData": "():<GDScript#-9223372007997962713>",
-				"FaceData": "():<GDScript#-9223372008065071581>",
-				"GroupData": "():<GDScript#-9223372008014739930>",
-				"ParseData": "():<GDScript#-9223372007964408279>",
-				"PatchData": "():<GDScript#-9223372008031517147>",
-				"VertexGroupData": "():<GDScript#-9223372007981185496>"
+				"BrushData": "():<GDScript#-9223372008014739938>",
+				"EntityData": "():<GDScript#-9223372007964408287>",
+				"FaceData": "():<GDScript#-9223372008031517155>",
+				"GroupData": "():<GDScript#-9223372007981185504>",
+				"ParseData": "():<GDScript#-9223372007930853853>",
+				"PatchData": "():<GDScript#-9223372007997962721>",
+				"VertexGroupData": "():<GDScript#-9223372007947631070>"
 			},
 			"inherits": "RefCounted",
 			"language": "GDScript",
@@ -20,8 +20,8 @@
 		},
 		{
 			"constants": {
-				"_EntityData": "():<GDScript#-9223372007997962713>",
-				"_GroupData": "():<GDScript#-9223372008014739930>",
+				"_EntityData": "():<GDScript#-9223372007964408287>",
+				"_GroupData": "():<GDScript#-9223372007981185504>",
 				"_SIGNATURE": "[ENT]"
 			},
 			"inherits": "RefCounted",
@@ -1935,10 +1935,10 @@
 		},
 		{
 			"constants": {
-				"_BrushData": "():<GDScript#-9223372008048294364>",
-				"_EntityData": "():<GDScript#-9223372007997962713>",
-				"_FaceData": "():<GDScript#-9223372008065071581>",
-				"_GroupData": "():<GDScript#-9223372008014739930>",
+				"_BrushData": "():<GDScript#-9223372008014739938>",
+				"_EntityData": "():<GDScript#-9223372007964408287>",
+				"_FaceData": "():<GDScript#-9223372008031517155>",
+				"_GroupData": "():<GDScript#-9223372007981185504>",
 				"_OriginType": {
 					"ABSOLUTE": 1,
 					"AVERAGED": 0,
@@ -1948,11 +1948,11 @@
 					"BRUSH": 3,
 					"RELATIVE": 2
 				},
-				"_PatchData": "():<GDScript#-9223372008031517147>",
+				"_PatchData": "():<GDScript#-9223372007997962721>",
 				"_SIGNATURE": "[GEO]",
 				"_VERTEX_EPSILON": 0.008,
 				"_VERTEX_EPSILON2": 0.000064,
-				"_VertexGroupData": "():<GDScript#-9223372007981185496>"
+				"_VertexGroupData": "():<GDScript#-9223372007947631070>"
 			},
 			"inherits": "RefCounted",
 			"language": "GDScript",
@@ -3129,12 +3129,12 @@
 		},
 		{
 			"constants": {
-				"_BrushData": "():<GDScript#-9223372008048294364>",
-				"_EntityData": "():<GDScript#-9223372007997962713>",
-				"_FaceData": "():<GDScript#-9223372008065071581>",
-				"_GroupData": "():<GDScript#-9223372008014739930>",
-				"_ParseData": "():<GDScript#-9223372007964408279>",
-				"_PatchData": "():<GDScript#-9223372008031517147>",
+				"_BrushData": "():<GDScript#-9223372008014739938>",
+				"_EntityData": "():<GDScript#-9223372007964408287>",
+				"_FaceData": "():<GDScript#-9223372008031517155>",
+				"_GroupData": "():<GDScript#-9223372007981185504>",
+				"_ParseData": "():<GDScript#-9223372007930853853>",
+				"_PatchData": "():<GDScript#-9223372007997962721>",
 				"_SIGNATURE": "[PRS]"
 			},
 			"inherits": "RefCounted",
@@ -4173,12 +4173,12 @@
 					"HSV Cylindrical",
 					"HSV Hue Only"
 				],
-				"PaletteGenerator": "(res://addons/advanced_palette_swap/core/palette_generator.gd):<GDScript#-9223371994777516460>",
-				"PaletteImporter": "(res://addons/advanced_palette_swap/core/palette_importer.gd):<GDScript#-9223371994207091112>",
-				"PalettePresets": "(res://addons/advanced_palette_swap/core/palette_presets.gd):<GDScript#-9223371995062729149>",
-				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994492303786>",
-				"ScreenSpaceCanvas": "(res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd):<GDScript#-9223371993921878438>",
-				"SpectrumSwatchControl": "():<GDScript#-9223371995247278549>"
+				"PaletteGenerator": "(res://addons/advanced_palette_swap/core/palette_generator.gd):<GDScript#-9223371994743962034>",
+				"PaletteImporter": "(res://addons/advanced_palette_swap/core/palette_importer.gd):<GDScript#-9223371994173536686>",
+				"PalettePresets": "(res://addons/advanced_palette_swap/core/palette_presets.gd):<GDScript#-9223371995029174723>",
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994458749360>",
+				"ScreenSpaceCanvas": "(res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_canvas.gd):<GDScript#-9223371993888324012>",
+				"SpectrumSwatchControl": "():<GDScript#-9223371995213724123>"
 			},
 			"inherits": "Control",
 			"language": "GDScript",
@@ -5604,7 +5604,7 @@
 		},
 		{
 			"constants": {
-				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994492303786>"
+				"PaletteResource": "(res://addons/advanced_palette_swap/core/color_palette.gd):<GDScript#-9223371994458749360>"
 			},
 			"inherits": "RefCounted",
 			"language": "GDScript",

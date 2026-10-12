@@ -42,39 +42,35 @@ module Soulantern
     @dash_timer : Float32 = 0.0_f32
     @dash_dir : Vector3 = Vector3.new(0, 0, 0)
     @last_trail_pos : Vector3 = Vector3.new(0, 0, 0)
-    @anim_player : AnimationPlayer? = nil
+    group "lantern"
+
+    node_ref? node_anim_player, AnimationPlayer, "Control/Player"
+    unique_node? u_anim_player, AnimationPlayer, "Player"
+    node_ref? direct_anim_player, AnimationPlayer, "AnimationPlayer"
+
+    def find_animation_player : AnimationPlayer?
+      node_anim_player || u_anim_player || direct_anim_player
+    end
 
     def _ready : Void
-      add_to_group("lantern")
       @current_dashes = @max_dashes
 
-      find_animation_player
-
-      rocket_jump_attempted.connect do
+      rocket_jump_attempted >> ->{
         play_fire_animation
         play_rocket_fire_sound
-      end
+      }
 
-      dash_started.connect do |_dir, _dashes|
+      dash_started >> ->{
         play_dash_animation
         play_dash_sound
-      end
+      }
 
       # Auto-discover player if already spawned in scene tree
       discover_player unless @player
     end
 
-    def find_animation_player : Void
-      ["Control/Player", "%Player", "AnimationPlayer", "Player"].each do |path|
-        if has_node(path) && (ap = get_node(path).as?(AnimationPlayer))
-          @anim_player = ap
-          break
-        end
-      end
-    end
-
     def play_dash_animation : Void
-      if ap = @anim_player
+      if ap = find_animation_player
         ap.play("dash") rescue nil
       end
     end
@@ -84,7 +80,7 @@ module Soulantern
     end
 
     def play_fire_animation : Void
-      if ap = @anim_player
+      if ap = find_animation_player
         ap.play("fire") rescue nil
       end
     end
@@ -135,7 +131,7 @@ module Soulantern
       emit(rocket_jump_attempted)
 
       # Play animation
-      if ap = @anim_player
+      if ap = find_animation_player
         if ap.has_animation("fire")
           ap.stop
           ap.play("fire")
@@ -165,9 +161,9 @@ module Soulantern
       proj.global_position = cam.global_position + forward * 0.5_f32
 
       if parent = get_parent?
-        parent.add_child(proj)
+        parent << proj
       elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.add_child(proj))
+        tree.get_root?.try(&.<<(proj))
       end
     end
 
@@ -208,7 +204,7 @@ module Soulantern
       body.call("reset_fall_distance") rescue nil
 
       # Play animation and sound
-      if ap = @anim_player
+      if ap = find_animation_player
         if ap.has_animation("dash")
           ap.stop
           ap.play("dash")
@@ -243,7 +239,7 @@ module Soulantern
         body.velocity = exit_vel
 
         # Reset animation
-        if ap = @anim_player
+        if ap = find_animation_player
           if ap.has_animation("RESET")
             ap.play("RESET")
           end
@@ -274,9 +270,9 @@ module Soulantern
       trail.fade_duration = 0.5_f32
 
       if parent = get_parent?
-        parent.add_child(trail)
+        parent << trail
       elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.add_child(trail))
+        tree.get_root?.try(&.<<(trail))
       end
 
       @last_trail_pos = player_pos
@@ -329,15 +325,7 @@ module Soulantern
           return pc.get_spring_arm_camera
         end
       end
-      # Search up the tree for parent Camera3D
-      curr = get_parent?
-      while curr
-        if curr.is_class("Camera3D")
-          return Camera3D.new(curr.pointer)
-        end
-        curr = curr.get_parent?
-      end
-      nil
+      self << Camera3D?
     end
   end
 end

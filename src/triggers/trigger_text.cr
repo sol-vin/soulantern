@@ -30,13 +30,8 @@ module Soulantern
       self.collision_layer = 0_u32
       self.collision_mask = 2_u32 # Detect Player
 
-      body_entered.connect do |body|
-        on_body_entered(body)
-      end
-
-      body_exited.connect do |body|
-        on_body_exited(body)
-      end
+      body_entered >> ->(body : Godot::Node) { on_body_entered(body) }
+      body_exited >> ->(body : Godot::Node) { on_body_exited(body) }
     end
 
     def on_body_entered(body : Godot::Node) : Void
@@ -44,26 +39,16 @@ module Soulantern
       return unless is_player(body)
 
       @has_displayed = true
-      if tree = Godot.get_tree?
-        if root = tree.get_root?
-          if root.has_node("TriggerTextLabel")
-            ttl = root.get_node("TriggerTextLabel")
-            ttl.call("show_text", @text, @fade_duration)
-          end
-        end
+      if ttl = Godot.get_tree?.try(&.get_root?.try(&.get_node?("TriggerTextLabel")))
+        ttl.call("show_text", @text, @fade_duration)
       end
     end
 
     def on_body_exited(body : Godot::Node) : Void
       return unless is_player(body)
 
-      if tree = Godot.get_tree?
-        if root = tree.get_root?
-          if root.has_node("TriggerTextLabel")
-            ttl = root.get_node("TriggerTextLabel")
-            ttl.call("hide_text", @fade_duration)
-          end
-        end
+      if ttl = Godot.get_tree?.try(&.get_root?.try(&.get_node?("TriggerTextLabel")))
+        ttl.call("hide_text", @fade_duration)
       end
 
       if @once
@@ -73,6 +58,7 @@ module Soulantern
     end
 
     def is_player(node : Godot::Node) : Bool
+      return true if node.as?(PlayerController) || (node << PlayerController?)
       curr : Godot::Node? = node
       while curr
         return true if curr.is_in_group("player") || curr.name == "Player"

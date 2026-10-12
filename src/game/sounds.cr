@@ -51,14 +51,14 @@ module Soulantern
         player_3d.global_position = node3d.global_position
         
         if parent = node3d.get_parent?
-          parent.add_child(player_3d)
+          parent << player_3d
         elsif root = tree.get_root?
-          root.add_child(player_3d)
+          root << player_3d
         end
 
-        player_3d.finished.connect do
+        player_3d.finished >> ->{
           player_3d.queue_free
-        end
+        }
         player_3d.play
         player_3d
       else
@@ -69,12 +69,12 @@ module Soulantern
         player.bus = "Master"
 
         if root = tree.get_root?
-          root.add_child(player)
+          root << player
         end
 
-        player.finished.connect do
+        player.finished >> ->{
           player.queue_free
-        end
+        }
         player.play
         player
       end

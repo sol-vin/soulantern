@@ -27,9 +27,7 @@ module Soulantern
       self.collision_layer = 0_u32
       self.collision_mask = 2_u32 # Detect Player
 
-      body_entered.connect do |body|
-        on_body_entered(body)
-      end
+      body_entered >> ->(body : Godot::Node) { on_body_entered(body) }
     end
 
     def on_body_entered(body : Godot::Node) : Void
@@ -46,6 +44,7 @@ module Soulantern
     end
 
     def is_player(node : Godot::Node) : Bool
+      return true if node.as?(PlayerController) || (node << PlayerController?)
       curr : Godot::Node? = node
       while curr
         return true if curr.is_in_group("player") || curr.name == "Player"

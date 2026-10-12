@@ -19,20 +19,19 @@ module Soulantern
     @[Export]
     property transition_to_red : Bool = false
 
-    @light : OmniLight3D? = nil
+    node_ref? light_node, OmniLight3D, "Light"
+    node_ref? omni_light_node, OmniLight3D, "OmniLight3D"
+
+    def get_light : OmniLight3D?
+      light_node || omni_light_node
+    end
+
     @timer : Float32 = 0.0_f32
     @fading : Bool = false
     @orig_scale : Vector3 = Vector3.new(1, 1, 1)
 
     def _ready : Void
       @orig_scale = scale
-      if has_node("Light")
-        @light = get_node("Light").as?(OmniLight3D)
-      elsif has_node("OmniLight3D")
-        @light = get_node("OmniLight3D").as?(OmniLight3D)
-      end
-
-      # Apply color
       apply_fire_color(@fire_color)
     end
 
@@ -45,7 +44,7 @@ module Soulantern
               else
                 Color.new(1.0_f32, 0.25_f32, 0.1_f32, 1.0_f32)
               end
-      if l = @light
+      if l = get_light
         l.light_color = color
       end
     end
@@ -65,9 +64,7 @@ module Soulantern
       return unless tw
       tw.tween_property(self, "scale", Vector3.new(0, 0, 0), @fade_duration)
         .set_trans(Tween::TransitionType::TransSine)
-      tw.finished.connect do
-        queue_free
-      end
+      tw.finished >> ->queue_free
     end
   end
 end

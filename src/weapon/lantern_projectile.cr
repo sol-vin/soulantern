@@ -87,9 +87,9 @@ module Soulantern
       trail.fade_duration = 0.4_f32
 
       if parent = get_parent?
-        parent.add_child(trail)
+        parent << trail
       elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.add_child(trail))
+        tree.get_root?.try(&.<<(trail))
       end
     end
   end

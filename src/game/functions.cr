@@ -26,12 +26,8 @@ module Soulantern
       self.process_mode = Node::ProcessMode::ProcessModeAlways
 
       unless Engine.is_editor_hint
-        if tree = Godot.get_tree?
-          if root = tree.get_root?
-            root.focus_exited.connect do
-              handle_focus_loss
-            end
-          end
+        if root = Godot.get_tree?.try(&.get_root?)
+          root.focus_exited >> ->handle_focus_loss
         end
       end
     end
@@ -102,17 +98,17 @@ module Soulantern
           asp.bus = "Master"
           
           if root = Godot.get_tree?.try(&.get_root?)
-            root.add_child(asp)
+            root << asp
           else
-            add_child(asp)
+            self << asp
           end
 
-          asp.finished.connect do
+          asp.finished >> ->{
             asp.queue_free
             if @death_audio_player == asp
               @death_audio_player = nil
             end
-          end
+          }
           
           @death_audio_player = asp
           asp.play
@@ -227,24 +223,18 @@ module Soulantern
       return if @active_pause_menu
 
       @is_opening_pause_menu = true
-      unless ResourceLoader.exists("res://pausemenu.tscn")
+      tree = Godot.get_tree?
+      return unless tree && (root = tree.get_root?)
+
+      menu = "res://pausemenu.tscn" > Godot::Node?
+      unless menu
         @is_opening_pause_menu = false
         return
       end
 
-      res = ResourceLoader.load("res://pausemenu.tscn")
-      packed = res.as?(PackedScene)
-      return unless packed
-
-      tree = Godot.get_tree?
-      return unless tree && (root = tree.get_root?)
-
-      menu = packed.instantiate
-      return unless menu
-
-      menu.tree_exited.connect do
+      menu.tree_exited >> ->{
         @is_opening_pause_menu = false
-      end
+      }
 
       root.call_deferred("add_child", menu)
       @active_pause_menu = menu

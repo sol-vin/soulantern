@@ -8,37 +8,25 @@ module Soulantern
     @[Export]
     property default_fade_duration : Float32 = 0.35_f32
 
-    @panel : Control? = nil
-    @label : Label? = nil
+    unique_node? panel_container, Control, "PanelContainer"
+    unique_node? text_label, Label, "Label"
+
     @tween : Tween? = nil
     @current_source : Godot::Object? = nil
 
     def _ready : Void
       self.layer = 120
 
-      unless has_node("%Label")
-        if ResourceLoader.exists("res://scenes/ui/trigger_text_label.tscn")
-          res = ResourceLoader.load("res://scenes/ui/trigger_text_label.tscn")
-          if packed = res.as?(PackedScene)
-            inst = packed.instantiate
-            if inst
-              if inst.has_node("RootControl")
-                ctrl = inst.get_node("RootControl")
-                inst.remove_child(ctrl)
-                add_child(ctrl)
-              else
-                add_child(inst)
-              end
-            end
+      unless text_label
+        if inst = "res://scenes/ui/trigger_text_label.tscn" > Godot::Node?
+          if inst.has_node("RootControl")
+            ctrl = inst.get_node("RootControl")
+            inst.remove_child(ctrl)
+            self << ctrl
+          else
+            self << inst
           end
         end
-      end
-
-      if has_node("%PanelContainer")
-        @panel = get_node("%PanelContainer").as?(Control)
-      end
-      if has_node("%Label")
-        @label = get_node("%Label").as?(Label)
       end
 
       hide_immediate
@@ -46,8 +34,8 @@ module Soulantern
 
     # Displays text on screen with a fade-in animation.
     def show_text(message : String, duration : Float32 = -1.0_f32) : Void
-      panel = @panel
-      label = @label
+      panel = panel_container
+      label = text_label
       return unless panel && label
       return if message.empty?
 
@@ -82,7 +70,7 @@ module Soulantern
 
     # Fades out and hides the text.
     def hide_text(duration : Float32 = -1.0_f32) : Void
-      panel = @panel
+      panel = panel_container
       return unless panel && panel.visible
 
       if tw = @tween
@@ -100,15 +88,13 @@ module Soulantern
           tw.tween_property(panel, "modulate:a", 0.0_f32, fade_time)
             .set_trans(Tween::TransitionType::TransSine)
             .set_ease(Tween::EaseType::EaseIn)
-          tw.finished.connect do
-            on_fade_out_complete
-          end
+          tw.finished >> ->on_fade_out_complete
         end
       end
     end
 
     def on_fade_out_complete : Void
-      if p = @panel
+      if p = panel_container
         p.visible = false
       end
       @current_source = nil
@@ -120,12 +106,12 @@ module Soulantern
         tw.kill if tw.is_valid
       end
       @current_source = nil
-      if p = @panel
+      if p = panel_container
         mod = p.modulate
         p.modulate = Color.new(mod.r, mod.g, mod.b, 0.0_f32)
         p.visible = false
       end
-      if l = @label
+      if l = text_label
         l.text = ""
       end
     end
@@ -135,7 +121,7 @@ module Soulantern
     end
 
     def is_showing : Bool
-      if p = @panel
+      if p = panel_container
         p.visible && p.modulate.a > 0.0_f32
       else
         false
@@ -143,7 +129,7 @@ module Soulantern
     end
 
     def get_current_text : String
-      @label.try(&.text) || ""
+      text_label.try(&.text) || ""
     end
   end
 end

@@ -61,6 +61,8 @@ module Soulantern
     @wishdir : Vector3 = Vector3.new(0, 0, 0)
     @wishspeed : Float32 = 0.0_f32
 
+    group "player"
+
     # Child node references
     @camera_yaw : Node3D? = nil
     @camera_pitch : Node3D? = nil
@@ -68,7 +70,6 @@ module Soulantern
     @flash_rect : ColorRect? = nil
 
     def _ready : Void
-      add_to_group("player")
       self.collision_layer = 2_u32
       self.collision_mask = 5_u32
       self.safe_margin = 0.002_f32
@@ -90,7 +91,7 @@ module Soulantern
       else
         yaw = Node3D.new
         yaw.name = "CameraYaw"
-        add_child(yaw)
+        self << yaw
         @camera_yaw = yaw
       end
 
@@ -104,7 +105,7 @@ module Soulantern
         else
           pitch = Node3D.new
           pitch.name = "CameraPitch"
-          cy.add_child(pitch)
+          cy << pitch
           @camera_pitch = pitch
         end
       end
@@ -123,7 +124,7 @@ module Soulantern
           cam.fov = 90.0_f32
           cam.near = 0.001_f32
           cam.current = true
-          cp.add_child(cam)
+          cp << cam
           @camera = cam
         end
       end
@@ -139,7 +140,7 @@ module Soulantern
           flash.color = Color.new(1, 1, 1, 0)
           flash.anchors_preset = 15 # PRESET_FULL_RECT
           flash.z_index = 2
-          cam.add_child(flash)
+          cam << flash
           @flash_rect = flash
         end
       end
@@ -433,7 +434,7 @@ module Soulantern
         if old_p = weapon_node.get_parent?
           weapon_node.call("reparent", target_parent) rescue nil
         else
-          target_parent.add_child(weapon_node)
+          target_parent << weapon_node
         end
       end
 
