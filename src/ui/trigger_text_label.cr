@@ -19,13 +19,7 @@ module Soulantern
 
       unless text_label
         if inst = "res://scenes/ui/trigger_text_label.tscn" > Godot::Node?
-          if inst.has_node("RootControl")
-            ctrl = inst.get_node("RootControl")
-            inst.remove_child(ctrl)
-            self << ctrl
-          else
-            self << inst
-          end
+          self << inst
         end
       end
 

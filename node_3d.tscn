@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dpsiu016yrtsw"]
 
-[ext_resource type="PackedScene" uid="uid://gwunh0jnqjjk" path="res://addons/goldsrc_character_controller/scenes/Player.tscn" id="1_jka67"]
+[ext_resource type="PackedScene" uid="uid://gwunh0jnqjjk" path="res://scenes/player.tscn" id="1_jka67"]
 [ext_resource type="Script" uid="uid://dsbvm0s5fe1qi" path="res://addons/advanced_palette_swap/nodes/palette_swap_screen_space_mesh.gd" id="4_wc5p8"]
 [ext_resource type="Material" uid="uid://bskvaf0caoj0b" path="res://shaders/palette_swap/palette_swap.material" id="5_i5arm"]
 [ext_resource type="Material" uid="uid://cu2mbkxgwfacv" path="res://textures/Stone/Stone_27-128x128.tres" id="7_i0g27"]
