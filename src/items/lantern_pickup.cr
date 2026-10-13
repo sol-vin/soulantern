@@ -50,7 +50,7 @@ module Soulantern
     def collect(player : Godot::Node) : Void
       @collected = true
 
-      lantern_inst = @lantern_scene.try(&.instantiate) || ("res://scenes/weapon/lantern.tscn" > Lantern?) || ("res://scenes/weapon/lantern.tscn" > Godot::Node?)
+      lantern_inst = @lantern_scene.try(&.instantiate?) || Lantern.instantiate?("res://scenes/weapon/lantern.tscn") || ("res://scenes/weapon/lantern.tscn" > Lantern?) || ("res://scenes/weapon/lantern.tscn" > Godot::Node?)
 
       if lantern_inst && !lantern_inst.pointer.null?
         if pc = player.self_or_ancestor?(PlayerController)

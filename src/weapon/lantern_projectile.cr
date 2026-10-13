@@ -16,7 +16,18 @@ module Soulantern
 
     property player_body : CharacterBody3D? = nil
     property launcher : Godot::Node? = nil
-    property direction : Vector3 = Vector3.new(0, 0, -1)
+    getter direction : Vector3 = Vector3.new(0, 0, -1)
+    @lifetime : Float32 = 5.0_f32
+
+    def direction=(dir : Vector3)
+      @direction = dir.normalized
+      self.velocity = @direction * @speed
+    end
+
+    def speed=(spd : Float32)
+      @speed = spd
+      self.velocity = @direction.normalized * @speed
+    end
 
     def _ready : Void
       self.collision_layer = 0_u32
@@ -26,6 +37,12 @@ module Soulantern
 
     def _physics_process(delta : Float64) : Void
       d = delta.to_f32
+      @lifetime -= d
+      if @lifetime <= 0.0_f32
+        queue_free
+        return
+      end
+
       collision = move_and_collide(velocity * d)
       if collision
         detonate(collision.get_position, collision.get_normal)
@@ -50,7 +67,7 @@ module Soulantern
       unless body
         if tree = Godot.get_tree?
           if p = tree.get_first_node_in_group?("player")
-            body = p.as?(CharacterBody3D)
+            body = p.as_a?(CharacterBody3D)
           end
         end
       end
@@ -74,6 +91,12 @@ module Soulantern
         vel += impulse
         body.velocity = vel
 
+        if pc = body.as_a?(PlayerController)
+          pc.reset_fall_distance
+        else
+          body.call("reset_fall_distance") rescue nil
+        end
+
         if l = @launcher
           l.call("emit_signal", "player_flung", impulse, norm, dist) rescue nil
         end
@@ -81,15 +104,16 @@ module Soulantern
     end
 
     def spawn_explosion_effect(hit_point : Vector3, hit_normal : Vector3) : Void
-      trail = FireTrail.new
+      trail = FireTrail.instantiate?("res://scenes/weapon/fire_trail.tscn") || FireTrail.new
       trail.global_position = hit_point + hit_normal * 0.1_f32
       trail.burn_duration = 1.2_f32
       trail.fade_duration = 0.4_f32
 
-      if parent = get_parent?
+      if tree = Godot.get_tree?
+        target_parent = tree.current_scene || tree.get_root?
+        target_parent.try(&.<<(trail))
+      elsif parent = get_parent?
         parent << trail
-      elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.<<(trail))
       end
     end
   end

@@ -19,9 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=320
 window/size/viewport_height=240
-window/size/borderless=true
-window/size/always_on_top=true
+window/size/mode="fullscreen"
+window/size/resizable=true
 window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]

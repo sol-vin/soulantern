@@ -56,10 +56,20 @@ module Soulantern
 
     @highest_fall_y : Float32 = 0.0_f32
     @is_falling : Bool = false
-    @yaw_angle : Float32 = 0.0_f32
-    @pitch_angle : Float32 = 0.0_f32
+    getter yaw_angle : Float32 = 0.0_f32
+    getter pitch_angle : Float32 = 0.0_f32
     @wishdir : Vector3 = Vector3.new(0, 0, 0)
     @wishspeed : Float32 = 0.0_f32
+
+    # Horizontal look direction (XZ-plane) computed from current yaw angle
+    def look_direction : Vector3
+      Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle)
+    end
+
+    # Full 3D aiming vector incorporating pitch and yaw
+    def aim_direction : Vector3
+      Vector3.new(0, 0, -1).rotated(Vector3::RIGHT, @pitch_angle).rotated(Vector3::UP, @yaw_angle)
+    end
 
     group "player"
 
@@ -98,6 +108,18 @@ module Soulantern
         if mouse_button.button_index == 1 && Input.mouse_mode != Input::MouseMode::MouseModeCaptured
           Input.mouse_mode = Input::MouseMode::MouseModeCaptured
         end
+      elsif key_event = event.as_a?(InputEventKey)
+        if key_event.pressed && !key_event.echo
+          # F11 or Alt+Enter toggles fullscreen
+          if key_event.keycode == Key::F11.value || (key_event.alt_pressed && key_event.keycode == Key::Enter.value)
+            mode = DisplayServer.window_get_mode
+            if mode == DisplayServer::WindowMode::WindowModeFullscreen || mode == DisplayServer::WindowMode::WindowModeExclusiveFullscreen
+              DisplayServer.window_set_mode(DisplayServer::WindowMode::WindowModeWindowed)
+            else
+              DisplayServer.window_set_mode(DisplayServer::WindowMode::WindowModeFullscreen)
+            end
+          end
+        end
       end
     end
 
@@ -121,13 +143,22 @@ module Soulantern
       vel = velocity
       prev_on_floor = is_on_floor
 
+      # While movement is locked (e.g. during an air dash), preserve velocity and bypass friction/gravity
+      if @movement_locked
+        move_and_slide
+        cap_horizontal_velocity
+        update_camera_effects(d)
+        update_fall_tracking(prev_on_floor)
+        return
+      end
+
       # Apply Gravity
       unless prev_on_floor
         vel.y -= @gravity * d
       end
 
       # Gather Directional Movement Inputs
-      if @movement_locked || @disable_input
+      if @disable_input
         @wishdir = Vector3.new(0, 0, 0)
         @wishspeed = 0.0_f32
       else
@@ -379,11 +410,11 @@ module Soulantern
         end
       end
 
-      if node3d = weapon_node.as?(Node3D)
+      if node3d = weapon_node.as_a?(Node3D)
         node3d.transform = Transform3D.new
       end
 
-      if l = weapon_node.as?(Lantern)
+      if l = weapon_node.as_a?(Lantern)
         l.equip(self)
       else
         weapon_node.call("equip", self) rescue nil
@@ -392,7 +423,7 @@ module Soulantern
 
     def replenish_dash(amount : Int32 = 1) : Bool
       if w = @current_weapon
-        if l = w.as?(Lantern)
+        if l = w.as_a?(Lantern)
           return l.replenish_dash(amount)
         end
       end

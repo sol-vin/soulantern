@@ -36,6 +36,7 @@ module Soulantern
     # --- State ---
     property current_dashes : Int32 = 2
     property player : Godot::Node? = nil
+    property player_controller : PlayerController? = nil
 
     @was_airborne : Bool = false
     @is_dashing : Bool = false
@@ -102,8 +103,40 @@ module Soulantern
 
     def equip(target_player : Godot::Node) : Void
       @player = target_player
+      @player_controller = target_player.as_a?(PlayerController)
       emit(equipped, target_player)
       Godot.log_info("Lantern", "Lantern equipped to #{target_player.name}")
+    end
+
+    def equip(target_player : PlayerController) : Void
+      @player = target_player
+      @player_controller = target_player
+      emit(equipped, target_player)
+      Godot.log_info("Lantern", "Lantern equipped to #{target_player.name}")
+    end
+
+    # Horizontal look direction (XZ-plane) computed from player controller or camera
+    def get_look_direction : Vector3
+      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+        pc.look_direction
+      elsif cam = get_player_camera
+        f = -cam.global_transform.basis.z
+        h = Vector3.new(f.x, 0.0_f32, f.z)
+        h.length_squared > 0.001_f32 ? h.normalized : Vector3.new(0, 0, -1)
+      else
+        Vector3.new(0, 0, -1)
+      end
+    end
+
+    # Full 3D aiming vector incorporating pitch and yaw
+    def get_aim_direction : Vector3
+      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+        pc.aim_direction
+      elsif cam = get_player_camera
+        -cam.global_transform.basis.z.normalized
+      else
+        Vector3.new(0, 0, -1)
+      end
     end
 
     def _input(event : InputEvent) : Void
@@ -148,25 +181,30 @@ module Soulantern
     end
 
     def spawn_projectile : Void
-      cam = get_player_camera
-      return unless cam
-
-      proj = LanternProjectile.new
+      proj = LanternProjectile.instantiate?("res://scenes/weapon/lantern_projectile.tscn") || LanternProjectile.new
       proj.speed = @projectile_speed
       proj.rocket_jump_force = @rocket_jump_force
       proj.explosion_radius = @explosion_radius
       proj.player_body = get_player_body
       proj.launcher = self
 
-      # Forward direction from camera
-      forward = -cam.global_transform.basis.z.normalized
-      proj.direction = forward
-      proj.global_position = cam.global_position + forward * 0.5_f32
+      aim_dir = get_aim_direction
+      proj.direction = aim_dir
 
-      if parent = get_parent?
+      spawn_pos = if cam = get_player_camera
+        cam.global_position + aim_dir * 0.5_f32
+      elsif body = get_player_body
+        body.global_position + Vector3.new(0, 1.2_f32, 0) + aim_dir * 0.5_f32
+      else
+        global_position + aim_dir * 0.5_f32
+      end
+      proj.global_position = spawn_pos
+
+      if tree = Godot.get_tree?
+        target_parent = tree.current_scene || tree.get_root?
+        target_parent.try(&.<<(proj))
+      elsif parent = get_parent?
         parent << proj
-      elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.<<(proj))
       end
     end
 
@@ -182,29 +220,24 @@ module Soulantern
         return
       end
 
-      cam = get_player_camera
-      return unless cam
-
       body = get_player_body
       return unless body
 
       @current_dashes -= 1
       @is_dashing = true
       @dash_timer = @dash_duration
-
-      # Horizontal look direction
-      forward = -cam.global_transform.basis.z
-      forward_horiz = Vector3.new(forward.x, 0, forward.z)
-      if forward_horiz.length_squared > 0.001_f32
-        @dash_dir = forward_horiz.normalized
-      else
-        @dash_dir = Vector3.new(0, 0, -1)
-      end
-
+      @dash_dir = get_look_direction
       @last_trail_pos = body.global_position
 
-      # Reset player fall distance tracking on dash
-      body.call("reset_fall_distance") rescue nil
+      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+        pc.lock_movement(true)
+        pc.reset_fall_distance
+      else
+        body.call("reset_fall_distance") rescue nil
+      end
+
+      # Force velocity along dash direction
+      body.velocity = Vector3.new(@dash_dir.x * @dash_speed, 0.0_f32, @dash_dir.z * @dash_speed)
 
       # Play animation and sound
       if ap = find_animation_player
@@ -241,6 +274,10 @@ module Soulantern
         exit_vel = Vector3.new(vel.x * @dash_exit_speed_ratio, 0.0_f32, vel.z * @dash_exit_speed_ratio)
         body.velocity = exit_vel
 
+        if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+          pc.lock_movement(false)
+        end
+
         # Reset animation
         if ap = find_animation_player
           if ap.has_animation("RESET")
@@ -255,6 +292,9 @@ module Soulantern
     def cancel_dash(refund : Bool = false) : Void
       if @is_dashing
         @is_dashing = false
+        if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+          pc.lock_movement(false)
+        end
         if refund && @current_dashes < @max_dashes
           @current_dashes += 1
           emit(dash_charges_changed, @current_dashes, @max_dashes)
@@ -266,16 +306,17 @@ module Soulantern
       dist = (player_pos - @last_trail_pos).length
       return if dist < @dash_trail_spacing
 
-      trail = FireTrail.new
+      trail = FireTrail.instantiate?("res://scenes/weapon/fire_trail.tscn") || FireTrail.new
       trail.fire_color = FireTrail::FireColor::BLUE
       trail.global_position = player_pos + Vector3.new(0, 0.05_f32, 0)
       trail.burn_duration = 1.8_f32
       trail.fade_duration = 0.5_f32
 
-      if parent = get_parent?
+      if tree = Godot.get_tree?
+        target_parent = tree.current_scene || tree.get_root?
+        target_parent.try(&.<<(trail))
+      elsif parent = get_parent?
         parent << trail
-      elsif tree = Godot.get_tree?
-        tree.get_root?.try(&.<<(trail))
       end
 
       @last_trail_pos = player_pos
@@ -312,20 +353,29 @@ module Soulantern
     # --------------------------------------------------------------------------
 
     def get_player_body : CharacterBody3D?
+      if pc = @player_controller
+        return pc
+      end
       if p = @player
-        if cb = p.as?(CharacterBody3D)
-          return cb
-        elsif p.is_class("CharacterBody3D")
-          return CharacterBody3D.new(p.pointer)
+        return p.as_a?(CharacterBody3D)
+      end
+      if tree = Godot.get_tree?
+        if p = tree.get_first_node_in_group?("player")
+          return p.as_a?(CharacterBody3D)
         end
       end
       nil
     end
 
     def get_player_camera : Camera3D?
-      if p = @player
-        if pc = p.as?(PlayerController)
-          return pc.get_spring_arm_camera
+      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+        return pc.get_spring_arm_camera
+      end
+      if tree = Godot.get_tree?
+        if p = tree.get_first_node_in_group?("player")
+          if pc = p.as_a?(PlayerController)
+            return pc.get_spring_arm_camera
+          end
         end
       end
       self << Camera3D?

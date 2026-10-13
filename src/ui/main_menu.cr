@@ -12,6 +12,10 @@ module Soulantern
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
+      unless Engine.is_editor_hint
+        DisplayServer.window_set_mode(DisplayServer::WindowMode::WindowModeFullscreen)
+      end
+
       # Wire button interactions with signal piping
       new_game_btn.try(&.pressed.>> ->on_new_game_pressed)
       credits_btn.try(&.pressed.>> ->on_credits_pressed)
