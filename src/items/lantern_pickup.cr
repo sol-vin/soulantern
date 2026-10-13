@@ -50,9 +50,17 @@ module Soulantern
     def collect(player : Godot::Node) : Void
       @collected = true
 
-      lantern_inst = @lantern_scene.try(&.instantiate_as?(Lantern)) ||
-                     ("res://scenes/weapon/lantern.tscn" > Lantern?) ||
-                     Godot.instantiate_scene?("res://scenes/weapon/lantern.tscn", Lantern)
+      scene = @lantern_scene ||= ResourceLoader.load("res://scenes/weapon/lantern.tscn").as?(PackedScene)
+      node = scene.try(&.instantiate)
+      lantern_inst = if node && !node.pointer.null?
+                       if inst = Bridge.find_alive_instance(node.pointer)
+                         inst.as?(Lantern) || Lantern.new(node.pointer)
+                       else
+                         Lantern.new(node.pointer)
+                       end
+                     else
+                       Lantern.create
+                     end
 
 
       if lantern_inst && !lantern_inst.pointer.null?

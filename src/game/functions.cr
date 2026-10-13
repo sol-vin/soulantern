@@ -17,6 +17,7 @@ module Soulantern
     @death_audio_player : AudioStreamPlayer? = nil
     @is_opening_pause_menu : Bool = false
     @bound_callables : Hash(String, FunctionCallback) = Hash(String, FunctionCallback).new
+    @window_settings_applied : Bool = false
 
     def _enter_tree : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways
@@ -25,12 +26,26 @@ module Soulantern
     def _ready : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways
 
-      DisplayServer.window_set_title("Soulantern")
+      apply_window_settings
 
       unless Engine.is_editor_hint
         if root = Godot.get_tree?.try(&.get_root?)
           root.focus_exited >> ->handle_focus_loss
         end
+      end
+    end
+
+    def _process(delta : Float64) : Void
+      unless @window_settings_applied
+        apply_window_settings
+        @window_settings_applied = true
+      end
+    end
+
+    def apply_window_settings : Void
+      DisplayServer.window_set_title("Soulantern")
+      unless Engine.is_editor_hint
+        DisplayServer.window_set_mode(DisplayServer::WindowMode::WindowModeFullscreen) rescue nil
       end
     end
 
@@ -96,7 +111,7 @@ module Soulantern
           end
 
 
-          asp = AudioStreamPlayer.new
+          asp = AudioStreamPlayer.create
           asp.name = "DeathAudioPlayer"
           asp.stream = stream
           asp.bus = "Master"

@@ -23,7 +23,7 @@ module Soulantern
     def direction=(dir : Vector3)
       @direction = dir.normalized
       self.velocity = @direction * @speed
-      if @velocity.length_squared > 0.001_f32
+      if is_inside_tree && @velocity.length_squared > 0.001_f32
         up = @velocity.normalized.y.abs < 0.95_f32 ? Vector3::UP : Vector3::RIGHT
         look_at(global_position + @velocity, up) rescue nil
       end
@@ -146,18 +146,29 @@ module Soulantern
     end
 
     def spawn_explosion_effect(hit_point : Vector3, hit_normal : Vector3) : Void
-      trail = FireTrail.instantiate?("res://scenes/weapon/fire_trail.tscn") || FireTrail.new
+      scene = ResourceLoader.load("res://scenes/weapon/fire_trail.tscn").as?(PackedScene)
+      node = scene.try(&.instantiate)
+      trail = if node && !node.pointer.null?
+                if inst = Bridge.find_alive_instance(node.pointer)
+                  inst.as?(FireTrail) || FireTrail.new(node.pointer)
+                else
+                  FireTrail.new(node.pointer)
+                end
+              else
+                FireTrail.create
+              end
+
       trail.burn_duration = 1.2_f32
       trail.fade_duration = 0.4_f32
 
       if tree = Godot.get_tree?
         target_parent = tree.current_scene || tree.get_root?
         if target_parent
-          target_parent << trail
+          target_parent.add_child(trail)
           trail.global_position = hit_point + hit_normal * 0.1_f32
         end
       elsif parent = get_parent?
-        parent << trail
+        parent.add_child(trail)
         trail.global_position = hit_point + hit_normal * 0.1_f32
       end
     end

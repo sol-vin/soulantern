@@ -61,13 +61,25 @@ module Soulantern
     @wishdir : Vector3 = Vector3.new(0, 0, 0)
     @wishspeed : Float32 = 0.0_f32
 
-    # Horizontal look direction (XZ-plane) computed directly from player yaw angle
+    # Horizontal look direction (XZ-plane) computed directly from player camera
     def look_direction : Vector3
+      cam = camera
+      if cam && !cam.pointer.null?
+        f = -cam.global_transform.basis.z
+        h = Vector3.new(f.x, 0.0_f32, f.z)
+        if h.length_squared > 0.0001_f32
+          return h.normalized
+        end
+      end
       Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle).normalized
     end
 
     # Full 3D aiming vector incorporating player pitch and yaw
     def aim_direction : Vector3
+      cam = camera
+      if cam && !cam.pointer.null?
+        return -cam.global_transform.basis.z.normalized
+      end
       Vector3.new(0, 0, -1).rotated(Vector3::RIGHT, @pitch_angle).rotated(Vector3::UP, @yaw_angle).normalized
     end
 

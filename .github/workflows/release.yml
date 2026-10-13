@@ -681,6 +681,10 @@ jobs:
           }
 
           # Copy companion libraries and assets to payload
+          Copy-Item "bin/*.pck" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          if (Test-Path "bin/$gameName.pck") {
+            Copy-Item "bin/$gameName.pck" "$payloadDir/soulantern_runner.pck" -Force -ErrorAction SilentlyContinue
+          }
           Copy-Item "bin/crystal_bridge.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
           Copy-Item "bin/game.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
           Copy-Item "bin/gc.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
@@ -741,6 +745,8 @@ jobs:
           Get-ChildItem -Path "bin" -Filter "*.exp" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
           Get-ChildItem -Path "bin" -Filter "*.lib" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
           Get-ChildItem -Path "bin" -Filter "*_portable.exe" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+          Get-ChildItem -Path "bin" -Filter "*_runner.exe" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+          Get-ChildItem -Path "bin" -Filter "*.exe" | Where-Object { $_.Name -ne "$gameName.exe" } | Remove-Item -Force -ErrorAction SilentlyContinue
 
           # Package complete zip distribution containing single executable + companion libraries
           if (Test-Path "bin") {

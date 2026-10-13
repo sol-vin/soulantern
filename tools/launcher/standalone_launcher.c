@@ -53,8 +53,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
     }
 
     if (file_exists(localBridge) && file_exists(localRunner)) {
+        wchar_t pckPath[MAX_PATH * 4];
+        wsprintfW(pckPath, L"%s\\soulantern.pck", selfDir);
+        if (!file_exists(pckPath)) {
+            wsprintfW(pckPath, L"%s\\soulantern_runner.pck", selfDir);
+        }
         wchar_t fullCmd[MAX_PATH * 8];
-        wsprintfW(fullCmd, L"\"%s\" %s", localRunner, pCmdLine);
+        if (file_exists(pckPath)) {
+            wsprintfW(fullCmd, L"\"%s\" --main-pack \"%s\" %s", localRunner, pckPath, pCmdLine);
+        } else {
+            wsprintfW(fullCmd, L"\"%s\" %s", localRunner, pCmdLine);
+        }
         return run_process(fullCmd, selfDir, 0, 1);
     }
 
@@ -167,8 +176,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
     }
 
     if (file_exists(stagedRunner)) {
+        wchar_t pckPath[MAX_PATH * 4];
+        wsprintfW(pckPath, L"%s\\soulantern.pck", appDir);
+        if (!file_exists(pckPath)) {
+            wsprintfW(pckPath, L"%s\\soulantern_runner.pck", appDir);
+        }
         wchar_t fullCmd[MAX_PATH * 8];
-        wsprintfW(fullCmd, L"\"%s\" %s", stagedRunner, pCmdLine);
+        if (file_exists(pckPath)) {
+            wsprintfW(fullCmd, L"\"%s\" --main-pack \"%s\" %s", stagedRunner, pckPath, pCmdLine);
+        } else {
+            wsprintfW(fullCmd, L"\"%s\" %s", stagedRunner, pCmdLine);
+        }
         return run_process(fullCmd, appDir, 0, 1);
     }
 

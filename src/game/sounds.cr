@@ -44,12 +44,11 @@ module Soulantern
       return nil unless tree
 
       if from_node && (node3d = from_node.as?(Node3D)) && node3d.is_inside_tree
-        player_3d = AudioStreamPlayer3D.new
+        player_3d = AudioStreamPlayer3D.create
         player_3d.stream = stream
         player_3d.volume_db = volume_db
         player_3d.pitch_scale = pitch_scale
         player_3d.bus = "Master"
-        player_3d.global_position = node3d.global_position
         
         if parent = node3d.get_parent?
           parent << player_3d
@@ -57,13 +56,15 @@ module Soulantern
           root << player_3d
         end
 
+        player_3d.global_position = node3d.global_position
+
         player_3d.finished >> ->{
           player_3d.queue_free
         }
         player_3d.play
         player_3d
       else
-        player = AudioStreamPlayer.new
+        player = AudioStreamPlayer.create
         player.stream = stream
         player.volume_db = volume_db
         player.pitch_scale = pitch_scale

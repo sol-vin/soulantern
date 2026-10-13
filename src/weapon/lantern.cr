@@ -43,6 +43,8 @@ module Soulantern
     @dash_timer : Float32 = 0.0_f32
     @dash_dir : Vector3 = Vector3.new(0, 0, 0)
     @last_trail_pos : Vector3 = Vector3.new(0, 0, 0)
+    @projectile_scene : PackedScene? = nil
+    @fire_trail_scene : PackedScene? = nil
     group "lantern"
 
     onready anim_player : AnimationPlayer = "%Player"
@@ -115,8 +117,13 @@ module Soulantern
       Godot.log_info("Lantern", "Lantern equipped to #{target_player.name}")
     end
 
-    # Horizontal look direction (XZ-plane) computed from player controller or camera
+    # Horizontal look direction (XZ-plane) computed from camera or player controller
     def get_look_direction : Vector3
+      if cam = get_player_camera
+        f = -cam.global_transform.basis.z
+        h = Vector3.new(f.x, 0.0_f32, f.z)
+        return h.normalized if h.length_squared > 0.0001_f32
+      end
       if pc = @player_controller || @player.try(&.as_a?(PlayerController))
         return pc.look_direction
       end
@@ -127,16 +134,14 @@ module Soulantern
           end
         end
       end
-      if cam = get_player_camera
-        f = -cam.global_transform.basis.z
-        h = Vector3.new(f.x, 0.0_f32, f.z)
-        return h.normalized if h.length_squared > 0.0001_f32
-      end
       Vector3.new(0, 0, -1)
     end
 
     # Full 3D aiming vector incorporating pitch and yaw
     def get_aim_direction : Vector3
+      if cam = get_player_camera
+        return -cam.global_transform.basis.z.normalized
+      end
       if pc = @player_controller || @player.try(&.as_a?(PlayerController))
         return pc.aim_direction
       end
@@ -146,9 +151,6 @@ module Soulantern
             return pc.aim_direction
           end
         end
-      end
-      if cam = get_player_camera
-        return -cam.global_transform.basis.z.normalized
       end
       Vector3.new(0, 0, -1)
     end
@@ -203,19 +205,25 @@ module Soulantern
       from_pos = camera.global_position
       spawn_pos = from_pos + forward_dir * 0.6_f32
 
-      proj = ("res://scenes/weapon/lantern_projectile.tscn" > LanternProjectile?) ||
-             Godot.instantiate_scene?("res://scenes/weapon/lantern_projectile.tscn", LanternProjectile) ||
-             LanternProjectile.new
-
-      proj.global_position = spawn_pos
+      scene = @projectile_scene ||= ResourceLoader.load("res://scenes/weapon/lantern_projectile.tscn").as?(PackedScene)
+      node = scene.try(&.instantiate)
+      proj = if node && !node.pointer.null?
+               if inst = Bridge.find_alive_instance(node.pointer)
+                 inst.as?(LanternProjectile) || LanternProjectile.new(node.pointer)
+               else
+                 LanternProjectile.new(node.pointer)
+               end
+             else
+               LanternProjectile.create
+             end
 
       if tree = Godot.get_tree?
         target_parent = tree.current_scene || tree.get_root?
         if target_parent
-          target_parent << proj
+          target_parent.add_child(proj)
         end
       elsif parent = get_parent?
-        parent << proj
+        parent.add_child(proj)
       end
 
       proj.global_position = spawn_pos
@@ -319,17 +327,31 @@ module Soulantern
       dist = (player_pos - @last_trail_pos).length
       return if dist < @dash_trail_spacing
 
-      trail = FireTrail.instantiate?("res://scenes/weapon/fire_trail.tscn") || FireTrail.new
+      scene = @fire_trail_scene ||= ResourceLoader.load("res://scenes/weapon/fire_trail.tscn").as?(PackedScene)
+      node = scene.try(&.instantiate)
+      trail = if node && !node.pointer.null?
+                if inst = Bridge.find_alive_instance(node.pointer)
+                  inst.as?(FireTrail) || FireTrail.new(node.pointer)
+                else
+                  FireTrail.new(node.pointer)
+                end
+              else
+                FireTrail.create
+              end
+
       trail.fire_color = FireTrail::FireColor::BLUE
-      trail.global_position = player_pos + Vector3.new(0, 0.05_f32, 0)
       trail.burn_duration = 1.8_f32
       trail.fade_duration = 0.5_f32
 
       if tree = Godot.get_tree?
         target_parent = tree.current_scene || tree.get_root?
-        target_parent.try(&.<<(trail))
+        if target_parent
+          target_parent.add_child(trail)
+          trail.global_position = player_pos + Vector3.new(0, 0.05_f32, 0)
+        end
       elsif parent = get_parent?
-        parent << trail
+        parent.add_child(trail)
+        trail.global_position = player_pos + Vector3.new(0, 0.05_f32, 0)
       end
 
       @last_trail_pos = player_pos
