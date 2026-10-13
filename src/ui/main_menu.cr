@@ -11,6 +11,7 @@ module Soulantern
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
+      DisplayServer.window_set_title("Soulantern")
 
       unless Engine.is_editor_hint
         DisplayServer.window_set_mode(DisplayServer::WindowMode::WindowModeFullscreen)

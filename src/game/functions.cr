@@ -25,6 +25,8 @@ module Soulantern
     def _ready : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways
 
+      DisplayServer.window_set_title("Soulantern")
+
       unless Engine.is_editor_hint
         if root = Godot.get_tree?.try(&.get_root?)
           root.focus_exited >> ->handle_focus_loss

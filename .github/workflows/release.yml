@@ -650,19 +650,80 @@ jobs:
           if (Test-Path "bin/carbon.exe") { Remove-Item "bin/carbon.exe" -Force }
           Get-ChildItem -Path "bin" -Filter "*.console.pck" -Recurse | Remove-Item -Force
 
-          # 1. Package the whole game up as an exe (with embedded PCK) and stage directly in dist/
-          # When lapis package game runs with --embed-pck, it generates *_portable.exe
+          # 1. Compile standalone C launcher
+          $launcherExe = "tools/launcher/launcher.exe"
+          $gccExe = (Get-Command gcc -ErrorAction SilentlyContinue)?.Source
+          if (-not $gccExe -and (Test-Path "C:\Strawberry\c\bin\gcc.exe")) {
+            $gccExe = "C:\Strawberry\c\bin\gcc.exe"
+          }
+          if (-not $gccExe -and (Test-Path "C:\ProgramData\Chocolatey\bin\gcc.exe")) {
+            $gccExe = "C:\ProgramData\Chocolatey\bin\gcc.exe"
+          }
+          if ($gccExe -and (Test-Path "tools/launcher/standalone_launcher.c")) {
+            Write-Host "Compiling standalone launcher using $gccExe..."
+            & $gccExe -O2 -mwindows -municode -o $launcherExe "tools/launcher/standalone_launcher.c"
+          }
+
+          # 2. Stage embedded payload for standalone single-file executable
+          $payloadDir = "staging_payload"
+          if (Test-Path $payloadDir) { Remove-Item $payloadDir -Recurse -Force }
+          New-Item -ItemType Directory -Path $payloadDir -Force
+
           $portableExes = Get-ChildItem -Path "bin" -Filter "*_portable.exe" -Recurse
           if ($portableExes.Count -gt 0) {
-            $mainPortable = $portableExes[0].FullName
-            Copy-Item $mainPortable "dist/$gameName.exe" -Force
-            Write-Host "Staged standalone game executable with embedded PCK: dist/$gameName.exe from $mainPortable"
+            Copy-Item $portableExes[0].FullName "$payloadDir/soulantern_runner.exe" -Force
+            # Also ensure bin/$gameName.exe exists for the zip distribution
+            Copy-Item $portableExes[0].FullName "bin/$gameName.exe" -Force
             # Remove all *_portable.exe files from bin/ so they are NOT bundled into the zip distribution
             $portableExes | Remove-Item -Force
           } elseif (Test-Path "bin/$gameName.exe") {
-            Copy-Item "bin/$gameName.exe" "dist/$gameName.exe" -Force
-            Write-Host "Staged standalone game executable: dist/$gameName.exe"
+            Copy-Item "bin/$gameName.exe" "$payloadDir/soulantern_runner.exe" -Force
           }
+
+          # Copy companion libraries and assets to payload
+          Copy-Item "bin/crystal_bridge.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/game.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/gc.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/iconv-2.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/pcre2-8.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/yaml.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/zlib1.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/libcrypto-3-x64.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          Copy-Item "bin/libssl-3-x64.dll" "$payloadDir/" -Force -ErrorAction SilentlyContinue
+          if (Test-Path "bin/addons") { Copy-Item "bin/addons" "$payloadDir/addons" -Recurse -Force }
+          if (Test-Path "bin/.godot") { Copy-Item "bin/.godot" "$payloadDir/.godot" -Recurse -Force }
+
+          # Compress payload into payload.zip using fast tar.exe
+          $payloadZip = "staging_payload.zip"
+          if (Test-Path $payloadZip) { Remove-Item $payloadZip -Force }
+          Push-Location $payloadDir
+          tar.exe -a -cf "..\$payloadZip" *
+          Pop-Location
+
+          # Combine launcher + payload.zip into dist/$gameName.exe
+          if (Test-Path $launcherExe) {
+            $launcherBytes = [System.IO.File]::ReadAllBytes((Resolve-Path $launcherExe).Path)
+            $payloadBytes = [System.IO.File]::ReadAllBytes((Resolve-Path $payloadZip).Path)
+            $payloadSize = [BitConverter]::GetBytes([uint64]$payloadBytes.Length)
+            $magic = [BitConverter]::GetBytes([uint32]0x5A50414C) # LAPZ
+
+            $outExe = "dist/$gameName.exe"
+            $fs = [System.IO.File]::Create($outExe)
+            $fs.Write($launcherBytes, 0, $launcherBytes.Length)
+            $fs.Write($payloadBytes, 0, $payloadBytes.Length)
+            $fs.Write($payloadSize, 0, 8)
+            $fs.Write($magic, 0, 4)
+            $fs.Close()
+            Write-Host "Staged self-contained standalone game executable: dist/$gameName.exe ($([math]::Round((Get-Item $outExe).Length / 1MB, 2)) MB)"
+          } else {
+            # Fallback if launcher compilation unavailable
+            if (Test-Path "$payloadDir/soulantern_runner.exe") {
+              Copy-Item "$payloadDir/soulantern_runner.exe" "dist/$gameName.exe" -Force
+            }
+          }
+
+          Remove-Item $payloadDir -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item $payloadZip -Force -ErrorAction SilentlyContinue
 
           if (Test-Path "dist/$gameName.exe") {
             # Smoke test verification: execute headlessly to verify boot capability
@@ -675,9 +736,17 @@ jobs:
             Write-Host "dist/$gameName.exe passed headless boot smoke test!"
           }
 
-          # 2. Package complete zip distribution containing executable + companion libraries
+          # 3. Clean development artifacts from bin/ so zip distribution has ONLY ONE executable
+          Get-ChildItem -Path "bin" -Filter "*.pdb" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+          Get-ChildItem -Path "bin" -Filter "*.exp" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+          Get-ChildItem -Path "bin" -Filter "*.lib" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+          Get-ChildItem -Path "bin" -Filter "*_portable.exe" -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue
+
+          # Package complete zip distribution containing single executable + companion libraries
           if (Test-Path "bin") {
-            Compress-Archive -Path "bin/*" -DestinationPath "dist/$gameName-windows.zip" -Force
+            Push-Location "bin"
+            tar.exe -a -cf "..\dist\$gameName-windows.zip" *
+            Pop-Location
             Write-Host "Staged game zip archive: dist/$gameName-windows.zip"
           }
       - name: Upload Consumer Packages Artifact (Windows)

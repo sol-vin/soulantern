@@ -61,23 +61,16 @@ module Soulantern
     @wishdir : Vector3 = Vector3.new(0, 0, 0)
     @wishspeed : Float32 = 0.0_f32
 
-    # Horizontal look direction (XZ-plane) computed from camera or current yaw angle
+    # Horizontal look direction (XZ-plane) computed directly from player yaw angle
     def look_direction : Vector3
-      if cam = camera
-        f = -cam.global_transform.basis.z
-        h = Vector3.new(f.x, 0.0_f32, f.z)
-        return h.length_squared > 0.001_f32 ? h.normalized : Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle)
-      end
-      Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle)
+      Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle).normalized
     end
 
-    # Full 3D aiming vector incorporating pitch and yaw
+    # Full 3D aiming vector incorporating player pitch and yaw
     def aim_direction : Vector3
-      if cam = camera
-        return -cam.global_transform.basis.z.normalized
-      end
-      Vector3.new(0, 0, -1).rotated(Vector3::RIGHT, @pitch_angle).rotated(Vector3::UP, @yaw_angle)
+      Vector3.new(0, 0, -1).rotated(Vector3::RIGHT, @pitch_angle).rotated(Vector3::UP, @yaw_angle).normalized
     end
+
 
     group "player"
 
@@ -107,7 +100,7 @@ module Soulantern
       fr.mouse_filter = Control::MouseFilter::MouseFilterIgnore
     end
 
-    def _unhandled_input(event : InputEvent) : Void
+    def _input(event : InputEvent) : Void
       if mouse_motion = event.as_a?(InputEventMouseMotion)
         if Input.mouse_mode == Input::MouseMode::MouseModeCaptured
           gather_mouse_input(mouse_motion)

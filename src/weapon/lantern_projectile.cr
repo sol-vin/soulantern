@@ -18,10 +18,15 @@ module Soulantern
     property launcher : Godot::Node? = nil
     getter direction : Vector3 = Vector3.new(0, 0, -1)
     @lifetime : Float32 = 5.0_f32
+    @has_exploded : Bool = false
 
     def direction=(dir : Vector3)
       @direction = dir.normalized
       self.velocity = @direction * @speed
+      if @velocity.length_squared > 0.001_f32
+        up = @velocity.normalized.y.abs < 0.95_f32 ? Vector3::UP : Vector3::RIGHT
+        look_at(global_position + @velocity, up) rescue nil
+      end
     end
 
     def speed=(spd : Float32)
@@ -29,23 +34,60 @@ module Soulantern
       self.velocity = @direction.normalized * @speed
     end
 
+    def launch(launcher : Godot::Node, body : CharacterBody3D, dir : Vector3, spd : Float32, jump_force : Float32, radius : Float32) : Void
+      @launcher = launcher
+      @player_body = body
+      @speed = spd
+      @rocket_jump_force = jump_force
+      @explosion_radius = radius
+      setup_collision_exceptions(body)
+      self.direction = dir
+    end
+
+    def setup_collision_exceptions(body : CharacterBody3D) : Void
+      add_collision_exception_with(body)
+      if parent_node = body.get_parent?
+        parent_node.find_children(/.*/, CollisionObject3D, recursive: true).each do |child|
+          add_collision_exception_with(child)
+        end
+      end
+    end
+
+
     def _ready : Void
+      add_to_group("projectiles")
       self.collision_layer = 0_u32
       self.collision_mask = 1_u32
+      if pb = @player_body
+        setup_collision_exceptions(pb)
+      end
       self.velocity = @direction.normalized * @speed
+      if @velocity.length_squared > 0.001_f32
+        up = @velocity.normalized.y.abs < 0.95_f32 ? Vector3::UP : Vector3::RIGHT
+        look_at(global_position + @velocity, up) rescue nil
+      end
     end
 
     def _physics_process(delta : Float64) : Void
+      return if @has_exploded
       d = delta.to_f32
       @lifetime -= d
       if @lifetime <= 0.0_f32
-        queue_free
+        @has_exploded = true
+        detonate(global_position, Vector3::UP)
         return
       end
 
       collision = move_and_collide(velocity * d)
       if collision && !collision.null?
-        detonate(collision.get_position, collision.get_normal)
+        @has_exploded = true
+        normal = collision.get_normal
+        if normal.length_squared < 0.001_f32
+          normal = velocity.length_squared > 0.001_f32 ? -velocity.normalized : Vector3::UP
+        else
+          normal = normal.normalized
+        end
+        detonate(collision.get_position, normal)
       end
     end
 

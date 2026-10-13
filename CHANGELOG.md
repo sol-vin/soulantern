@@ -1,4 +1,6 @@
 # CARBON CHANGELOG
+## [0.1.13] - 2026-10-12
+---
 ## [0.1.12] - 2026-10-12
 ### ✨ Features & Improvements
 - ✦ **[SOULANTERN]** modernize gameplay nodes, eliminate godot_helpers, and fix mouse look ([`518316a`](https://github.com/sol-vin/soulantern/commit/518316a))

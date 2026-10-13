@@ -115,26 +115,40 @@ module Soulantern
       Godot.log_info("Lantern", "Lantern equipped to #{target_player.name}")
     end
 
-    # Horizontal look direction (XZ-plane) computed from camera or player controller
+    # Horizontal look direction (XZ-plane) computed from player controller or camera
     def get_look_direction : Vector3
+      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
+        return pc.look_direction
+      end
+      if tree = Godot.get_tree?
+        if p = tree.get_first_node_in_group?("player")
+          if pc = p.as_a?(PlayerController)
+            return pc.look_direction
+          end
+        end
+      end
       if cam = get_player_camera
         f = -cam.global_transform.basis.z
         h = Vector3.new(f.x, 0.0_f32, f.z)
-        return h.length_squared > 0.001_f32 ? h.normalized : Vector3.new(0, 0, -1)
-      end
-      if pc = @player_controller || @player.try(&.as_a?(PlayerController))
-        return pc.look_direction
+        return h.normalized if h.length_squared > 0.0001_f32
       end
       Vector3.new(0, 0, -1)
     end
 
     # Full 3D aiming vector incorporating pitch and yaw
     def get_aim_direction : Vector3
-      if cam = get_player_camera
-        return -cam.global_transform.basis.z.normalized
-      end
       if pc = @player_controller || @player.try(&.as_a?(PlayerController))
         return pc.aim_direction
+      end
+      if tree = Godot.get_tree?
+        if p = tree.get_first_node_in_group?("player")
+          if pc = p.as_a?(PlayerController)
+            return pc.aim_direction
+          end
+        end
+      end
+      if cam = get_player_camera
+        return -cam.global_transform.basis.z.normalized
       end
       Vector3.new(0, 0, -1)
     end
@@ -181,35 +195,33 @@ module Soulantern
     end
 
     def spawn_projectile : Void
-      proj = LanternProjectile.instantiate?("res://scenes/weapon/lantern_projectile.tscn") || LanternProjectile.new
-      proj.speed = @projectile_speed
-      proj.rocket_jump_force = @rocket_jump_force
-      proj.explosion_radius = @explosion_radius
-      proj.player_body = get_player_body
-      proj.launcher = self
+      camera = get_player_camera
+      body = get_player_body
+      return unless camera && body
 
-      aim_dir = get_aim_direction
-      proj.direction = aim_dir
+      forward_dir = get_aim_direction
+      from_pos = camera.global_position
+      spawn_pos = from_pos + forward_dir * 0.6_f32
 
-      spawn_pos = if cam = get_player_camera
-        cam.global_position + aim_dir * 0.7_f32
-      elsif body = get_player_body
-        body.global_position + Vector3.new(0, 1.2_f32, 0) + aim_dir * 0.7_f32
-      else
-        global_position + aim_dir * 0.7_f32
-      end
+      proj = ("res://scenes/weapon/lantern_projectile.tscn" > LanternProjectile?) ||
+             Godot.instantiate_scene?("res://scenes/weapon/lantern_projectile.tscn", LanternProjectile) ||
+             LanternProjectile.new
+
+      proj.global_position = spawn_pos
 
       if tree = Godot.get_tree?
         target_parent = tree.current_scene || tree.get_root?
         if target_parent
           target_parent << proj
-          proj.global_position = spawn_pos
         end
       elsif parent = get_parent?
         parent << proj
-        proj.global_position = spawn_pos
       end
+
+      proj.global_position = spawn_pos
+      proj.launch(self, body, forward_dir, @projectile_speed, @rocket_jump_force, @explosion_radius)
     end
+
 
     # --------------------------------------------------------------------------
     # Air Dash (Secondary Fire)
@@ -229,7 +241,7 @@ module Soulantern
       @current_dashes -= 1
       @is_dashing = true
       @dash_timer = @dash_duration
-      @dash_dir = get_aim_direction
+      @dash_dir = get_look_direction
       @last_trail_pos = body.global_position
 
       if pc = @player_controller || @player.try(&.as_a?(PlayerController))
@@ -239,8 +251,8 @@ module Soulantern
         body.call("reset_fall_distance") rescue nil
       end
 
-      # Force velocity along dash direction
-      body.velocity = @dash_dir * @dash_speed
+      # Force velocity along horizontal dash direction and lock vertical velocity to 0
+      body.velocity = Vector3.new(@dash_dir.x * @dash_speed, 0.0_f32, @dash_dir.z * @dash_speed)
 
       # Play animation and sound
       if ap = find_animation_player
@@ -264,18 +276,16 @@ module Soulantern
 
       @dash_timer -= delta
 
-      # Force velocity along dash direction
-      vel = @dash_dir * @dash_speed
-      body.velocity = vel
+      # Force horizontal dash velocity and lock vertical velocity to 0 throughout entire dash
+      body.velocity = Vector3.new(@dash_dir.x * @dash_speed, 0.0_f32, @dash_dir.z * @dash_speed)
 
       # Spawn floor fire trail if within reach of ground
       check_spawn_dash_fire_trail(body.global_position)
 
       if @dash_timer <= 0.0_f32
         @is_dashing = false
-        # Retain exit momentum
-        exit_vel = vel * @dash_exit_speed_ratio
-        body.velocity = exit_vel
+        # Retain exit momentum on horizontal axes, preserve 0.0 vertical
+        body.velocity = Vector3.new(body.velocity.x * @dash_exit_speed_ratio, 0.0_f32, body.velocity.z * @dash_exit_speed_ratio)
 
         if pc = @player_controller || @player.try(&.as_a?(PlayerController))
           pc.lock_movement(false)
@@ -288,7 +298,7 @@ module Soulantern
           end
         end
 
-        emit(dash_ended, exit_vel)
+        emit(dash_ended, body.velocity)
       end
     end
 
