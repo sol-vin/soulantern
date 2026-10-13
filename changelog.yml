@@ -23,9 +23,65 @@ settings:
       title: "\U0001F6E0️ Chores & Tooling"
       bullet: •
 releases:
-- version: 0.1.9
+- version: 0.1.10
   date: "2026-10-12"
   status: active
+  entries:
+  - type: refactor
+    description: modernize game code with Lapis extras, signal piping, and node macros
+    bullet: ✦
+    hash: 676b553
+    author: Ian Rash
+  - type: other
+    description: Fix duplicate UID collision, remove unused goldsrc addon, and streamline
+      TriggerTextLabel
+    bullet: •
+    hash: 7d8c36a
+    author: Ian Rash
+  - type: fix
+    description: dereference default func_godot_fgd and reference soulantern_fgd everywhere
+    bullet: ✓
+    badge: '[FGD]'
+    hash: 43da097
+    author: Ian Rash
+  - type: feat
+    description: modernize gameplay nodes, eliminate godot_helpers, and fix mouse
+      look
+    bullet: ✦
+    badge: '[SOULANTERN]'
+    hash: 518316a
+    author: Ian Rash
+  - type: fix
+    description: prevent lantern Control from consuming mouse input, fix null-safe
+      weapon pickup, and clean onready syntax
+    bullet: ✓
+    badge: '[GAMEPLAY]'
+    hash: 979ac69
+    author: Ian Rash
+  - type: fix
+    description: automate game packaging with embedded PCK executable and deliverable
+      publishing
+    bullet: ✓
+    badge: '[RELEASE]'
+    hash: 68381ec
+    author: Ian Rash
+  - type: fix
+    description: add lib/.gdignore to prevent Godot scan hang and ensure standalone
+      exe packaging
+    bullet: ✓
+    badge: '[CI]'
+    hash: dce5a4a
+    author: Ian Rash
+  - type: fix
+    description: enforce true Godot engine binary selection and add boot verification
+      smoke tests
+    bullet: ✓
+    badge: '[RELEASE]'
+    hash: 1528b5e
+    author: Ian Rash
+- version: 0.1.9
+  date: "2026-10-12"
+  status: released
   entries:
   - type: refactor
     description: modernize game code with Lapis extras, signal piping, and node macros
