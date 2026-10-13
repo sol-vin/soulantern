@@ -61,13 +61,21 @@ module Soulantern
     @wishdir : Vector3 = Vector3.new(0, 0, 0)
     @wishspeed : Float32 = 0.0_f32
 
-    # Horizontal look direction (XZ-plane) computed from current yaw angle
+    # Horizontal look direction (XZ-plane) computed from camera or current yaw angle
     def look_direction : Vector3
+      if cam = camera
+        f = -cam.global_transform.basis.z
+        h = Vector3.new(f.x, 0.0_f32, f.z)
+        return h.length_squared > 0.001_f32 ? h.normalized : Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle)
+      end
       Vector3.new(0, 0, -1).rotated(Vector3::UP, @yaw_angle)
     end
 
     # Full 3D aiming vector incorporating pitch and yaw
     def aim_direction : Vector3
+      if cam = camera
+        return -cam.global_transform.basis.z.normalized
+      end
       Vector3.new(0, 0, -1).rotated(Vector3::RIGHT, @pitch_angle).rotated(Vector3::UP, @yaw_angle)
     end
 
@@ -284,7 +292,7 @@ module Soulantern
       return if vel.length_squared < 0.01_f32
 
       collision = move_and_collide(vel * delta, true, 0.001_f32)
-      if collision
+      if collision && !collision.null?
         normal = collision.get_normal
         if normal.y < 0.7_f32
           move_step(delta)
@@ -299,14 +307,14 @@ module Soulantern
 
       # 1. Step up and forward
       step_test = move_and_collide(Vector3.new(0, @step_height, 0), true, 0.001_f32)
-      return if step_test # Headroom blocked
+      return if step_test && !step_test.null? # Headroom blocked
 
       # 2. Step forward
       fwd_test = move_and_collide(Vector3.new(vel.x * delta, 0, vel.z * delta), true, 0.001_f32)
 
       # 3. Step back down to ground
       down_test = move_and_collide(Vector3.new(0, -@step_height * 1.5_f32, 0), true, 0.001_f32)
-      if down_test && down_test.get_normal.y >= 0.7_f32
+      if down_test && !down_test.null? && down_test.get_normal.y >= 0.7_f32
         self.global_position = dest + Vector3.new(0, -@step_height, 0)
       end
     end

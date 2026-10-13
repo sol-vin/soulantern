@@ -63,10 +63,11 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=514665187]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ENTER"
 
 [node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="." unique_id=1075209399]
 layer = 128
 script = ExtResource("3_palette")
-color_distance_mode = 4
+color_distance_mode = 0

@@ -3,11 +3,11 @@ require "lapis"
 module Soulantern
   # Main Menu UI controller.
   node MainMenu < Control do
-    unique_node? new_game_btn, Button, "NewGameButton"
-    unique_node? credits_btn, Button, "CreditsButton"
-    unique_node? quit_btn, Button, "QuitButton"
-    unique_node? volume_slider, HSlider, "VolumeSlider"
-    unique_node? volume_label, Label, "PercentLabel"
+    onready new_game_btn : Button = "%NewGameButton"
+    onready credits_btn : Button = "%CreditsButton"
+    onready quit_btn : Button = "%QuitButton"
+    onready volume_slider : HSlider = "%VolumeSlider"
+    onready volume_label : Label = "%PercentLabel"
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
@@ -17,16 +17,15 @@ module Soulantern
       end
 
       # Wire button interactions with signal piping
-      new_game_btn.try(&.pressed.>> ->on_new_game_pressed)
-      credits_btn.try(&.pressed.>> ->on_credits_pressed)
-      quit_btn.try(&.pressed.>> ->on_quit_pressed)
+      new_game_btn.pressed >> ->on_new_game_pressed
+      credits_btn.pressed >> ->on_credits_pressed
+      quit_btn.pressed >> ->on_quit_pressed
 
       # Initialize volume controls
       vol = AudioServer.get_master_volume
-      if vs = volume_slider
-        vs.value = vol.to_f64
-        vs.value_changed >> ->(new_val : Float64) { on_volume_changed(new_val.to_f32) }
-      end
+      vs = volume_slider
+      vs.value = vol.to_f64
+      vs.value_changed >> ->(new_val : Float64) { on_volume_changed(new_val.to_f32) }
       update_volume_label(vol)
     end
 

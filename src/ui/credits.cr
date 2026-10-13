@@ -6,24 +6,15 @@ module Soulantern
     SOLVIN_URL = "https://sol.vin"
     BOUNCYTEM_URL = "https://bouncytem.bandcamp.com/album/terra-infernus"
 
-    onready? solvin_btn : Button? = ["%SolvinButton", "SolvinButton"]
-    onready? music_btn : Button? = ["%BouncyTemButton", "BouncyTemButton"]
-    onready? back_btn : Button? = ["%BackButton", "BackButton"]
+    onready solvin_btn : Button = "%SolvinButton"
+    onready music_btn : Button = "%BouncyTemButton"
+    onready back_btn : Button = "%BackButton"
 
     def _ready : Void
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
-
-      if btn = solvin_btn
-        btn.pressed >> ->{ OS.shell_open(SOLVIN_URL) }
-      end
-
-      if btn = music_btn
-        btn.pressed >> ->{ OS.shell_open(BOUNCYTEM_URL) }
-      end
-
-      if btn = back_btn
-        btn.pressed >> ->return_to_menu
-      end
+      solvin_btn.pressed >> ->{ OS.shell_open(SOLVIN_URL) }
+      music_btn.pressed >> ->{ OS.shell_open(BOUNCYTEM_URL) }
+      back_btn.pressed >> ->return_to_menu
     end
 
     def _unhandled_input(event : InputEvent) : Void

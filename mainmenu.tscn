@@ -77,7 +77,7 @@ parameters/looping = true
 [node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="." unique_id=1455125623]
 layer = 128
 script = ExtResource("3_palette")
-color_distance_mode = 4
+color_distance_mode = 0
 
 [node name="Background2" type="ColorRect" parent="." unique_id=108008051]
 layout_mode = 1
@@ -86,6 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="ColorRect" parent="." unique_id=405786503]
@@ -96,6 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1760750720]
 layout_mode = 1
@@ -128,14 +130,17 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="NewGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox" unique_id=1206766277]
+unique_name_in_owner = true
 layout_mode = 2
 text = "NEW GAME"
 
 [node name="CreditsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox" unique_id=2005324747]
+unique_name_in_owner = true
 layout_mode = 2
 text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox" unique_id=336087542]
+unique_name_in_owner = true
 layout_mode = 2
 text = "QUIT"
 
@@ -154,6 +159,7 @@ theme_override_constants/separation = 6
 alignment = 1
 
 [node name="VolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer" unique_id=1457056519]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(130, 16)
 layout_mode = 2
 size_flags_vertical = 4
@@ -165,6 +171,7 @@ step = 0.02
 value = 1.0
 
 [node name="PercentLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer" unique_id=850174722]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "100%"

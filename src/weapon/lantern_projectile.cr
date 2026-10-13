@@ -44,7 +44,7 @@ module Soulantern
       end
 
       collision = move_and_collide(velocity * d)
-      if collision
+      if collision && !collision.null?
         detonate(collision.get_position, collision.get_normal)
       end
     end
@@ -105,15 +105,18 @@ module Soulantern
 
     def spawn_explosion_effect(hit_point : Vector3, hit_normal : Vector3) : Void
       trail = FireTrail.instantiate?("res://scenes/weapon/fire_trail.tscn") || FireTrail.new
-      trail.global_position = hit_point + hit_normal * 0.1_f32
       trail.burn_duration = 1.2_f32
       trail.fade_duration = 0.4_f32
 
       if tree = Godot.get_tree?
         target_parent = tree.current_scene || tree.get_root?
-        target_parent.try(&.<<(trail))
+        if target_parent
+          target_parent << trail
+          trail.global_position = hit_point + hit_normal * 0.1_f32
+        end
       elsif parent = get_parent?
         parent << trail
+        trail.global_position = hit_point + hit_normal * 0.1_f32
       end
     end
   end

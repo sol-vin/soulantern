@@ -3,29 +3,22 @@ require "lapis"
 module Soulantern
   # In-game Pause Menu overlay controller.
   node PauseMenu < Control do
-    onready? resume_btn : Button = ["%ResumeButton", "CenterContainer/PanelContainer/VBoxContainer/ResumeButton"]
-    onready? quit_btn : Button = ["%QuitButton", "CenterContainer/PanelContainer/VBoxContainer/QuitButton"]
-    onready? volume_slider : HSlider = ["%VolumeSlider", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/VolumeSlider"]
-    onready? volume_label : Label = ["%PercentLabel", "CenterContainer/PanelContainer/VBoxContainer/VolumeContainer/HBoxContainer/PercentLabel"]
+    onready resume_btn : Button = "%ResumeButton"
+    onready quit_btn : Button = "%QuitButton"
+    onready volume_slider : HSlider = "%VolumeSlider"
+    onready volume_label : Label = "%PercentLabel"
 
     def _ready : Void
       self.process_mode = Node::ProcessMode::ProcessModeAlways
       Input.mouse_mode = Input::MouseMode::MouseModeVisible
 
-      if btn = resume_btn
-        btn.pressed >> ->on_resume_pressed
-      end
-
-      if btn = quit_btn
-        btn.pressed >> ->on_quit_pressed
-      end
+      resume_btn.pressed >> ->on_resume_pressed
+      quit_btn.pressed >> ->on_quit_pressed
 
       vol = AudioServer.get_master_volume
-
-      if vs = volume_slider
-        vs.value = vol.to_f64
-        vs.value_changed >> ->(new_val : Float64) { on_volume_changed(new_val.to_f32) }
-      end
+      vs = volume_slider
+      vs.value = vol.to_f64
+      vs.value_changed >> ->(new_val : Float64) { on_volume_changed(new_val.to_f32) }
       update_volume_label(vol)
     end
 

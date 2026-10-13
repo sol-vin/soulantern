@@ -651,12 +651,14 @@ jobs:
           Get-ChildItem -Path "bin" -Filter "*.console.pck" -Recurse | Remove-Item -Force
 
           # 1. Package the whole game up as an exe (with embedded PCK) and stage directly in dist/
-          # When lapis package game runs with --embed-pck, it generates ${gameName}_portable.exe
-          if (Test-Path "bin/${gameName}_portable.exe") {
-            Copy-Item "bin/${gameName}_portable.exe" "dist/$gameName.exe" -Force
-            # Remove portable executable from bin/ so it is NOT bundled into the zip distribution
-            Remove-Item "bin/${gameName}_portable.exe" -Force
-            Write-Host "Staged standalone game executable with embedded PCK: dist/$gameName.exe"
+          # When lapis package game runs with --embed-pck, it generates *_portable.exe
+          $portableExes = Get-ChildItem -Path "bin" -Filter "*_portable.exe" -Recurse
+          if ($portableExes.Count -gt 0) {
+            $mainPortable = $portableExes[0].FullName
+            Copy-Item $mainPortable "dist/$gameName.exe" -Force
+            Write-Host "Staged standalone game executable with embedded PCK: dist/$gameName.exe from $mainPortable"
+            # Remove all *_portable.exe files from bin/ so they are NOT bundled into the zip distribution
+            $portableExes | Remove-Item -Force
           } elseif (Test-Path "bin/$gameName.exe") {
             Copy-Item "bin/$gameName.exe" "dist/$gameName.exe" -Force
             Write-Host "Staged standalone game executable: dist/$gameName.exe"

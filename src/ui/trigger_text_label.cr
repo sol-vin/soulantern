@@ -8,8 +8,8 @@ module Soulantern
     @[Export]
     property default_fade_duration : Float32 = 0.35_f32
 
-    unique_node? panel_container, Control, "PanelContainer"
-    unique_node? text_label, Label, "Label"
+    onready? panel_container : Control? = "%PanelContainer"
+    onready? text_label : Label? = "%Label"
 
     @tween : Tween? = nil
     @current_source : Godot::Object? = nil

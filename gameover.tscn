@@ -69,14 +69,16 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="RestartButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "TRY AGAIN"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/ButtonsVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "MAIN MENU"
 
 [node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="."]
 layer = 128
 script = ExtResource("3_palette")
-color_distance_mode = 4
+color_distance_mode = 0

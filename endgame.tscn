@@ -68,4 +68,4 @@ color = Color(0, 0, 0, 0)
 [node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="." unique_id=345831086]
 layer = 128
 script = ExtResource("3_palette")
-color_distance_mode = 4
+color_distance_mode = 0

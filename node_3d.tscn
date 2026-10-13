@@ -3160,7 +3160,7 @@ metadata/_custom_type_script = "uid://dsbvm0s5fe1qi"
 layer = 128
 follow_viewport_enabled = true
 script = ExtResource("9_6iypd")
-color_distance_mode = 4
+color_distance_mode = 0
 metadata/_custom_type_script = "uid://dbenv4txjni6y"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1949215617]

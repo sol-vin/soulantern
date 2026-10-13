@@ -75,6 +75,7 @@ text = "Game Design, Art & Code:"
 label_settings = SubResource("LabelSettings_category")
 
 [node name="SolvinButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/CreatorVBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 text = " sol.vin (https://sol.vin)"
@@ -92,6 +93,7 @@ text = "Music:"
 label_settings = SubResource("LabelSettings_category")
 
 [node name="BouncyTemButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/MusicVBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 text = " BouncyTem - Terra Infernus"
@@ -108,10 +110,11 @@ label_settings = SubResource("LabelSettings_info")
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "BACK"
 
 [node name="PalletteSwapScreenSpaceCanvas" type="CanvasLayer" parent="."]
 layer = 128
 script = ExtResource("3_palette")
-color_distance_mode = 4
+color_distance_mode = 0

@@ -23,7 +23,7 @@ window/size/mode="fullscreen"
 window/size/resizable=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
-window/stretch/scale_mode="integer"
+window/stretch/scale_mode="fractional"
 
 [editor_plugins]
 
