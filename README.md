@@ -16,7 +16,7 @@ A fast-paced retro 3D platformer FPS where your lantern is your mobility, weapon
 ### Prerequisites
 
 - [Crystal Compiler](https://crystal-lang.org/) (1.20+)
-- [Godot Engine](https://godotengine.org/) (4.8-dev7)
+- [Godot Engine](https://godotengine.org/) (4.8-beta1)
 - [Lapis CLI](https://github.com/sol-vin/lapis)
 
 ### Commands

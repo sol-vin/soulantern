@@ -1,12 +1,13 @@
-name: godot_crystal_template
-version: 0.1.0
+name: soulantern
+version: 0.1.14
 authors:
-  - Developer <developer@example.com>
+  - Ian Rash <redcodefinal@gmail.com>
 license: MIT
 
 dependencies:
   lapis:
-    path: lib/lapis
+    github: sol-vin/lapis
+    branch: 4.8-beta1
 
 targets:
   game:

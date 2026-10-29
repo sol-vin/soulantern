@@ -1,4 +1,9 @@
 # CARBON CHANGELOG
+## [0.1.15] - 2026-10-28
+### 🐛 Bug Fixes
+- ✓ resolve fireball projectile firing, 360-degree dash aiming, standalone PCK bundling, and fullscreen mode ([`7d1fa9e`](https://github.com/sol-vin/soulantern/commit/7d1fa9e))
+
+---
 ## [0.1.14] - 2026-10-13
 ---
 ## [0.1.13] - 2026-10-12

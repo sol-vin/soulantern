@@ -23,9 +23,19 @@ settings:
       title: "\U0001F6E0️ Chores & Tooling"
       bullet: •
 releases:
+- version: 0.1.15
+  date: "2026-10-28"
+  status: active
+  entries:
+  - type: fix
+    description: resolve fireball projectile firing, 360-degree dash aiming, standalone
+      PCK bundling, and fullscreen mode
+    bullet: ✓
+    hash: 7d1fa9e
+    author: Ian Rash
 - version: 0.1.14
   date: "2026-10-13"
-  status: active
+  status: released
   entries: []
 - version: 0.1.13
   date: "2026-10-12"
